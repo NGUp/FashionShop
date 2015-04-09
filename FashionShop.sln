@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FashionShop", "FashionShop\FashionShop.csproj", "{5A515E15-1410-4E7D-96B3-D03EB5FA30C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FashionShop.Tests", "FashionShop.Tests\FashionShop.Tests.csproj", "{CC1C51A8-12F0-4370-96F4-7D95F77F7BB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A515E15-1410-4E7D-96B3-D03EB5FA30C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A515E15-1410-4E7D-96B3-D03EB5FA30C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A515E15-1410-4E7D-96B3-D03EB5FA30C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A515E15-1410-4E7D-96B3-D03EB5FA30C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1C51A8-12F0-4370-96F4-7D95F77F7BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1C51A8-12F0-4370-96F4-7D95F77F7BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1C51A8-12F0-4370-96F4-7D95F77F7BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1C51A8-12F0-4370-96F4-7D95F77F7BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

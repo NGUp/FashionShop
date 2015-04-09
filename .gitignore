@@ -1,0 +1,6 @@
+FashionShop/bin/*
+FashionShop/obj/*
+FashionShop.suo
+FashionShop/bower_components/*
+FashionShop.Tests/bin/*
+FashionShop.Tests/obj/*

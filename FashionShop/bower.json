@@ -1,0 +1,15 @@
+{
+  "name": "FashioShop",
+  "authors": [
+    "vhnam <vhnam2504@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5",
+    "core-elements": "Polymer/core-elements#~0.5.5",
+    "paper-elements": "Polymer/paper-elements#~0.5.5"
+  }
+}

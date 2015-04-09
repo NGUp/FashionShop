@@ -1,0 +1,77 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-size: 16px;
+    font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+core-header-panel {
+    height: 100%;
+}
+
+core-toolbar
+{
+    background-color: #3f51b5;
+}
+
+.header-info 
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 9px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.header-title {
+    color: #fff;
+}
+
+.header-title h1 {
+    font-weight: 400;
+}
+
+.container 
+{
+    width: 980px;
+    margin: 0 auto;
+}
+
+footer 
+{
+    border-top: 1px solid #aaa;
+}
+
+footer .social
+{
+    padding: 16px 0;
+    text-align: center;
+}
+
+footer .social a 
+{
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+footer .copyright 
+{
+    padding: 8px 0;
+    background-color: #3f51b5;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+
+footer .copyright a 
+{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
