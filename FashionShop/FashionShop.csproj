@@ -70,6 +70,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Provider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Shared\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
@@ -103,7 +104,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\js\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Main.Master" />
