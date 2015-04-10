@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainAdmin.master.cs" Inherits="FashionShop.Views.Shared.MainAdmin" %>
+
+<!DOCTYPE>
+<html>
+    <head id="Head1" runat="server">
+        <meta charset="UTF-8" />
+        <title>
+            <asp:ContentPlaceHolder ID="TitleContent" runat="server"></asp:ContentPlaceHolder>
+        </title>
+        <link href="/Content/icon/favicon.png" rel="shortcut icon">
+        <%--<link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">--%>
+
+        <!-- CSS -->
+        <link href="/Content/css/template/main-admin.css" rel="stylesheet" />
+        <asp:ContentPlaceHolder ID="StyleSheetContent" runat="server"></asp:ContentPlaceHolder>
+    </head>
+    <body fullbleed layout vertical>
+        <core-header-panel>
+            <core-toolbar>
+                <div class="bottom indent title header-title">
+                    <h1>FashionShop <small>Khu vực quản trị</small></h1>
+                </div>
+            </core-toolbar>
+            <section class="container">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </section>
+        </core-header-panel>
+
+        <!-- JavaScript -->
+        <script src="/Scripts/platform.js"></script>
+        <asp:ContentPlaceHolder ID="ScriptContent" runat="server"></asp:ContentPlaceHolder>
+
+        <!-- Web Components -->
+        <link rel="import" href="/bower_components/core-header-panel/core-header-panel.html">
+        <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
+        <link rel="import" href="/bower_components/core-toolbar/core-toolbar.html">
+        <link rel="import" href="/bower_components/paper-button/paper-button.html">
+        <asp:ContentPlaceHolder ID="WebComponentsContent" runat="server"></asp:ContentPlaceHolder>
+    </body>
+</html> 
