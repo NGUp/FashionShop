@@ -13,7 +13,6 @@ namespace FashionShop.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            Response.Redirect("/admin/login");
             return View();
         }
 
@@ -23,6 +22,13 @@ namespace FashionShop.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        //
+        // POST: /Admin/Login
+        [HttpPost]
+        public void LoginHandler()
+        {
         }
     }
 }

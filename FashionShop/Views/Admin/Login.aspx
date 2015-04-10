@@ -9,21 +9,32 @@
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
-    
-    <article class="login-form">
+    <article class="login-form" ng-controller="LoginCtrl">
         <div>
-            <paper-input label="Tên đăng nhập" floatingLabel></paper-input>
+            <template is="auto-binding">
+                <paper-input-decorator label="Tên đăng nhập" floatingLabel isInvalid="{{!$.txtUsername.validity.valid}}" error="Tên đăng nhập chỉ có thể là ký tự thường, hoa hoặc chữ số.">
+                    <input is="core-input" id="txtUsername" spellcheck="false" type="text" pattern="^[a-zA-Z0-9]{4,}$">
+                </paper-input-decorator>
+            </template>
         </div>
         <div>
-            <paper-input-decorator label="Mật khẩu" floatingLabel>
-                <input is="core-input" type="password">
-            </paper-input-decorator>
+            <template is="auto-binding">
+                <paper-input-decorator label="Mật khẩu" floatingLabel isInvalid="{{!$.txtPassword.validity.valid}}" error="Mật khẩu không hợp lệ.">
+                    <input is="core-input" type="password" id="txtPassword" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{8,}$">
+                </paper-input-decorator>
+            </template>
         </div>
         <div>
-            <paper-button raised class="login-button">Đăng nhập</paper-button>
+            <paper-button raised ng-click="login()">Đăng nhập</paper-button>
         </div>
     </article>
 
+</asp:Content>
+
+<asp:Content ID="Script" ContentPlaceHolderID="ScriptContent" runat="server">
+    <script src="/Scripts/sha1.js"></script>
+    <script src="/Scripts/md5.js"></script>
+    <script src="/Scripts/admin-login.js"></script>
 </asp:Content>
 
 <asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">

@@ -4,19 +4,10 @@
     margin: 72px auto;
 }
 
-paper-input 
-{
-    width: 100%;
-}
-
 paper-button
 {
     float: right;
     margin-top: 32px;
-}
-
-.login-button 
-{
     color: #fff;
     background-color: #536DFE;
 }

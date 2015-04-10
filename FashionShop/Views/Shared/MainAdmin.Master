@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainAdmin.master.cs" Inherits="FashionShop.Views.Shared.MainAdmin" %>
 
 <!DOCTYPE>
-<html>
+<html ng-app="admin">
     <head id="Head1" runat="server">
         <meta charset="UTF-8" />
         <title>
@@ -28,6 +28,7 @@
 
         <!-- JavaScript -->
         <script src="/Scripts/platform.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
         <asp:ContentPlaceHolder ID="ScriptContent" runat="server"></asp:ContentPlaceHolder>
 
         <!-- Web Components -->

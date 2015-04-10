@@ -99,7 +99,10 @@
     <Content Include="Content\img\social\pinterest.png" />
     <Content Include="Content\img\social\twitter.png" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\admin-login.js" />
+    <Content Include="Scripts\md5.js" />
     <Content Include="Scripts\platform.js" />
+    <Content Include="Scripts\sha1.js" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\Login.aspx" />
     <Content Include="Views\Index\About.aspx" />
