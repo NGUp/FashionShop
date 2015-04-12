@@ -4,6 +4,10 @@
 	Trang chủ
 </asp:Content>
 
+<asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitleContent" runat="server">
+	Trang chủ
+</asp:Content>
+
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
 
 

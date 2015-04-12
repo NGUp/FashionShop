@@ -19,7 +19,7 @@ namespace FashionShop.Controllers
             // Check if is administrator
             if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
             {
-                Response.Redirect("/admin", false);
+                Response.Redirect("/admin/login", false);
             }
 
             return View();
@@ -149,6 +149,24 @@ namespace FashionShop.Controllers
                     Response.Redirect("/admin", false);
                 }
             }
+        }
+
+        //
+        // POST: /Admin/Logout
+        [HttpPost]
+        public void LogoutHandler()
+        {
+            if (Request.Params["token"] != null)
+            {
+                if (Request.Params["token"] == "7zv34gd8d2j")
+                {
+                    Session["USER_ID"] = null;
+                    Session["USER_PERMISSION"] = null;
+                    Response.Redirect("/admin/login", false);
+                }
+            }
+
+            Response.Redirect("/admin", false);
         }
     }
 }

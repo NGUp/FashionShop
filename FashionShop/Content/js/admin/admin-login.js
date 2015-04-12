@@ -1,7 +1,7 @@
 ﻿/**
  * The MIT License (MIT)
  *
- * Copyright (c) 2015
+ * Copyright (c) 2015 - 110001NP Development Team
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,25 +27,25 @@
     'use strict';
 
     /**
-     * A part of the admin module
-     *
-     */
+    * A part of the admin module
+    *
+    */
     angular.module('admin', [])
 
         /**
-         * Security service
-         *
-         * @return {object} Security service
-         */
+        * Security service
+        *
+        * @return {object} Security service
+        */
         .factory('Security', function () {
             return {
 
                 /**
-                 * Encode password
-                 *
-                 * @param  {string} password    The user password
-                 * @return {string}             The hash
-                 */
+                * Encode password
+                *
+                * @param  {string} password    The user password
+                * @return {string}             The hash
+                */
                 encode: function (password) {
                     return md5(
                         '922e1cd494659174bd2573' +
@@ -56,18 +56,18 @@
         })
 
         /**
-         * Form service
-         *
-         * @return {object} Form service
-         */
+        * Form service
+        *
+        * @return {object} Form service
+        */
         .factory('Form', function () {
             return {
 
                 /**
-                 * Submit a form
-                 *
-                 * @param  {array} params   The array of the parameters
-                 */
+                * Submit a form
+                *
+                * @param  {array} params   The array of the parameters
+                */
                 submit: function (params) {
                     var form = document.createElement('form');
                     form.setAttribute('method', 'post');
@@ -91,32 +91,32 @@
         })
 
         /**
-         * Login Controller
-         *
-         * @param  {Object} scope       Angular Object
-         * @param  {Object} security    Security service
-         * @param  {Object} form        Form service
-         */
+        * Login Controller
+        *
+        * @param  {Object} scope       Angular Object
+        * @param  {Object} security    Security service
+        * @param  {Object} form        Form service
+        */
         .controller('LoginCtrl',
                 ['$scope', 'Security', 'Form', function (scope, security, form) {
 
-            /**
-             * Login to admin page.
-             *
-             */
-            scope.login = function () {
-                var username = document.getElementById('txtUsername'),
+                    /**
+                    * Login to admin page.
+                    *
+                    */
+                    scope.login = function () {
+                        var username = document.getElementById('txtUsername'),
                     password = document.getElementById('txtPassword');
 
-                if (username.validity.valid === true &&
+                        if (username.validity.valid === true &&
                         password.validity.valid === true &&
                         password.value.length > 7) {
-                    form.submit([
+                            form.submit([
                         { 'username': username.value },
                         { 'password': security.encode(password.value) }
                     ]);
-                }
-            };
-        } ]);
+                        }
+                    };
+                } ]);
 
 })();

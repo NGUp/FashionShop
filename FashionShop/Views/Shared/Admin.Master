@@ -49,6 +49,8 @@
                             <asp:ContentPlaceHolder ID="HeaderTitleContent" runat="server"></asp:ContentPlaceHolder>
                         </h2>
                     </div>
+                    <%--<core-icon-button class="header-logout" src="/Content/img/logout.png"></core-icon-button>--%>
+                    <md-logout-button></md-logout-button>
                 </core-toolbar>
                 <section class="container">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
@@ -68,6 +70,7 @@
         <link rel="import" href="/bower_components/core-menu/core-menu.html">
         <link rel="import" href="/bower_components/core-item/core-item.html">
         <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
+        <link rel="import" href="/Content/WebComponents/md-logout-button.html">
         <asp:ContentPlaceHolder ID="WebComponentsContent" runat="server"></asp:ContentPlaceHolder>
     </body>
 </html> 
