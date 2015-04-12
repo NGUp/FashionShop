@@ -92,7 +92,7 @@ namespace FashionShop.Tests
 
             if (table.Rows.Count > 0)
             {
-                sql = "Delete from Manufacturer Where ID = 'abcxyz'";
+                sql = "Delete from Manufacturer Where ID = 'abcxyz0123'";
                 provider.executeNonQuery(sql);
             }
         }

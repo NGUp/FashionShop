@@ -34,7 +34,7 @@
 <asp:Content ID="Script" ContentPlaceHolderID="ScriptContent" runat="server">
     <script src="/Scripts/sha1.js"></script>
     <script src="/Scripts/md5.js"></script>
-    <script src="/Scripts/admin-login.js"></script>
+    <script src="/Content/js/admin/admin-login.js"></script>
 </asp:Content>
 
 <asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">
