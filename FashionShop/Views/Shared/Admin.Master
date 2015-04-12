@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="FashionShop.Views.Shared.Admin" %>
+
+<!DOCTYPE>
+<html ng-app="admin">
+    <head runat="server">
+        <meta charset="UTF-8" />
+        <title>
+            <asp:ContentPlaceHolder ID="TitleContent" runat="server"></asp:ContentPlaceHolder>
+        </title>
+        <link href="/Content/icon/favicon.png" rel="shortcut icon">
+        <%--<link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">--%>
+
+        <!-- CSS -->
+        <link href="/Content/css/template/admin.css" rel="stylesheet" />
+        <asp:ContentPlaceHolder ID="StyleSheetContent" runat="server"></asp:ContentPlaceHolder>
+    </head>
+    <body unresolved>
+        <core-drawer-panel>
+            <aside drawer>
+                <core-toolbar>
+                    <h1>FashionShop</h1>
+                </core-toolbar>
+                <img src="/Content/img/admin.png" alt="Administrator" />
+                <section>
+                    <core-menu selected="<asp:ContentPlaceHolder ID="SelectedContent" runat="server"></asp:ContentPlaceHolder>">
+                        <core-item label="Sản phẩm">
+                            <a href="/admin/product"></a>
+                        </core-item>
+                        <core-item label="Loại sản phẩm">
+                            <a href="/admin/type"></a>
+                        </core-item>
+                        <core-item label="Nhà sản xuất">
+                            <a href="/admin/manufacturer"></a>
+                        </core-item>
+                        <core-item label="Tài khoản">
+                            <a href="/admin/account"></a>
+                        </core-item>
+                        <core-item label="Đơn đặt hàng">
+                            <a href="/admin/order"></a>
+                        </core-item>
+                    </core-menu>
+                </section>
+            </aside>
+            <core-header-panel main>
+                <core-toolbar>
+                    <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
+                    <div class="bottom indent title header-title">
+                        <h2>
+                            <asp:ContentPlaceHolder ID="HeaderTitleContent" runat="server"></asp:ContentPlaceHolder>
+                        </h2>
+                    </div>
+                </core-toolbar>
+                <section class="container">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </section>
+            </core-header-panel>
+        </core-drawer-panel>
+
+        <!-- JavaScript -->
+        <script src="/Scripts/platform.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <asp:ContentPlaceHolder ID="ScriptContent" runat="server"></asp:ContentPlaceHolder>
+
+        <!-- Web Components -->
+        <link rel="import" href="/bower_components/core-header-panel/core-header-panel.html">
+        <link rel="import" href="/bower_components/core-drawer-panel/core-drawer-panel.html">
+        <link rel="import" href="/bower_components/core-toolbar/core-toolbar.html">
+        <link rel="import" href="/bower_components/core-menu/core-menu.html">
+        <link rel="import" href="/bower_components/core-item/core-item.html">
+        <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
+        <asp:ContentPlaceHolder ID="WebComponentsContent" runat="server"></asp:ContentPlaceHolder>
+    </body>
+</html> 

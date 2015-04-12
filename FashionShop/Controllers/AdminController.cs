@@ -19,7 +19,7 @@ namespace FashionShop.Controllers
             // Check if is administrator
             if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
             {
-                Response.Redirect("/admin/login", false);
+                Response.Redirect("/admin", false);
             }
 
             return View();
@@ -34,12 +34,82 @@ namespace FashionShop.Controllers
             {
                 if (Convert.ToInt32(Session["USER_PERMISSION"]) == 1)
                 {
-                    Response.Redirect("/admin");
+                    Response.Redirect("/admin");    // Administrator
                 }
                 else
                 {
-                    
+                    Response.Redirect("/"); // Anonymous/Guest/Registerd User
                 }
+            }
+
+            return View();
+        }
+
+        // Product
+        // GET: /Admin/Product
+        [HttpGet]
+        public ActionResult Product()
+        {
+            // Check if is administrator
+            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin", false);
+            }
+
+            return View();
+        }
+
+        // Product type
+        // GET: /Admin/Type
+        [HttpGet]
+        public ActionResult Type()
+        {
+            // Check if is administrator
+            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin", false);
+            }
+
+            return View();
+        }
+
+        // Manufacturer
+        // GET: /Admin/Manufacturer
+        [HttpGet]
+        public ActionResult Manufacturer()
+        {
+            // Check if is administrator
+            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin", false);
+            }
+
+            return View();
+        }
+
+        // Account
+        // GET: /Admin/Account
+        [HttpGet]
+        public ActionResult Account()
+        {
+            // Check if is administrator
+            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin", false);
+            }
+
+            return View();
+        }
+
+        // PurchaseOrder
+        // GET: /Admin/Order
+        [HttpGet]
+        public ActionResult Order()
+        {
+            // Check if is administrator
+            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin", false);
             }
 
             return View();

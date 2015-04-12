@@ -2,7 +2,7 @@
 
 <!DOCTYPE>
 <html ng-app="admin">
-    <head id="Head1" runat="server">
+    <head runat="server">
         <meta charset="UTF-8" />
         <title>
             <asp:ContentPlaceHolder ID="TitleContent" runat="server"></asp:ContentPlaceHolder>

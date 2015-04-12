@@ -1,0 +1,60 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body 
+{
+    color: #212121;
+    font-size: 16px;
+    font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+core-header-panel {
+    height: 100%;
+}
+
+core-toolbar
+{
+    background-color: #f44336;
+}
+
+.header-title {
+    color: #fff;
+}
+
+.header-title h2 
+{
+    font-size: 24px;
+    font-weight: 400;
+}
+
+aside 
+{
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
+}
+
+aside core-toolbar 
+{
+    background-color: #fff;
+}
+
+aside h1 
+{
+    color: #f44336;
+}
+
+aside section 
+{
+    padding-left: 16px;
+}
+
+aside section core-item:hover 
+{
+    border-radius: 3px;
+    background-color: #eee;
+}

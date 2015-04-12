@@ -10,7 +10,7 @@
 namespace FashionShop.Views.Shared {
     
     
-    public partial class MainAdmin {
+    public partial class Admin {
         
         /// <summary>
         /// TitleContent control.
@@ -29,6 +29,24 @@ namespace FashionShop.Views.Shared {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder StyleSheetContent;
+        
+        /// <summary>
+        /// SelectedContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder SelectedContent;
+        
+        /// <summary>
+        /// HeaderTitleContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderTitleContent;
         
         /// <summary>
         /// MainContent control.
