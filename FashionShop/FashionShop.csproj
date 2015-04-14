@@ -99,18 +99,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\admin-index.css" />
     <Content Include="Content\css\admin-login.css" />
     <Content Include="Content\css\template\admin.css" />
     <Content Include="Content\css\template\main-admin.css" />
     <Content Include="Content\css\template\main.css" />
     <Content Include="Content\icon\favicon.png" />
     <Content Include="Content\img\admin.png" />
+    <Content Include="Content\img\admin\admin-index.png" />
     <Content Include="Content\img\logout.png" />
     <Content Include="Content\img\social\facebook.png" />
     <Content Include="Content\img\social\google-plus.png" />
     <Content Include="Content\img\social\instagram.png" />
     <Content Include="Content\img\social\pinterest.png" />
     <Content Include="Content\img\social\twitter.png" />
+    <Content Include="Content\js\admin\admin-index.js" />
     <Content Include="Content\WebComponents\md-logout-button.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\admin\admin-login.js" />

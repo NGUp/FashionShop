@@ -20,7 +20,7 @@
                 <core-toolbar>
                     <h1>FashionShop</h1>
                 </core-toolbar>
-                <img src="/Content/img/admin.png" alt="Administrator" />
+                <img src="/Content/img/admin/admin.png" alt="Administrator" />
                 <section>
                     <core-menu selected="<asp:ContentPlaceHolder ID="SelectedContent" runat="server"></asp:ContentPlaceHolder>">
                         <core-item label="Sản phẩm">
@@ -49,7 +49,6 @@
                             <asp:ContentPlaceHolder ID="HeaderTitleContent" runat="server"></asp:ContentPlaceHolder>
                         </h2>
                     </div>
-                    <%--<core-icon-button class="header-logout" src="/Content/img/logout.png"></core-icon-button>--%>
                     <md-logout-button></md-logout-button>
                 </core-toolbar>
                 <section class="container">
