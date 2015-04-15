@@ -1,0 +1,39 @@
+﻿.account-container
+{
+    padding: 16px;
+    margin: 8px;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+.account-container:hover 
+{
+    cursor: pointer;
+}
+
+.account-container core-icon-button 
+{
+    float: right;
+}
+
+.account-name 
+{
+    margin: 8px 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.account-sub-info 
+{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+ paper-fab
+{
+    position: fixed;
+    bottom: 32px;
+    right: 110px;
+    background: none repeat scroll 0% 0% #5677FC;
+}

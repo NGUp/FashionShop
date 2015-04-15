@@ -87,20 +87,6 @@ namespace FashionShop.Controllers
             return View();
         }
 
-        // Account
-        // GET: /Admin/Account
-        [HttpGet]
-        public ActionResult Account()
-        {
-            // Check if is administrator
-            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
-            {
-                Response.Redirect("/admin", false);
-            }
-
-            return View();
-        }
-
         // PurchaseOrder
         // GET: /Admin/Order
         [HttpGet]

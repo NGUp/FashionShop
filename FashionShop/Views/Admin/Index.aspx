@@ -9,7 +9,7 @@
 </asp:Content>
 
 <asp:Content ID="StyleSheet" ContentPlaceHolderID="StyleSheetContent" runat="server">
-    <link href="/Content/css/admin-index.css" rel="stylesheet" />
+    <link href="/Content/css/admin/admin-index.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">

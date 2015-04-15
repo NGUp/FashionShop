@@ -58,3 +58,8 @@ aside section core-item:hover
     border-radius: 3px;
     background-color: #eee;
 }
+
+article.container 
+{
+    padding: 8px;
+}
