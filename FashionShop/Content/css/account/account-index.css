@@ -6,14 +6,15 @@
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
 }
 
-.account-container:hover 
-{
-    cursor: pointer;
-}
-
-.account-container core-icon-button 
+.account-container .core-icon-button 
 {
     float: right;
+}
+
+.button-delete,
+.button-update 
+{
+    color: #bdbdbd;
 }
 
 .account-name 
@@ -28,12 +29,4 @@
 {
     font-size: 16px;
     font-weight: 400;
-}
-
- paper-fab
-{
-    position: fixed;
-    bottom: 32px;
-    right: 110px;
-    background: none repeat scroll 0% 0% #5677FC;
 }

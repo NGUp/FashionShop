@@ -7,6 +7,7 @@
         <title>
             <asp:ContentPlaceHolder ID="TitleContent" runat="server"></asp:ContentPlaceHolder>
         </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/Content/icon/favicon.png" rel="shortcut icon">
         <%--<link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">--%>
 

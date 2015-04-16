@@ -115,6 +115,7 @@
     <Content Include="Content\img\social\instagram.png" />
     <Content Include="Content\img\social\pinterest.png" />
     <Content Include="Content\img\social\twitter.png" />
+    <Content Include="Content\js\account\account-index.js" />
     <Content Include="Content\js\admin\admin-index.js" />
     <Content Include="Content\WebComponents\md-logout-button.html" />
     <Content Include="Global.asax" />

@@ -22,5 +22,11 @@ namespace FashionShop.Controllers
             return View();
         }
 
+        [HttpGet]
+        public JsonResult Get()
+        {
+            String[] data = {"ABC", "SADSA"};
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
     }
 }
