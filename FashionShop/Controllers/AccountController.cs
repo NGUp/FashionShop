@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FashionShop.Models.Objects;
+using FashionShop.Models;
 
 namespace FashionShop.Controllers
 {
     public class AccountController : Controller
     {
+        /// <summary>
+        /// Account Model
+        /// </summary>
+        private AccountModel model = new AccountModel();
+
         //
-        // GET: /Account/Account
+        // GET: /Admin/Account
         [HttpGet]
         public ActionResult Index()
         {
@@ -22,11 +29,12 @@ namespace FashionShop.Controllers
             return View();
         }
 
+        //
+        // GET: /Admin/Account/Get/{page}
         [HttpGet]
-        public JsonResult Get()
+        public JsonResult Get(int page)
         {
-            String[] data = {"ABC", "SADSA"};
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return Json(this.model.get(page), JsonRequestBehavior.AllowGet);
         }
     }
 }

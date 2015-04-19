@@ -5,7 +5,7 @@ using System.Web;
 
 namespace FashionShop.Models.Objects
 {
-    public class User
+    public class Account
     {
         private string id;
 
@@ -23,7 +23,7 @@ namespace FashionShop.Models.Objects
 
         private int permission;
 
-        public User()
+        public Account()
         {
             permission = 1;
         }

@@ -109,19 +109,19 @@ namespace FashionShop.Controllers
             if (Request.Params["username"] != null && Request.Params["password"] != null)
             {
                 // Create new user model
-                User user = new User();
-                user.Username = Request.Params["username"];
-                user.Password = Request.Params["password"];
-                user.Permission = 1;
+                Account account = new Account();
+                account.Username = Request.Params["username"];
+                account.Password = Request.Params["password"];
+                account.Permission = 1;
                 
                 // Encode password
                 Security security = new Security();
-                user.Password = "38f923kd02" + security.encodeSHA1(user.Password) + "99e9k32o";
-                user.Password = security.encodeMD5(user.Password);
+                account.Password = "38f923kd02" + security.encodeSHA1(account.Password) + "99e9k32o";
+                account.Password = security.encodeMD5(account.Password);
 
                 // Login
-                UserModel model = new UserModel();
-                string ID = model.login(user);
+                AccountModel model = new AccountModel();
+                string ID = model.login(account);
 
                 // Check If is administrator
                 if (ID == null)

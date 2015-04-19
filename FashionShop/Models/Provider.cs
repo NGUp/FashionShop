@@ -107,5 +107,33 @@ namespace FashionShop.Models
 
             return table;
         }
+
+        /// <summary>
+        /// Execute query from the database with the Stored Procedure.
+        /// </summary>
+        /// <param name="command">SQL Command</param>
+        /// <returns></returns>
+        public DataTable executeQueryFromStoredProcedure(SqlCommand command)
+        {
+            command.Connection = this.openConnection();
+            DataTable table = new DataTable();
+
+            try
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.FillSchema(table, SchemaType.Mapped);
+                adapter.Fill(table);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+            finally
+            {
+                this.closeConnection();
+            }
+
+            return table;
+        }
     }
 }

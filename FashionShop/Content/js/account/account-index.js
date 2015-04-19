@@ -4,7 +4,7 @@
 
     angular.module('admin', [])
         .controller('IndexCtrl', ['$scope', '$http', function (scope, http) {
-            http.get('/admin/account/get').then(function (data) {
+            http.get('/admin/account/get/1').then(function (data) {
                 console.log(data);
             });
 
