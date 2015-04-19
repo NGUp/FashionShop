@@ -19,7 +19,7 @@ namespace FashionShop.Models.Objects
 
         private string password;
 
-        private string state;
+        private int state;
 
         private int permission;
 
@@ -34,7 +34,7 @@ namespace FashionShop.Models.Objects
             set { permission = value; }
         }
 
-        public string State
+        public int State
         {
             get { return state; }
             set { state = value; }

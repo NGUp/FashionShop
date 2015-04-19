@@ -26,24 +26,36 @@
 
     <article class="container" ng-controller="IndexCtrl">
             
-        <div class="account-container">
+        <div class="account-container" ng-repeat="account in accounts">
             <div>
-                <strong>ABC</strong> - <span>namvh</span>
+                <span ng-show="isAdmin(account.Permission)" class="account-admin" ng-class="{admin: isAdmin(account.Permission)}">Administrator</span>
+                <strong>{{account.ID}}</strong> - <span>{{account.Username}}</span>
                 <div class="core-icon-button">
-                    <div>
-                        <core-icon-button icon="delete" class="button-delete" ng-click="deleteAccount()"></core-icon-button>
+                    <div class="account-state">
+                        <img src="/Content/img/admin/state.png" alt="State" ng-class="{alive: isAlive(account.State)}" />
                     </div>
                     <div>
-                        <core-icon-button icon="create" class="button-update" ng-click="updateAccount()"></core-icon-button>
+                        <core-icon-button icon="delete" class="button-delete" ng-click="deleteAccount(account)"></core-icon-button>
+                    </div>
+                    <div>
+                        <core-icon-button icon="create" class="button-update" ng-click="updateAccount(account)"></core-icon-button>
                     </div>
                 </div>
             </div>
-            <h4 class="account-name">Võ Hoài Nam</h4>
+            <h4 class="account-name" ng-class="{name: isAdmin(account.Permission)}">{{account.Name}}</h4>
             <div>
-                <span class="account-sub-info">25/04/1994</span> - <span class="account-sub-info">Saigon</span>
+                <span class="account-sub-info">{{toDate(account.Birthday)}}</span> - <span class="account-sub-info">{{account.City}}</span>
             </div>
         </div>
+
+        <div class="space">
+        </div>
         
+        <div class="account-paging">
+            <core-icon-button icon="arrow-back" ng-click="previous()" active="false"></core-icon-button>
+            <span>{{currentPage}} - {{totalPages}}</span>
+            <core-icon-button icon="arrow-forward" ng-click="next()"></core-icon-button>
+        </div>
     </article>
 
 </asp:Content>

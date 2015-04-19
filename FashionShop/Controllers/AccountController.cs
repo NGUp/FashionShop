@@ -30,6 +30,14 @@ namespace FashionShop.Controllers
         }
 
         //
+        // GET: /Admin/Account/Total
+        [HttpGet]
+        public JsonResult Total()
+        {
+            return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+        }
+
+        //
         // GET: /Admin/Account/Get/{page}
         [HttpGet]
         public JsonResult Get(int page)

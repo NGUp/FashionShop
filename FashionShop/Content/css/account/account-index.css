@@ -2,6 +2,7 @@
 {
     padding: 16px;
     margin: 8px;
+    height: 115px;
     border-radius: 3px;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
 }
@@ -29,4 +30,50 @@
 {
     font-size: 16px;
     font-weight: 400;
+}
+
+.account-paging 
+{
+    width: 150px;
+    margin-left: 8px;
+    padding: 8px 16px;
+    background-color: #F44336;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    position: fixed;
+    bottom: 16;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.admin 
+{
+    background-color: #F44336;
+    border-radius: 3px;
+    padding: 8px;
+    color: #fff;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+.name 
+{
+    margin-top: 16px;
+}
+
+.account-state
+{
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.account-state img
+{
+    background-color: #F44336;
+    border-radius: 16px;
+}
+
+.account-state img.alive
+{
+    background-color: #4caf50;
 }

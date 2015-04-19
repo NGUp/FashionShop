@@ -42,8 +42,6 @@
                     </core-menu>
                     <div>
                         <core-icon-button icon="search"></core-icon-button>
-                        <core-icon-button icon="arrow-back"></core-icon-button>
-                        <core-icon-button icon="arrow-forward"></core-icon-button>
                     </div>
                 </section>
             </aside>

@@ -63,3 +63,9 @@ article.container
 {
     padding: 8px;
 }
+
+.space 
+{
+    clear: both;
+    height: 72px;
+}

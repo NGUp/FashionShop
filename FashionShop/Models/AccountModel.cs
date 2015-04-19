@@ -21,7 +21,7 @@ namespace FashionShop.Models
         /// Login Handler
         /// </summary>
         /// <param name="account">Account Model</param>
-        /// <returns></returns>
+        /// <returns>state</returns>
         public string login(Account account)
         {
             string sql = String.Format(
@@ -39,10 +39,23 @@ namespace FashionShop.Models
         }
 
         /// <summary>
+        /// Quantity of the accounts
+        /// </summary>
+        /// <returns>int</returns>
+        public int total()
+        {
+            string sql = "Select (Count(ID) / 10 + 1) As Total From Account";
+
+            DataTable result = this.provider.executeQuery(sql);
+
+            return (int) result.Rows[0]["Total"];
+        }
+
+        /// <summary>
         /// Get accounts with limit
         /// </summary>
         /// <param name="page">Current page</param>
-        /// <returns></returns>
+        /// <returns>The array of the accounts</returns>
         public Account[] get(int page)
         {
             SqlCommand command = new SqlCommand("usp_GetAllAccounts");
@@ -60,8 +73,9 @@ namespace FashionShop.Models
                 account.ID = row["ID"].ToString();
                 account.Birthday = DateTime.Parse(row["Birthday"].ToString());
                 account.Name = row["Name"].ToString();
+                account.Username = row["Username"].ToString();
                 account.City = row["City"].ToString();
-                account.State = row["State"].ToString();
+                account.State = (int)row["State"];
                 account.Permission = (int)row["Permission"];
                 accounts[index] = account;
                 index++;
