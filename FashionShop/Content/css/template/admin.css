@@ -18,7 +18,7 @@ core-header-panel {
 
 core-toolbar
 {
-    background-color: #f44336;
+    background-color: #039be5;
 }
 
 .header-title {
@@ -43,9 +43,9 @@ aside core-toolbar
     background-color: #fff;
 }
 
-aside h1 
+aside .logo
 {
-    color: #f44336;
+    margin-top: 16px;
 }
 
 aside section 

@@ -20,6 +20,9 @@
 
 <asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">
     <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
+    <link rel="import" href="/bower_components/paper-button/paper-button.html">
+    <link rel="import" href="/bower_components/paper-input/paper-input.html">
+    <link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
@@ -55,7 +58,19 @@
             <core-icon-button icon="arrow-back" ng-click="previous()" active="false"></core-icon-button>
             <span>{{currentPage}} - {{totalPages}}</span>
             <core-icon-button icon="arrow-forward" ng-click="next()"></core-icon-button>
+            <core-icon-button icon="search" ng-click="search()"></core-icon-button>
         </div>
+
+        <paper-dialog heading="Tìm kiếm" transition="paper-dialog-transition-center">
+            <div>
+                <paper-input label="Mã tài khoản" floatingLabel></paper-input>
+            </div>
+            <div>
+                <paper-input label="Tên tài khoản" floatingLabel></paper-input>
+            </div>
+            <core-icon-button icon="search" affirmative autofocus class="search-button"></core-icon-button>
+
+      </paper-dialog>
     </article>
 
 </asp:Content>

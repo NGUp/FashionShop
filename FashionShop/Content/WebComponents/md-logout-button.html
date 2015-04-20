@@ -27,22 +27,6 @@
 
 <polymer-element name="md-logout-button">
     <template>
-        <style>
-            core-icon-button
-            {
-                position: fixed;
-                top: 13px;
-                right: 40px;
-            }
-            
-            @media (max-width: 640px) 
-            {
-                core-icon-button 
-                {
-                    right: 16px;
-                }
-            }
-        </style>
         <core-icon-button on-click="{{logout}}" class="header-logout" src="/Content/img/admin/logout.png">
         </core-icon-button>
     </template>

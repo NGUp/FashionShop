@@ -18,10 +18,7 @@
     <body unresolved>
         <core-drawer-panel>
             <aside drawer>
-                <core-toolbar>
-                    <h1>FashionShop</h1>
-                </core-toolbar>
-                <img src="/Content/img/admin/admin.png" alt="Administrator" />
+                <img src="/Content/img/admin/admin.png" class="logo" alt="Administrator" />
                 <section>
                     <core-menu selected="<asp:ContentPlaceHolder ID="SelectedContent" runat="server"></asp:ContentPlaceHolder>">
                         <core-item label="Sản phẩm">
@@ -40,10 +37,10 @@
                             <a href="/admin/order"></a>
                         </core-item>
                     </core-menu>
-                    <div>
-                        <core-icon-button icon="search"></core-icon-button>
-                    </div>
                 </section>
+                <div>
+                    <md-logout-button></md-logout-button>
+                </div>
             </aside>
             <core-header-panel main>
                 <core-toolbar>
@@ -53,7 +50,6 @@
                             <asp:ContentPlaceHolder ID="HeaderTitleContent" runat="server"></asp:ContentPlaceHolder>
                         </h2>
                     </div>
-                    <md-logout-button></md-logout-button>
                 </core-toolbar>
                 <section class="container">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>

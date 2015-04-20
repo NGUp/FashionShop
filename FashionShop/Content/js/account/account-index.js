@@ -66,6 +66,11 @@
                 return data.getDate() + '/' + (data.getMonth() + 1) + '/' + data.getFullYear();
             };
 
+            scope.search = function () {
+                var dialog = document.querySelector('paper-dialog');
+                dialog.toggle();
+            };
+
         } ]);
 
 })();

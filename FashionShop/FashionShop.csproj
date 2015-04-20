@@ -110,6 +110,7 @@
     <Content Include="Content\img\admin\admin-index.png" />
     <Content Include="Content\img\admin\admin.png" />
     <Content Include="Content\img\admin\logout.png" />
+    <Content Include="Content\img\admin\state.png" />
     <Content Include="Content\img\social\facebook.png" />
     <Content Include="Content\img\social\google-plus.png" />
     <Content Include="Content\img\social\instagram.png" />
