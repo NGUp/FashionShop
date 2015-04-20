@@ -21,7 +21,9 @@
                     <paper-button>Đăng nhập</paper-button>
                 </div>
                 <div class="bottom indent title header-title">
-                    <h1>FashionShop <small>Thời trang trẻ em</small></h1>
+                    <h1>
+                        <img src="/Content/icon/logo.png" alt="Alternate Text" />
+                    </h1>
                 </div>
             </core-toolbar>
             <section class="container">

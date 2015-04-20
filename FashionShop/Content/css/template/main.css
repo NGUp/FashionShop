@@ -16,21 +16,36 @@ core-header-panel {
 
 core-toolbar
 {
-    background-color: #3f51b5;
+    background-color: #fff;
+    border-bottom: 1px solid #3f51b5;
+}
+
+core-toolbar img 
+{
+    height: 60px;
+    margin-bottom: 0;
+    
+}
+
+core-toolbar.tall img 
+{
+    height: 100px;
+    margin-bottom: 72px;
 }
 
 .header-info 
 {
     position: fixed;
     top: 0;
-    right: 0;
+    right: 60px;
     padding: 9px;
     font-size: 16px;
-    color: #fff;
+    color: #3f51b5;
 }
 
 .header-title {
-    color: #fff;
+    color: #3f51b5;
+    display: flex;
 }
 
 .header-title h1 {
@@ -40,7 +55,7 @@ core-toolbar
 .container 
 {
     width: 980px;
-    margin: 0 auto;
+    margin: 16px auto;
 }
 
 footer 
@@ -67,6 +82,7 @@ footer .copyright
     color: #fff;
     font-size: 14px;
     text-align: center;
+    font-weight: 400;
 }
 
 footer .copyright a 

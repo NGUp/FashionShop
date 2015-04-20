@@ -18,7 +18,7 @@
     <body unresolved>
         <core-drawer-panel>
             <aside drawer>
-                <img src="/Content/img/admin/admin.png" class="logo" alt="Administrator" />
+                <img src="/Content/img/icon/logo.png" class="logo" alt="Administrator" />
                 <section>
                     <core-menu selected="<asp:ContentPlaceHolder ID="SelectedContent" runat="server"></asp:ContentPlaceHolder>">
                         <core-item label="Sản phẩm">
