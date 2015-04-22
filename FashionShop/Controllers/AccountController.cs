@@ -29,6 +29,20 @@ namespace FashionShop.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Update()
+        {
+            Account account = this.model.one(Request.Params["account_ID"]);
+            ViewData["ID"] = account.ID;
+            ViewData["Name"] = account.Name;
+            ViewData["Username"] = account.Username;
+            ViewData["City"] = account.City;
+            ViewData["Birthday"] = account.Birthday;
+            ViewData["State"] = account.State;
+            ViewData["Permission"] = account.Permission;
+            return View();
+        }
+
         //
         // GET: /Admin/Account/Total
         [HttpGet]

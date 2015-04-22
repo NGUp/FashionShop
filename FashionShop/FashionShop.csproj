@@ -101,14 +101,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\account\account-index.css" />
+    <Content Include="Content\css\account\account-update.css" />
     <Content Include="Content\css\admin\admin-index.css" />
     <Content Include="Content\css\admin\admin-login.css" />
     <Content Include="Content\css\template\admin.css" />
     <Content Include="Content\css\template\main-admin.css" />
     <Content Include="Content\css\template\main.css" />
     <Content Include="Content\icon\favicon.png" />
+    <Content Include="Content\icon\logo.png" />
     <Content Include="Content\img\admin\admin-index.png" />
-    <Content Include="Content\img\admin\admin.png" />
     <Content Include="Content\img\admin\logout.png" />
     <Content Include="Content\img\admin\state.png" />
     <Content Include="Content\img\social\facebook.png" />
@@ -117,6 +118,7 @@
     <Content Include="Content\img\social\pinterest.png" />
     <Content Include="Content\img\social\twitter.png" />
     <Content Include="Content\js\account\account-index.js" />
+    <Content Include="Content\js\account\account-update.js" />
     <Content Include="Content\js\admin\admin-index.js" />
     <Content Include="Content\WebComponents\md-logout-button.html" />
     <Content Include="Global.asax" />
@@ -125,6 +127,7 @@
     <Content Include="Scripts\platform.js" />
     <Content Include="Scripts\sha1.js" />
     <Content Include="Views\Account\Index.aspx" />
+    <Content Include="Views\Account\Update.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\Login.aspx" />
     <Content Include="Views\Admin\Manufacturer.aspx" />

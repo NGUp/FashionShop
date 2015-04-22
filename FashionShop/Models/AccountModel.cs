@@ -83,5 +83,23 @@ namespace FashionShop.Models
 
             return accounts;
         }
+
+        public Account one(string ID)
+        {
+            string sql = string.Format("Select * From Account Where ID = '{0}'", ID);
+            DataTable result = this.provider.executeQuery(sql);
+            DataRow row = result.Rows[0];
+
+            Account account = new Account();
+            account.ID = row["ID"].ToString();
+            account.Birthday = DateTime.Parse(row["Birthday"].ToString());
+            account.Name = row["Name"].ToString();
+            account.Username = row["Username"].ToString();
+            account.City = row["City"].ToString();
+            account.State = (int)row["State"];
+            account.Permission = (int)row["Permission"];
+
+            return account;
+        }
     }
 }

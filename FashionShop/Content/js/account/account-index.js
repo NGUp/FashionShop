@@ -31,7 +31,18 @@
             };
 
             scope.updateAccount = function (account) {
-                console.log(account);
+                var form = document.createElement('form');
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', '/admin/account/update');
+
+                var hiddenField = document.createElement('input');
+                hiddenField.setAttribute('type', 'hidden');
+                hiddenField.setAttribute('name', 'account_ID');
+                hiddenField.setAttribute('value', account.ID);
+                form.appendChild(hiddenField);
+
+                document.body.appendChild(form);
+                form.submit();
             };
 
             scope.deleteAccount = function (account) {
