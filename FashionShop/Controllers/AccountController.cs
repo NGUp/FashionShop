@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using FashionShop.Models.Objects;
 using FashionShop.Models;
+using System.Globalization;
 
 namespace FashionShop.Controllers
 {
@@ -37,7 +38,7 @@ namespace FashionShop.Controllers
             ViewData["Name"] = account.Name;
             ViewData["Username"] = account.Username;
             ViewData["City"] = account.City;
-            ViewData["Birthday"] = account.Birthday;
+            ViewData["Birthday"] = account.Birthday.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
             ViewData["State"] = account.State;
             ViewData["Permission"] = account.Permission;
             return View();

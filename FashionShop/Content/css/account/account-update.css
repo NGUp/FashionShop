@@ -6,28 +6,39 @@
 
 .update-textfield 
 {
-    display: flex;
 }
 
 .update-cell
 {
     width: 100%;
+    display: flex;
 }
 
-.update-cell:first-child
+.update-cell paper-input-decorator
 {
-    margin-right: 8px;
-}
-
-.update-cell:last-child
-{
-    margin-left: 8px;
+    width: 100%;
 }
 
 .update-checkbox
 {
     width: 150px;
-    margin: 8px 0;
+    margin: 16px 0;
+}
+
+paper-checkbox #checkbox.checked {
+  background-color: #ff4081;
+  border-color: #ff4081;
+}
+
+.update-accept-button
+{
+    color: #039BE5;
+}
+
+.update-buttons
+{
+    float: right;
+    margin-bottom: 16px;
 }
 
 @media (max-width: 480px) 
@@ -35,20 +46,5 @@
     .update-content 
     {
         width: 90%;
-    }
-    
-    .update-textfield 
-    {
-        display: block;
-    }
-
-    .update-cell > div:first-child
-    {
-        margin-right: 0;
-    }
-
-    .update-cell > div:last-child
-    {
-        margin-left: 0;
     }
 }

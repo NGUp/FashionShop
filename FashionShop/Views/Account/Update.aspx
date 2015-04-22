@@ -20,6 +20,7 @@
 
 <asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">
     <link rel="import" href="/bower_components/paper-input/paper-input.html">
+    <link rel="import" href="/bower_components/paper-button/paper-button.html">
     <link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
     <link rel="import" href="/bower_components/core-label/core-label.html">
 </asp:Content>
@@ -30,42 +31,42 @@
         <div class="update-content">
             <h3><%= ViewData["ID"] %></h3>
             <div class="update-textfield">
-                <div class="update-cell">
-                    <template is="auto-binding">
-                        <paper-input-decorator label="Họ tên" floatingLabel isInvalid="{{!$.txtName.validity.valid}}" error="Họ tên chỉ có thể là ký tự thường, hoa.">
-                            <input is="core-input" id="txtName" spellcheck="false" type="text" pattern="^[a-zA-Z ]{3,}$">
-                        </paper-input-decorator>
-                    </template>
-                    <template is="auto-binding">
-                        <paper-input-decorator label="Ngày sinh" floatingLabel isInvalid="{{!$.txtBirthday.validity.valid}}" error="Mật khẩu không hợp lệ.">
-                            <input is="core-input" type="text" id="txtBirthday" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{8,}$">
-                        </paper-input-decorator>
-                    </template>
-                </div>
-                <div class="update-cell">
-                    <template is="auto-binding">
-                        <paper-input-decorator label="Tên đăng nhập" floatingLabel isInvalid="{{!$.txtUsername.validity.valid}}" error="Tên đăng nhập chỉ có thể là ký tự thường, hoa hoặc chữ số.">
-                            <input is="core-input" id="txtUsername" spellcheck="false" type="text" pattern="^[a-zA-Z0-9]{4,}$">
-                        </paper-input-decorator>
-                    </template>
-                    <template is="auto-binding">
-                        <paper-input-decorator label="Mật khẩu" floatingLabel isInvalid="{{!$.txtPassword.validity.valid}}" error="Mật khẩu không hợp lệ.">
-                            <input is="core-input" type="password" id="txtPassword" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{8,}$">
-                        </paper-input-decorator>
-                    </template>
-                </div>
+                <template is="auto-binding">
+                    <paper-input-decorator label="Họ tên" floatingLabel isInvalid="{{!$.txtName.validity.valid}}" error="Họ tên chỉ có thể là ký tự thường, hoa.">
+                        <input is="core-input" id="txtName" spellcheck="false" type="text" value="<%= ViewData["Name"] %>" pattern="^[a-zA-Z ]{3,}$">
+                    </paper-input-decorator>
+                </template>
+                <template is="auto-binding">
+                    <paper-input-decorator label="Tên đăng nhập" floatingLabel isInvalid="{{!$.txtUsername.validity.valid}}" error="Tên đăng nhập chỉ có thể là ký tự thường, hoa hoặc chữ số. Tối thiểu 4 kí tự.">
+                        <input is="core-input" id="txtUsername" spellcheck="false" value="<%= ViewData["Username"] %>" type="text" pattern="^[a-zA-Z0-9]{4,}$">
+                    </paper-input-decorator>
+                </template>
+                <template is="auto-binding">
+                    <paper-input-decorator label="Ngày sinh" floatingLabel isInvalid="{{!$.txtBirthday.validity.valid}}" error="Định dạng ngày sinh là dd/MM/yyyy hoặc dd-MM-yyyy.">
+                        <input is="core-input" type="text" id="txtBirthday" value="<%= ViewData["Birthday"] %>" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{8,}$">
+                    </paper-input-decorator>
+                </template>
+                <template is="auto-binding">
+                    <paper-input-decorator label="Mật khẩu" floatingLabel isInvalid="{{!$.txtPassword.validity.valid}}" error="Mật khẩu không hợp lệ.">
+                        <input is="core-input" type="password" id="txtPassword" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{8,}$">
+                    </paper-input-decorator>
+                </template>
             </div>
             <div class="update-checkbox">
                 <core-label center horizontal layout>
                     <div flex>Kích hoạt</div>
-                    <paper-checkbox for></paper-checkbox>
+                    <paper-checkbox checked="<%= ((int)ViewData["State"] == 1) ? "true" : "false" %>"></paper-checkbox>
                 </core-label>
             </div>
             <div class="update-checkbox">
                 <core-label center horizontal layout>
                     <div flex>Quản trị viên</div>
-                    <paper-checkbox cfor></paper-checkbox>
+                    <paper-checkbox checked="<%= ((int)ViewData["Permission"] == 1) ? "true" : "false" %>"></paper-checkbox>
                 </core-label>
+            </div>
+            <div class="update-buttons">
+                <paper-button>Hủy</paper-button>
+                <paper-button class="update-accept-button">Đồng ý</paper-button>
             </div>
         </div>
     </article>
