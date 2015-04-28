@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using FashionShop.Models.Objects;
 using FashionShop.Models;
 using System.Globalization;
+using FashionShop.Misc;
 
 namespace FashionShop.Controllers
 {
@@ -58,6 +59,67 @@ namespace FashionShop.Controllers
         public JsonResult Get(int page)
         {
             return Json(this.model.get(page), JsonRequestBehavior.AllowGet);
+        }
+
+        //
+        // POST: /Admin/Account/UpdateHandler
+        [HttpPost]
+        public void UpdateHandler()
+        {
+            if (Request.Params["id"] == null)
+            {
+                Response.Redirect("/admin/account", false);
+            }
+
+            if (Request.Params["username"] == null)
+            {
+                Response.Redirect("/admin/account", false);
+            }
+
+            if (Request.Params["name"] == null)
+            {
+                Response.Redirect("/admin/account", false);
+            }
+
+            if (Request.Params["birthday"] == null)
+            {
+                Response.Redirect("/admin/account", false);
+            }
+
+            if (Request.Params["password"] == null)
+            {
+                Response.Redirect("/admin/account", false);
+            }
+
+            if (Request.Params["state"] == null)
+            {
+                Response.Redirect("/admin/account", false);
+            }
+
+            if (Request.Params["isAdmin"] == null)
+            {
+                Response.Redirect("/admin/account", false);
+            }
+
+            // Assign params into Account Model
+            Account account = new Account();
+            account.ID = Request.Params["id"];
+            account.Username = Request.Params["username"];
+            account.Name = Request.Params["name"];
+            account.Birthday = DateTime.ParseExact(Request.Params["birthday"], "dd/MM/yyyy", null);
+            account.Password = Request.Params["password"];
+            account.State = Int32.Parse(Request.Params["state"]);
+            account.Permission = Int32.Parse(Request.Params["isAdmin"]);
+            account.City = Request.Params["city"];
+
+            // Encode password
+            Security security = new Security();
+            account.Password = "38f923kd02" + security.encodeSHA1(account.Password) + "99e9k32o";
+            account.Password = security.encodeMD5(account.Password);
+
+            // Execute update
+            this.model.update(account);
+            Response.Redirect("/admin/account");
         }
     }
 }

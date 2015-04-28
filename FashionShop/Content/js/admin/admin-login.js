@@ -106,15 +106,15 @@
                     */
                     scope.login = function () {
                         var username = document.getElementById('txtUsername'),
-                    password = document.getElementById('txtPassword');
+                            password = document.getElementById('txtPassword');
 
                         if (username.validity.valid === true &&
                         password.validity.valid === true &&
                         password.value.length > 7) {
                             form.submit([
-                        { 'username': username.value },
-                        { 'password': security.encode(password.value) }
-                    ]);
+                                { 'username': username.value },
+                                { 'password': security.encode(password.value) }
+                            ]);
                         }
                     };
                 } ]);

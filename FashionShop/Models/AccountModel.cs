@@ -101,5 +101,15 @@ namespace FashionShop.Models
 
             return account;
         }
+
+        public bool update(Account account)
+        {
+            string sql = string.Format(
+                "Update Account Set Name = N'{0}', Birthday = Cast('{1}' as Date), City = N'{2}', Username = '{3}', Password = '{4}', State = {5}, Permission = {6} Where ID = '{7}'",
+                    account.Name, account.Birthday, account.City, account.Username, account.Password, account.State, account.Permission, account.ID
+                );
+
+            return this.provider.executeNonQuery(sql);
+        }
     }
 }

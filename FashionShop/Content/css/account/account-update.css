@@ -4,8 +4,19 @@
     width: 640px;
 }
 
-.update-textfield 
+.update-content h3
 {
+    font-weight: 400;
+    font-size: 24px;
+    margin: 8px 0;
+    color: #ff4081;
+}
+
+.update-content h4
+{
+    font-weight: 400;
+    font-size: 16px;
+    margin: 8px 0px;
 }
 
 .update-cell
