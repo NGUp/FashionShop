@@ -84,6 +84,39 @@ namespace FashionShop.Models
             return accounts;
         }
 
+        public Account[] search(Account account, int page)
+        {
+            SqlCommand command = new SqlCommand("usp_searchAccounts");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@page", SqlDbType.Int);
+            command.Parameters.Add("@id", SqlDbType.VarChar);
+            command.Parameters.Add("@user", SqlDbType.VarChar);
+
+            command.Parameters["@page"].Value = page;
+            command.Parameters["@id"].Value = account.ID;
+            command.Parameters["@user"].Value = account.Username;
+
+            DataTable result = this.provider.executeQueryFromStoredProcedure(command);
+            Account[] accounts = new Account[result.Rows.Count];
+            int index = 0;
+
+            foreach (DataRow row in result.Rows)
+            {
+                account = new Account();
+                account.ID = row["ID"].ToString();
+                account.Birthday = DateTime.Parse(row["Birthday"].ToString());
+                account.Name = row["Name"].ToString();
+                account.Username = row["Username"].ToString();
+                account.City = row["City"].ToString();
+                account.State = (int)row["State"];
+                account.Permission = (int)row["Permission"];
+                accounts[index] = account;
+                index++;
+            }
+
+            return accounts;
+        }
+
         public Account one(string ID)
         {
             string sql = string.Format("Select * From Account Where ID = '{0}'", ID);
@@ -105,9 +138,16 @@ namespace FashionShop.Models
         public bool update(Account account)
         {
             string sql = string.Format(
-                "Update Account Set Name = N'{0}', Birthday = Cast('{1}' as Date), City = N'{2}', Username = '{3}', Password = '{4}', State = {5}, Permission = {6} Where ID = '{7}'",
-                    account.Name, account.Birthday, account.City, account.Username, account.Password, account.State, account.Permission, account.ID
+                "Update Account Set Name = N'{0}', Birthday = Cast('{1}' as Date), City = N'{2}', Username = '{3}', State = {4}, Permission = {5} Where ID = '{6}'",
+                    account.Name, account.Birthday, account.City, account.Username, account.State, account.Permission, account.ID
                 );
+
+            return this.provider.executeNonQuery(sql);
+        }
+
+        public bool delete(Account account)
+        {
+            string sql = string.Format("Update Account Set State = 0 Where ID = '{0}'", account.ID);
 
             return this.provider.executeNonQuery(sql);
         }

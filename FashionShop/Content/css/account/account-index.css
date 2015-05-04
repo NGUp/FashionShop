@@ -34,7 +34,6 @@
 
 .account-paging 
 {
-    width: 180px;
     margin-left: 8px;
     padding: 8px 16px;
     background-color: #039be5;
@@ -46,19 +45,9 @@
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-.admin 
-{
-    background-color: #039be5;
-    border-radius: 3px;
-    padding: 8px;
-    color: #fff;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
-}
-
 .name 
 {
-    margin-top: 16px;
+    color: #039be5;
 }
 
 .account-state

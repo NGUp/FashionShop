@@ -72,6 +72,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Misc\Analyze.cs" />
     <Compile Include="Misc\Security.cs" />
     <Compile Include="Models\Objects\Account.cs" />
     <Compile Include="Models\Provider.cs" />
@@ -123,6 +124,7 @@
     <Content Include="Content\WebComponents\md-logout-button.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\admin\admin-login.js" />
+    <Content Include="Scripts\base64.js" />
     <Content Include="Scripts\md5.js" />
     <Content Include="Scripts\platform.js" />
     <Content Include="Scripts\sha1.js" />

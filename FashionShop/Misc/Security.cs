@@ -41,5 +41,11 @@ namespace FashionShop.Misc
                 return builder.ToString();
             }
         }
+
+        public string decodeBase64(string cipher)
+        {
+            var hash = Convert.FromBase64String(cipher);
+            return Encoding.UTF8.GetString(hash);
+        }
     }
 }

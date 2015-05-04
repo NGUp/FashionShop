@@ -43,11 +43,6 @@
                     </paper-input-decorator>
                 </template>
                 <template is="auto-binding">
-                    <paper-input-decorator label="Mật khẩu" floatingLabel isInvalid="{{!$.txtPassword.validity.valid}}" error="Mật khẩu không hợp lệ.">
-                        <input is="core-input" type="password" id="txtPassword" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{8,}$">
-                    </paper-input-decorator>
-                </template>
-                <template is="auto-binding">
                     <paper-input-decorator label="Tỉnh/Thành" floatingLabel isInvalid="{{!$.txtCity.validity.valid}}" error="Tên tỉnh/thành chỉ có thể là ký tự thường, hoa.">
                         <input is="core-input" id="txtCity" spellcheck="false" type="text" value="<%= ViewData["City"] %>" pattern="^([a-zA-Z ]{0,}[^\u0000-\u007F]{0,})+$">
                     </paper-input-decorator>

@@ -15,6 +15,7 @@
 </asp:Content>
 
 <asp:Content ID="Script" ContentPlaceHolderID="ScriptContent" runat="server">
+    <script src="/Scripts/base64.js"></script>
     <script src="/Content/js/account/account-index.js"></script>
 </asp:Content>
 
@@ -31,7 +32,6 @@
             
         <div class="account-container" ng-repeat="account in accounts">
             <div>
-                <span ng-show="isAdmin(account.Permission)" class="account-admin" ng-class="{admin: isAdmin(account.Permission)}">Administrator</span>
                 <strong>{{account.ID}}</strong> - <span>{{account.Username}}</span>
                 <div class="core-icon-button">
                     <div class="account-state">
@@ -51,25 +51,28 @@
             </div>
         </div>
 
-        <div class="space">
-        </div>
+        <div class="space"></div>
         
         <div class="account-paging">
             <core-icon-button icon="arrow-back" ng-click="previous()" active="false"></core-icon-button>
             <span>{{currentPage}} - {{totalPages}}</span>
             <core-icon-button icon="arrow-forward" ng-click="next()"></core-icon-button>
-            <core-icon-button icon="search" ng-click="search()"></core-icon-button>
+            <core-icon-button icon="search" ng-click="search()" ng-hide="isSearching"></core-icon-button>
+            <core-icon-button icon="refresh" ng-click="refresh()" ng-show="isSearching"></core-icon-button>
         </div>
 
-        <paper-dialog heading="Tìm kiếm" transition="paper-dialog-transition-center">
-            <div>
-                <paper-input label="Mã tài khoản" floatingLabel></paper-input>
-            </div>
-            <div>
-                <paper-input label="Tên tài khoản" floatingLabel></paper-input>
-            </div>
-            <core-icon-button icon="search" affirmative autofocus class="search-button"></core-icon-button>
-
+        <paper-dialog heading="Tìm kiếm" id="paper-dialog" transition="paper-dialog-transition-center">
+            <template is="auto-binding">
+                <paper-input-decorator label="Mã tài khoản" floatingLabel isInvalid="{{!$.txtID.validity.valid}}" error="Mã tài khoản không hợp lệ.">
+                    <input is="core-input" id="txtID" spellcheck="false" type="text" pattern="^[a-z0-9]{5,50}$">
+                </paper-input-decorator>
+            </template>
+            <template is="auto-binding">
+                <paper-input-decorator label="Tên tài khoản" floatingLabel isInvalid="{{!$.txtUsername.validity.valid}}" error="Tên tài khoản không hợp lệ.">
+                    <input is="core-input" id="txtUsername" spellcheck="false" type="text" pattern="^[a-zA-Z0-9_]{5,50}$">
+                </paper-input-decorator>
+            </template>
+            <core-icon-button icon="search" affirmative autofocus class="search-button" ng-click="searchAccounts()"></core-icon-button>
       </paper-dialog>
     </article>
 

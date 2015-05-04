@@ -7,6 +7,7 @@ using FashionShop.Models.Objects;
 using FashionShop.Models;
 using System.Globalization;
 using FashionShop.Misc;
+using System.Collections;
 
 namespace FashionShop.Controllers
 {
@@ -62,6 +63,21 @@ namespace FashionShop.Controllers
         }
 
         //
+        // GET: /Admin/Account/Search//{Page}/{Keyword}
+        [HttpGet]
+        public JsonResult Search(int page, string keyword)
+        {
+            Analyze analyze = new Analyze();
+            Security security = new Security();
+            Hashtable hashTable = analyze.analyze(security.decodeBase64(keyword));
+
+            Account account = new Account();
+            account.ID = hashTable["ID"].ToString();
+            account.Username = hashTable["Username"].ToString();
+            return Json(this.model.search(account, page), JsonRequestBehavior.AllowGet);
+        }
+
+        //
         // POST: /Admin/Account/UpdateHandler
         [HttpPost]
         public void UpdateHandler()
@@ -86,11 +102,6 @@ namespace FashionShop.Controllers
                 Response.Redirect("/admin/account", false);
             }
 
-            if (Request.Params["password"] == null)
-            {
-                Response.Redirect("/admin/account", false);
-            }
-
             if (Request.Params["state"] == null)
             {
                 Response.Redirect("/admin/account", false);
@@ -107,18 +118,32 @@ namespace FashionShop.Controllers
             account.Username = Request.Params["username"];
             account.Name = Request.Params["name"];
             account.Birthday = DateTime.ParseExact(Request.Params["birthday"], "dd/MM/yyyy", null);
-            account.Password = Request.Params["password"];
             account.State = Int32.Parse(Request.Params["state"]);
             account.Permission = Int32.Parse(Request.Params["isAdmin"]);
             account.City = Request.Params["city"];
 
-            // Encode password
-            Security security = new Security();
-            account.Password = "38f923kd02" + security.encodeSHA1(account.Password) + "99e9k32o";
-            account.Password = security.encodeMD5(account.Password);
-
             // Execute update
             this.model.update(account);
+            Response.Redirect("/admin/account");
+        }
+
+        //
+        // POST: /Admin/Account/Delete
+        [HttpPost]
+        public void Delete()
+        {
+            // Check param
+            if (Request.Params["account_ID"] == null)
+            {
+                Response.Redirect("/admin/account", false);
+            }
+
+            // Assign ID
+            Account account = new Account();
+            account.ID = Request.Params["account_ID"];
+
+            // Execute Delete
+            this.model.delete(account);
             Response.Redirect("/admin/account");
         }
     }
