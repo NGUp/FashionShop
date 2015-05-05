@@ -51,6 +51,17 @@ namespace FashionShop.Models
             return (int) result.Rows[0]["Total"];
         }
 
+        public int totalResults(Account account)
+        {
+            string sql = string.Format(
+                "Select (Count(ID) / 10 + 1) As Total From Account Where ID = '{0}' Or Username = '{1}'",
+                account.ID, account.Username);
+
+            DataTable result = this.provider.executeQuery(sql);
+
+            return (int)result.Rows[0]["Total"];
+        }
+
         /// <summary>
         /// Get accounts with limit
         /// </summary>

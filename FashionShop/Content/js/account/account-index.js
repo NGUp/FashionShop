@@ -88,6 +88,10 @@
                 if (scope.currentPage + 1 <= scope.totalPages) {
                     scope.currentPage++;
 
+                    if (scope.isSearching === true) {
+                        // TODO
+                    }
+
                     http.get('/admin/account/get/' + scope.currentPage).then(function (data) {
                         scope.accounts = data.data;
                     });
@@ -105,9 +109,13 @@
             };
 
             scope.refresh = function () {
-                http.get('/admin/account/get/1').then(function (data) {
-                    scope.accounts = data.data;
-                    scope.isSearching = false;
+                http.get('/admin/account/total').then(function (total) {
+                    scope.totalPages = total.data;
+
+                    http.get('/admin/account/get/1').then(function (data) {
+                        scope.accounts = data.data;
+                        scope.isSearching = false;
+                    });
                 });
             };
 
@@ -132,12 +140,17 @@
                 var token = 'id=' + id.value + '&username=' + username.value;
                 token = Base64.encode(token);
 
-                http.get('/admin/account/search/1/' + token).then(function (data) {
-                    scope.accounts = data.data;
+                http.get('/admin/account/searchresults/' + token).then(function (total) {
+                    scope.totalPages = total.data;
 
-                    var dialog = document.getElementById('paper-dialog');
-                    dialog.close();
-                    scope.isSearching = true;
+                    http.get('/admin/account/search/1/' + token).then(function (data) {
+                        scope.accounts = data.data;
+
+                        var dialog = document.getElementById('paper-dialog');
+                        dialog.close();
+                        scope.isSearching = true;
+                        scope.currentPage = 1;
+                    });
                 });
             };
 

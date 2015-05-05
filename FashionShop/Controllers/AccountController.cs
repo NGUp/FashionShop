@@ -55,26 +55,42 @@ namespace FashionShop.Controllers
         }
 
         //
-        // GET: /Admin/Account/Get/{page}
+        // GET: /Admin/Account/SearchResults/{Keyword}
         [HttpGet]
-        public JsonResult Get(int page)
-        {
-            return Json(this.model.get(page), JsonRequestBehavior.AllowGet);
-        }
-
-        //
-        // GET: /Admin/Account/Search//{Page}/{Keyword}
-        [HttpGet]
-        public JsonResult Search(int page, string keyword)
+        public JsonResult SearchResults(string param_0)
         {
             Analyze analyze = new Analyze();
             Security security = new Security();
-            Hashtable hashTable = analyze.analyze(security.decodeBase64(keyword));
+            Hashtable hashTable = analyze.analyzeIdAndUser(security.decodeBase64(param_0));
 
             Account account = new Account();
             account.ID = hashTable["ID"].ToString();
             account.Username = hashTable["Username"].ToString();
-            return Json(this.model.search(account, page), JsonRequestBehavior.AllowGet);
+
+            return Json(this.model.totalResults(account), JsonRequestBehavior.AllowGet);
+        }
+
+        //
+        // GET: /Admin/Account/Get/{page}
+        [HttpGet]
+        public JsonResult Get(int param_0)
+        {
+            return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
+        }
+
+        //
+        // GET: /Admin/Account/Search/{Page}/{Keyword}
+        [HttpGet]
+        public JsonResult Search(int param_0, string param_1)
+        {
+            Analyze analyze = new Analyze();
+            Security security = new Security();
+            Hashtable hashTable = analyze.analyzeIdAndUser(security.decodeBase64(param_1));
+
+            Account account = new Account();
+            account.ID = hashTable["ID"].ToString();
+            account.Username = hashTable["Username"].ToString();
+            return Json(this.model.search(account, param_0), JsonRequestBehavior.AllowGet);
         }
 
         //

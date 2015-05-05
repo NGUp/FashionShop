@@ -8,7 +8,7 @@ namespace FashionShop.Misc
 {
     public class Analyze
     {
-        public Hashtable analyze(string data)
+        public Hashtable analyzeIdAndUser(string data)
         {
             string[] pairs = data.Split('&');
             Hashtable hashTable = new Hashtable();
