@@ -27,8 +27,28 @@
     'user strict';
 
     angular.module('admin', [])
-        .controller('IndexCtrl', ['$scope', '$http', function (scope, http) {
+        .factory('Form', function () {
+            return {
+                submitForm: function (account, url) {
+                    var form = document.createElement('form');
+                    form.setAttribute('method', 'post');
+                    form.setAttribute('action', url);
+
+                    var hiddenField = document.createElement('input');
+                    hiddenField.setAttribute('type', 'hidden');
+                    hiddenField.setAttribute('name', 'account_ID');
+                    hiddenField.setAttribute('value', account.ID);
+                    form.appendChild(hiddenField);
+
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            }
+        })
+
+        .controller('IndexCtrl', ['$scope', '$http', 'Form', function (scope, http, form) {
             scope.currentPage = 1;
+            scope.keyword = '';
 
             http.get('/admin/account/total').then(function (total) {
                 scope.totalPages = total.data;
@@ -55,33 +75,11 @@
             };
 
             scope.updateAccount = function (account) {
-                var form = document.createElement('form');
-                form.setAttribute('method', 'post');
-                form.setAttribute('action', '/admin/account/update');
-
-                var hiddenField = document.createElement('input');
-                hiddenField.setAttribute('type', 'hidden');
-                hiddenField.setAttribute('name', 'account_ID');
-                hiddenField.setAttribute('value', account.ID);
-                form.appendChild(hiddenField);
-
-                document.body.appendChild(form);
-                form.submit();
+                form.submitForm(account, '/admin/account/update');
             };
 
             scope.deleteAccount = function (account) {
-                var form = document.createElement('form');
-                form.setAttribute('method', 'post');
-                form.setAttribute('action', '/admin/account/delete');
-
-                var hiddenField = document.createElement('input');
-                hiddenField.setAttribute('type', 'hidden');
-                hiddenField.setAttribute('name', 'account_ID');
-                hiddenField.setAttribute('value', account.ID);
-                form.appendChild(hiddenField);
-
-                document.body.appendChild(form);
-                form.submit();
+                form.submitForm(account, '/admin/account/delete');
             };
 
             scope.next = function () {
@@ -89,12 +87,14 @@
                     scope.currentPage++;
 
                     if (scope.isSearching === true) {
-                        // TODO
+                        http.get('/admin/account/search/' + scope.currentPage + '/' + keyword).then(function (data) {
+                            scope.accounts = data.data;
+                        });
+                    } else {
+                        http.get('/admin/account/get/' + scope.currentPage).then(function (data) {
+                            scope.accounts = data.data;
+                        });
                     }
-
-                    http.get('/admin/account/get/' + scope.currentPage).then(function (data) {
-                        scope.accounts = data.data;
-                    });
                 }
             };
 
@@ -102,9 +102,15 @@
                 if (scope.currentPage > 1) {
                     scope.currentPage--;
 
-                    http.get('/admin/account/get/' + scope.currentPage).then(function (data) {
-                        scope.accounts = data.data;
-                    });
+                    if (scope.isSearching === true) {
+                        http.get('/admin/account/search/' + scope.currentPage + '/' + keyword).then(function (data) {
+                            scope.accounts = data.data;
+                        });
+                    } else {
+                        http.get('/admin/account/get/' + scope.currentPage).then(function (data) {
+                            scope.accounts = data.data;
+                        });
+                    }
                 }
             };
 
@@ -115,6 +121,7 @@
                     http.get('/admin/account/get/1').then(function (data) {
                         scope.accounts = data.data;
                         scope.isSearching = false;
+                        keyword = '';
                     });
                 });
             };
@@ -137,13 +144,13 @@
                     return;
                 }
 
-                var token = 'id=' + id.value + '&username=' + username.value;
-                token = Base64.encode(token);
+                keyword = 'id=' + id.value + '&username=' + username.value;
+                keyword = Base64.encode(keyword);
 
-                http.get('/admin/account/searchresults/' + token).then(function (total) {
+                http.get('/admin/account/searchresults/' + keyword).then(function (total) {
                     scope.totalPages = total.data;
 
-                    http.get('/admin/account/search/1/' + token).then(function (data) {
+                    http.get('/admin/account/search/1/' + keyword).then(function (data) {
                         scope.accounts = data.data;
 
                         var dialog = document.getElementById('paper-dialog');

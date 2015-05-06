@@ -19,13 +19,22 @@ namespace FashionShop
             routes.MapRoute(
                 "Account", // Route name
                 "Admin/Account/{action}/{param_0}/{param_1}", // URL with parameters
-                new { controller = "Account", action = "Index", param_0 = UrlParameter.Optional, param_1 = UrlParameter.Optional } // Parameter defaults
+                new { 
+                    controller = "Account",
+                    action = "Index",
+                    param_0 = UrlParameter.Optional,
+                    param_1 = UrlParameter.Optional
+                }
             );
 
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Index", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new {
+                    controller = "Index",
+                    action = "Index",
+                    id = UrlParameter.Optional
+                }
             );
         }
 
