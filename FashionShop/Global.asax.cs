@@ -28,6 +28,30 @@ namespace FashionShop
             );
 
             routes.MapRoute(
+                "Manufacturer", // Route name
+                "Admin/Manufacturer/{action}/{param_0}/{param_1}", // URL with parameters
+                new
+                {
+                    controller = "Manufacturer",
+                    action = "Index",
+                    param_0 = UrlParameter.Optional,
+                    param_1 = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
+                "Product", // Route name
+                "Admin/Product/{action}/{param_0}/{param_1}", // URL with parameters
+                new
+                {
+                    controller = "Product",
+                    action = "Index",
+                    param_0 = UrlParameter.Optional,
+                    param_1 = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new {

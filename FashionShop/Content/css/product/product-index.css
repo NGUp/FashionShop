@@ -1,0 +1,46 @@
+﻿.list-products
+{
+    overflow: hidden;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+.product-details
+{
+    margin: 8px;
+    float: left;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+.product-details:hover
+{
+    background-color: #039BE5;
+    cursor: pointer;
+}
+
+.product-details:hover h4 
+{
+    color: #fff !important;
+}
+
+h4 
+{
+    font-weight: 400;
+    font-size: 12px;
+    margin: 0 16px;
+}
+
+.product-manufacturer
+{
+    color: rgb(3, 155, 229);
+    font-size: 16px;
+    margin: 4px 0;
+    text-align: center;
+}
+
+.product-name
+{
+    font-size: 16px;
+    line-height: 2em;
+}

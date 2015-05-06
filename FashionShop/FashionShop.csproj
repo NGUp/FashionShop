@@ -69,6 +69,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\ManufacturerController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -105,6 +107,7 @@
     <Content Include="Content\css\account\account-update.css" />
     <Content Include="Content\css\admin\admin-index.css" />
     <Content Include="Content\css\admin\admin-login.css" />
+    <Content Include="Content\css\product\product-index.css" />
     <Content Include="Content\css\template\admin.css" />
     <Content Include="Content\css\template\main-admin.css" />
     <Content Include="Content\css\template\main.css" />
@@ -132,9 +135,9 @@
     <Content Include="Views\Account\Update.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\Login.aspx" />
-    <Content Include="Views\Admin\Manufacturer.aspx" />
+    <Content Include="Views\Manufacturer\Index.aspx" />
     <Content Include="Views\Admin\Order.aspx" />
-    <Content Include="Views\Admin\Product.aspx" />
+    <Content Include="Views\Product\Index.aspx" />
     <Content Include="Views\Admin\Type.aspx" />
     <Content Include="Views\Index\About.aspx" />
     <Content Include="Views\Index\Index.aspx" />
