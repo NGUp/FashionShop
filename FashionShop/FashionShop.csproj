@@ -77,6 +77,8 @@
     <Compile Include="Misc\Analyze.cs" />
     <Compile Include="Misc\Security.cs" />
     <Compile Include="Models\Objects\Account.cs" />
+    <Compile Include="Models\Objects\Product.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +126,7 @@
     <Content Include="Content\js\account\account-index.js" />
     <Content Include="Content\js\account\account-update.js" />
     <Content Include="Content\js\admin\admin-index.js" />
+    <Content Include="Content\js\product\product-index.js" />
     <Content Include="Content\WebComponents\md-logout-button.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\admin\admin-login.js" />
