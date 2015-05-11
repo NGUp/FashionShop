@@ -73,7 +73,7 @@
                 </paper-input-decorator>
             </template>
             <core-icon-button icon="search" affirmative autofocus class="search-button" ng-click="searchAccounts()"></core-icon-button>
-      </paper-dialog>
+        </paper-dialog>
     </article>
 
 </asp:Content>

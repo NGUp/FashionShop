@@ -21,5 +21,19 @@ namespace FashionShop.Misc
 
             return hashTable;
         }
+
+        public Hashtable analyzeProductIdAndName(string data)
+        {
+            string[] pairs = data.Split('&');
+            Hashtable hashTable = new Hashtable();
+
+            string[] tmp = pairs[0].Split('=');
+            hashTable.Add("ProductID", tmp[1]);
+
+            tmp = pairs[1].Split('=');
+            hashTable.Add("ProductName", tmp[1]);
+
+            return hashTable;
+        }
     }
 }

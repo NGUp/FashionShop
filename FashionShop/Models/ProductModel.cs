@@ -56,5 +56,73 @@ namespace FashionShop.Models
 
             return (int)result.Rows[0]["Total"];
         }
+
+        public Product one(string ID)
+        {
+            string sql = string.Format("Select * From Product Where ID = '{0}'", ID);
+            DataTable result = this.provider.executeQuery(sql);
+            DataRow row = result.Rows[0];
+
+            Product product = new Product();
+            product.Id = row["ID"].ToString();
+            product.Name = row["Name"].ToString();
+            product.Manufacturer = row["Manufacturer"].ToString();
+            product.Price = Int32.Parse(row["Price"].ToString());
+            product.Origin = row["Origin"].ToString();
+            product.Views = Int32.Parse(row["Views"].ToString());
+            product.Sales = Int32.Parse(row["Sales"].ToString());
+            product.Image = row["Image"].ToString();
+            product.State = Int32.Parse(row["State"].ToString());
+            product.Sex = Int32.Parse(row["Sex"].ToString());
+
+            return product;
+        }
+
+        public int totalResults(Product product)
+        {
+            string sql = string.Format(
+                "Select (Count(ID) / 10 + 1) As Total From Product Where ID = '{0}' Or Name = '{1}'",
+                product.Id, product.Name);
+
+            DataTable result = this.provider.executeQuery(sql);
+
+            return (int)result.Rows[0]["Total"];
+        }
+
+        public Product[] search(Product product, int page)
+        {
+            SqlCommand command = new SqlCommand("usp_searchProducts");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@page", SqlDbType.Int);
+            command.Parameters.Add("@id", SqlDbType.VarChar);
+            command.Parameters.Add("@name", SqlDbType.NVarChar);
+
+            command.Parameters["@page"].Value = page;
+            command.Parameters["@id"].Value = product.Id;
+            command.Parameters["@name"].Value = product.Name;
+
+            DataTable result = this.provider.executeQueryFromStoredProcedure(command);
+            Product[] products = new Product[result.Rows.Count];
+            int index = 0;
+
+            foreach (DataRow row in result.Rows)
+            {
+                product = new Product();
+                product.Id = row["ID"].ToString();
+                product.Name = row["Name"].ToString();
+                product.Manufacturer = row["Manufacturer"].ToString();
+                product.Price = Int32.Parse(row["Price"].ToString());
+                product.Origin = row["Origin"].ToString();
+                product.Views = Int32.Parse(row["Views"].ToString());
+                product.Sales = Int32.Parse(row["Sales"].ToString());
+                product.Image = row["Image"].ToString();
+                product.State = Int32.Parse(row["State"].ToString());
+                product.Sex = Int32.Parse(row["Sex"].ToString());
+                products[index] = product;
+                index++;
+            }
+
+            return products;
+        }
     }
 }

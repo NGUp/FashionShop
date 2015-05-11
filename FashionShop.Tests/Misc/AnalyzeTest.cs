@@ -31,5 +31,15 @@ namespace FashionShop.Tests
             Assert.AreEqual("askdaldk", pair["Username"]);
             Assert.AreEqual("isdjasd", pair["ID"]);
         }
+
+        [TestMethod]
+        public void testAnalyzeKeyValueProduct()
+        {
+            string data = "id=131210.8.3&name=Áo dạ kẻ-MT Đỏ tím";
+            Hashtable pair = this.analyze.analyzeProductIdAndName(data);
+
+            Assert.AreEqual("131210.8.3", pair["ProductID"]);
+            Assert.AreEqual("Áo dạ kẻ-MT Đỏ tím", pair["ProductName"]);
+        }
     }
 }

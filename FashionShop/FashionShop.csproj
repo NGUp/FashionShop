@@ -127,6 +127,7 @@
     <Content Include="Content\js\account\account-update.js" />
     <Content Include="Content\js\admin\admin-index.js" />
     <Content Include="Content\js\product\product-index.js" />
+    <Content Include="Content\js\product\product-update.js" />
     <Content Include="Content\WebComponents\md-logout-button.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\admin\admin-login.js" />
@@ -144,6 +145,7 @@
     <Content Include="Views\Admin\Type.aspx" />
     <Content Include="Views\Index\About.aspx" />
     <Content Include="Views\Index\Index.aspx" />
+    <Content Include="Views\Product\Update.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

@@ -38,9 +38,9 @@ namespace FashionShop.Tests
         [TestMethod]
         public void testBase64Decode()
         {
-            string cipherText = "dXNlcj1pc2RqYXNkJmlkPWFza2RhbGRr";
+            string cipherText = "aWQ9MTMxMjEwLjguMyZuYW1lPQ==";
 
-            Assert.AreEqual(this.security.decodeBase64(cipherText), "user=isdjasd&id=askdaldk");
+            Assert.AreEqual(this.security.decodeBase64(cipherText), "id=131210.8.3&name=");
         }
     }
 }

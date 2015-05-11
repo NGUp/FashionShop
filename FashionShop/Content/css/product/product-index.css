@@ -51,6 +51,36 @@ h4
     line-height: 2em;
 }
 
+.product-paging 
+{
+    margin-left: 8px;
+    padding: 8px 16px;
+    background-color: #039be5;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    position: fixed;
+    bottom: 16;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+paper-dialog 
+{
+    width: 250px;
+}
+
+paper-dialog core-icon-button 
+{
+    float: right;
+    background-color: #ff4081;
+    color: rgb(255, 255, 255);
+}
+
+paper-dialog paper-input 
+{
+    width: 100%;
+}
+
 @media (max-width: 428px)
 {
     .product-details
