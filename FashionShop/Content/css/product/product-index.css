@@ -12,6 +12,13 @@
     background-color: #fff;
 }
 
+
+.product-image img
+{
+    width: 190px;
+    height: 190px;
+}
+
 .product-details
 {
     margin: 8px;

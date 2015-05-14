@@ -124,5 +124,21 @@ namespace FashionShop.Models
 
             return products;
         }
+
+        public bool update(Product product)
+        {
+            string sql = string.Format(
+                "Update Product Set Name = N'{0}', Manufacturer = N'{1}', Price = {2}, Origin = N'{3}', Sex = {4} Where ID = '{5}'",
+                product.Name, product.Manufacturer, product.Price, product.Origin, product.Sex, product.Id);
+
+            return this.provider.executeNonQuery(sql);
+        }
+
+        public bool delete(Product product)
+        {
+            string sql = string.Format("Update Product Set State = 0 Where ID = '{0}'", product.Id);
+
+            return this.provider.executeNonQuery(sql);
+        }
     }
 }

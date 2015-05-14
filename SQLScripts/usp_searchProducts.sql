@@ -10,5 +10,6 @@ Begin
 	WHERE   RowNum >= ((@page - 1) * 10)
 		AND RowNum < (@page * 10 + 1)
 		And (ID = @id Or Name = @name)
+		And State = 1
 	ORDER BY RowNum
 End

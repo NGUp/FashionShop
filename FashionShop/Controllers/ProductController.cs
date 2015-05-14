@@ -7,6 +7,7 @@ using FashionShop.Models;
 using FashionShop.Models.Objects;
 using FashionShop.Misc;
 using System.Collections;
+using System.IO;
 
 namespace FashionShop.Controllers
 {
@@ -22,7 +23,7 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
-        public JsonResult get(int param_0)
+        public JsonResult Get(int param_0)
         {
             return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
         }
@@ -39,7 +40,7 @@ namespace FashionShop.Controllers
             Product product = this.model.one(Request.Params["product_ID"]);
             ViewData["product_ID"] = product.Id;
             ViewData["product_Name"] = product.Name;
-            ViewData["product_Manufacturer"] = product.Manufacturer;
+            ViewData["product_Manufacturer"] = product.Manufacturer.Trim();
             ViewData["product_Price"] = product.Price;
             ViewData["product_Origin"] = product.Origin;
             ViewData["product_Views"] = product.Views;
@@ -76,6 +77,76 @@ namespace FashionShop.Controllers
             product.Id = hashTable["ProductID"].ToString();
             product.Name = hashTable["ProductName"].ToString();
             return Json(this.model.search(product, param_0), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public void UpdateHandler()
+        {
+            if (Request.Params["id"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["name"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["manufacturer"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["price"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["origin"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["sex"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            Product product = new Product();
+            product.Id = Request.Params["id"];
+            product.Name = Request.Params["name"];
+            product.Manufacturer = Request.Params["manufacturer"];
+            product.Price = Int32.Parse(Request.Params["price"]);
+            product.Origin = Request.Params["origin"];
+            product.Sex = Int32.Parse(Request.Params["sex"]);
+
+            if (this.model.update(product) == true)
+            {
+                if (Request.Params["image"] != null)
+                {
+                    HttpPostedFileBase file = Request.Files["image"];
+                    string filePath = Path.Combine(HttpContext.Server.MapPath("~/Content/img/products"), Path.GetFileName(product.Id) + ".jpg");
+                    System.IO.File.Delete(filePath);
+                    file.SaveAs(filePath);
+                }
+            }
+
+            Response.Redirect("/admin/product");
+        }
+
+        [HttpPost]
+        public void DeleteHandler()
+        {
+            if (Request.Params["id"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            Product product = new Product();
+            product.Id = Request.Params["id"];
+
+            this.model.delete(product);
+            Response.Redirect("/admin/product");
         }
     }
 }

@@ -7,5 +7,6 @@ Begin
 			) AS RowConstrainedResult
 	WHERE   RowNum >= ((@page - 1) * 20)
 		AND RowNum < (@page * 20 + 1)
+		And State = 1
 	ORDER BY RowNum
 End

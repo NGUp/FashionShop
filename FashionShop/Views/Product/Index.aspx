@@ -21,7 +21,6 @@
 
 <asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">
     <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
-    <link rel="import" href="/bower_components/paper-button/paper-button.html">
     <link rel="import" href="/bower_components/paper-input/paper-input.html">
     <link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
 </asp:Content>

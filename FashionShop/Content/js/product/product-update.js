@@ -53,45 +53,92 @@
 
         .controller('UpdateCtrl', ['$scope', 'Form', function (scope, form) {
             scope.cancel = function () {
-                window.location.href = '/admin/account';
+                window.location.href = '/admin/product';
             };
 
-            scope.update = function () {
-                var id = document.getElementById('txtID'),
-                    username = document.getElementById('txtUsername'),
-                    name = document.getElementById('txtName'),
-                    birthday = document.getElementById('txtBirthday'),
-                    city = document.getElementById('txtCity'),
-                    state = document.getElementById('chkboxState'),
-                    isAdmin = document.getElementById('chkboxAdmin');
+            // TODO
+            scope.manufacturers = [
+                'F&F',
+                'Old Navy',
+                'HG Kids',
+                'Regatta',
+                'Tommy'
+            ];
 
-                if (name.validity.valid === false ||
-                        name.value.length === 0) {
-                    name.focus();
+            scope.remove = function () {
+                var form = document.createElement('form');
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', '/admin/product/deletehandler');
+
+                var id = document.querySelector('.product-id'),
+                    hiddenField = document.createElement("input");
+
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", "id");
+                hiddenField.setAttribute("value", id.innerHTML);
+
+                form.appendChild(hiddenField);
+                document.body.appendChild(form);
+                form.submit();
+            }
+
+            scope.accept = function () {
+                var id = document.querySelector('.product-id'),
+                    image = document.getElementById('md-upload-button'),
+                    name = document.getElementById('product-name'),
+                    price = document.getElementById('product-price'),
+                    origin = document.getElementById('product-origin'),
+                    manufacturer = document.getElementById('product-manufacturer'),
+                    sex = document.getElementById('product-sex');
+
+                if (name.value.length === 0) {
                     return;
                 }
 
-                if (birthday.validity.valid === false ||
-                        birthday.value.length === 0) {
-                    birthday.focus();
+                if (manufacturer.selected.length === 0) {
                     return;
                 }
 
-                if (city.validity.valid === false) {
-                    city.focus();
+                if (price.value.length === 0) {
                     return;
                 }
 
-                form.submit([
+                if (origin.value.length === 0) {
+                    return;
+                }
+
+                if (sex.selected.length === 0) {
+                    return;
+                }
+
+                var params = [
                     { 'id': id.innerHTML },
-                    { 'username': username.innerHTML },
                     { 'name': name.value },
-                    { 'birthday': birthday.value },
-                    { 'city': city.value },
-                    { 'state': state.checked ? 1 : 0 },
-                    { 'isAdmin': isAdmin.checked ? 1 : 0 }
-                ]);
+                    { 'manufacturer': manufacturer.selected },
+                    { 'price': price.value },
+                    { 'origin': origin.value },
+                    { 'sex': sex.selected }
+                ];
+
+                var form = document.createElement('form');
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', '/admin/product/updatehandler');
+                form.setAttribute('enctype', 'multipart/form-data');
+
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i],
+                        hiddenField = document.createElement("input");
+
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", Object.keys(key));
+                    hiddenField.setAttribute("value", key[Object.keys(key)]);
+
+                    form.appendChild(hiddenField);
+                }
+
+                form.appendChild(image);
+                document.body.appendChild(form);
+                form.submit();
             };
         } ]);
-
 })();
