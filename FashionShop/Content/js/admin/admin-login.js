@@ -32,11 +32,11 @@
     */
     angular.module('admin', [])
 
-        /**
-        * Security service
-        *
-        * @return {object} Security service
-        */
+    /**
+    * Security service
+    *
+    * @return {object} Security service
+    */
         .factory('Security', function () {
             return {
 
@@ -55,11 +55,11 @@
             }
         })
 
-        /**
-        * Form service
-        *
-        * @return {object} Form service
-        */
+    /**
+    * Form service
+    *
+    * @return {object} Form service
+    */
         .factory('Form', function () {
             return {
 
@@ -90,13 +90,13 @@
             }
         })
 
-        /**
-        * Login Controller
-        *
-        * @param  {Object} scope       Angular Object
-        * @param  {Object} security    Security service
-        * @param  {Object} form        Form service
-        */
+    /**
+    * Login Controller
+    *
+    * @param  {Object} scope       Angular Object
+    * @param  {Object} security    Security service
+    * @param  {Object} form        Form service
+    */
         .controller('LoginCtrl',
                 ['$scope', 'Security', 'Form', function (scope, security, form) {
 
@@ -105,11 +105,11 @@
                     *
                     */
                     scope.login = function () {
+                        console.log('SDHSA');
                         var username = document.getElementById('txtUsername'),
                             password = document.getElementById('txtPassword');
 
-                        if (username.validity.valid === true &&
-                        password.validity.valid === true &&
+                        if (username.value.length > 4 &&
                         password.value.length > 7) {
                             form.submit([
                                 { 'username': username.value },

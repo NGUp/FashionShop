@@ -1,13 +1,52 @@
-﻿.login-form
+﻿html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-size: 16px;
+    font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    line-height: 24px;
+    background-color: #039be5;
+}
+
+.wrap-content
 {
-    width: 500px;
-    margin: 72px auto;
+    padding-top: 72px;
+}
+
+section
+{
+    margin: 0 auto;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+article
+{
+    padding: 16px;
+}
+
+core-field
+{
+    margin: 8px 0;
+    background-color: #fff;
+    height: 40px;
+    border: 1px solid #ddd;
+}
+
+.div-button
+{
+    clear: both;
+    text-align: right;
+    margin-top: 8px;
 }
 
 paper-button
 {
-    float: right;
-    margin-top: 32px;
-    color: #fff;
+    margin: 0;
     background-color: #ff4081;
+    color: #fff;
 }

@@ -1,43 +1,44 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/MainAdmin.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
-<asp:Content ID="Title" ContentPlaceHolderID="TitleContent" runat="server">
-	Đăng nhập
-</asp:Content>
+<!DOCTYPE html>
 
-<asp:Content ID="StyleSheet" ContentPlaceHolderID="StyleSheetContent" runat="server">
-    <link href="/Content/css/admin/admin-login.css" rel="stylesheet" />
-</asp:Content>
-
-<asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
-    <article class="login-form" ng-controller="LoginCtrl">
-        <div>
-            <template is="auto-binding">
-                <paper-input-decorator label="Tên đăng nhập" floatingLabel isInvalid="{{!$.txtUsername.validity.valid}}" error="Tên đăng nhập chỉ có thể là ký tự thường, hoa hoặc chữ số.">
-                    <input is="core-input" id="txtUsername" spellcheck="false" type="text" pattern="^[a-zA-Z0-9]{4,}$">
-                </paper-input-decorator>
-            </template>
+<html ng-app="admin">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Đăng nhập</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/Content/icon/favicon.png" rel="shortcut icon">
+        <link href="/Content/css/admin/admin-login.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="wrap-content" ng-controller="LoginCtrl">
+            <section>
+                <article>
+                    <h1>
+                        <img src="/Content/icon/logo.png" alt="Kids Fashion" />
+                    </h1>
+                    <div>
+                        <core-field>
+                            <input placeholder="Tên đăng nhập" id="txtUsername" autocomplete="off" spellcheck="false" name="username" flex>
+                        </core-field>
+                        <core-field>
+                            <input placeholder="Mật khẩu" id="txtPassword" autocomplete="off" spellcheck="false" type="password" name="password" flex>
+                        </core-field>
+                    </div>
+                    <div class="div-button">
+                        <paper-button raised ng-click="login()">Đăng nhập</paper-button>
+                    </div>
+                </article>
+            </section>
         </div>
-        <div>
-            <template is="auto-binding">
-                <paper-input-decorator label="Mật khẩu" floatingLabel isInvalid="{{!$.txtPassword.validity.valid}}" error="Mật khẩu không hợp lệ.">
-                    <input is="core-input" type="password" id="txtPassword" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{8,}$">
-                </paper-input-decorator>
-            </template>
-        </div>
-        <div>
-            <paper-button raised ng-click="login()">Đăng nhập</paper-button>
-        </div>
-    </article>
 
-</asp:Content>
+        <script src="/Scripts/platform.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/Scripts/sha1.js"></script>
+        <script src="/Scripts/md5.js"></script>
+        <script src="/Content/js/admin/admin-login.js"></script>
 
-<asp:Content ID="Script" ContentPlaceHolderID="ScriptContent" runat="server">
-    <script src="/Scripts/sha1.js"></script>
-    <script src="/Scripts/md5.js"></script>
-    <script src="/Content/js/admin/admin-login.js"></script>
-</asp:Content>
-
-<asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">
-    <link rel="import" href="/bower_components/paper-input/paper-input.html">
-    <link rel="import" href="/bower_components/paper-button/paper-button.html">
-</asp:Content>
+        <link rel="import" href="/bower_components/core-field/core-field.html">
+        <link rel="import" href="/bower_components/paper-button/paper-button.html">
+    </body>
+</html>
