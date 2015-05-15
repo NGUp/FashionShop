@@ -127,11 +127,12 @@ namespace FashionShop.Models
 
         public bool insert(Product product)
         {
-            DateTime currentDate = new DateTime();
+            DateTime currentTime = DateTime.Now;
+            string format = "yyyy-MM-dd";
 
             string sql = string.Format(
                 "Insert Into Product(ID, Name, Manufacturer, Price, Origin, Views, Sales, Image, State, Time, Sex) Values ('{0}', N'{1}', '{2}', {3}, N'{4}', 0, 0, '{5}', 1, '{6}', {7})",
-                product.Id, product.Name, product.Manufacturer, product.Price, product.Origin, product.Image, currentDate.ToLocalTime() , product.Sex);
+                product.Id, product.Name, product.Manufacturer, product.Price, product.Origin, product.Image, currentTime.ToString(format), product.Sex);
 
             return this.provider.executeNonQuery(sql);
         }
