@@ -1,0 +1,111 @@
+﻿.content 
+{
+    margin: 16px auto;
+    width: 550px;
+    display: flex;
+}
+
+paper-radio-group.blue paper-radio-button #ink[checked] {
+    color: #4285f4;
+}
+    
+paper-radio-group.blue paper-radio-button #onRadio {
+    background-color: #4285f4;
+}
+
+paper-radio-group.blue paper-radio-button[checked] #offRadio {
+    border-color: #4285f4;
+}
+    
+.paper-radio-button
+{
+    display: block;
+}
+
+.product-id
+{
+    color: #039BE5;
+    font-weight: 400;
+    font-size: 1.75em;
+}
+
+.buttons-panel,
+.product-image
+{
+    text-align: center;
+}
+
+.product-image 
+{
+    width: 60%;
+    padding: 0 16px;
+}
+
+.product-info
+{
+    width: 100%;
+}
+
+paper-input
+{
+    width: 100%;
+}
+
+.product-sex
+{
+    font-size: 0.75em;
+    color: #4059A9;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.btn-accept
+{
+    background-color: #ff0;
+    color: #212121;
+}
+
+paper-dropdown-menu
+{
+    width: 100%;
+}
+
+paper-dropdown
+{
+    width: 100%;
+}
+
+paper-dropdown #scroller
+{
+    width: inherit !important;
+}
+
+.product-manufacturer
+{
+    color: #757575;
+    font-size: 0.75em;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.md-upload-button 
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+@media(max-width: 736px)
+{
+    .content
+    {
+        width: auto;
+        margin: 16px;
+        display: block;
+    }
+}

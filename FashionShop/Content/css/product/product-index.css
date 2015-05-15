@@ -88,10 +88,24 @@ paper-dialog paper-input
     width: 100%;
 }
 
+paper-fab
+{
+    position: fixed;
+    bottom: 16px;
+    right: 48px;
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
 @media (max-width: 428px)
 {
     .product-details
     {
         width: 90%;
+    }
+    
+    paper-fab
+    {
+        right: 16px;
     }
 }

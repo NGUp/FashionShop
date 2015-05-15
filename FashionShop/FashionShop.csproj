@@ -109,6 +109,7 @@
     <Content Include="Content\css\account\account-update.css" />
     <Content Include="Content\css\admin\admin-index.css" />
     <Content Include="Content\css\admin\admin-login.css" />
+    <Content Include="Content\css\product\product-add.css" />
     <Content Include="Content\css\product\product-index.css" />
     <Content Include="Content\css\product\product-update.css" />
     <Content Include="Content\css\template\admin.css" />
@@ -119,6 +120,12 @@
     <Content Include="Content\img\admin\admin-index.png" />
     <Content Include="Content\img\admin\logout.png" />
     <Content Include="Content\img\admin\state.png" />
+    <Content Include="Content\img\products\131210.8.3.jpg" />
+    <Content Include="Content\img\products\349.1.jpg" />
+    <Content Include="Content\img\products\ad512225.jpg" />
+    <Content Include="Content\img\products\aq421014.jpg" />
+    <Content Include="Content\img\products\aq511599.jpg" />
+    <Content Include="Content\img\products\ASM2.b.jpg" />
     <Content Include="Content\img\social\facebook.png" />
     <Content Include="Content\img\social\google-plus.png" />
     <Content Include="Content\img\social\instagram.png" />
@@ -127,6 +134,7 @@
     <Content Include="Content\js\account\account-index.js" />
     <Content Include="Content\js\account\account-update.js" />
     <Content Include="Content\js\admin\admin-index.js" />
+    <Content Include="Content\js\product\product-add.js" />
     <Content Include="Content\js\product\product-index.js" />
     <Content Include="Content\js\product\product-update.js" />
     <Content Include="Content\WebComponents\md-logout-button.html" />
@@ -142,6 +150,7 @@
     <Content Include="Views\Admin\Login.aspx" />
     <Content Include="Views\Manufacturer\Index.aspx" />
     <Content Include="Views\Admin\Order.aspx" />
+    <Content Include="Views\Product\Add.aspx" />
     <Content Include="Views\Product\Index.aspx" />
     <Content Include="Views\Admin\Type.aspx" />
     <Content Include="Views\Index\About.aspx" />

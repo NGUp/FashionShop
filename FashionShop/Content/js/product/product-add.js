@@ -27,12 +27,12 @@
     'use strict';
 
     angular.module('admin', [])
-        .controller('UpdateCtrl', ['$scope', function (scope) {
+        .controller('AddCtrl', ['$scope', function (scope) {
             scope.cancel = function () {
                 window.location.href = '/admin/product';
             };
 
-            // TODO
+//            // TODO
             scope.manufacturers = [
                 'F&F',
                 'Old Navy',
@@ -41,31 +41,18 @@
                 'Tommy'
             ];
 
-            scope.remove = function () {
-                var form = document.createElement('form');
-                form.setAttribute('method', 'post');
-                form.setAttribute('action', '/admin/product/deletehandler');
-
-                var id = document.querySelector('.product-id'),
-                    hiddenField = document.createElement("input");
-
-                hiddenField.setAttribute("type", "hidden");
-                hiddenField.setAttribute("name", "id");
-                hiddenField.setAttribute("value", id.innerHTML);
-
-                form.appendChild(hiddenField);
-                document.body.appendChild(form);
-                form.submit();
-            }
-
             scope.accept = function () {
-                var id = document.querySelector('.product-id'),
+                var id = document.getElementById('product-id'), 
                     image = document.getElementById('md-upload-button'),
                     name = document.getElementById('product-name'),
                     price = document.getElementById('product-price'),
                     origin = document.getElementById('product-origin'),
                     manufacturer = document.getElementById('product-manufacturer'),
                     sex = document.getElementById('product-sex');
+
+                if (id.value.length === 0) {
+                    return;
+                }
 
                 if (name.value.length === 0) {
                     return;
@@ -88,7 +75,7 @@
                 }
 
                 var params = [
-                    { 'id': id.innerHTML },
+                    { 'id': id.value },
                     { 'name': name.value },
                     { 'manufacturer': manufacturer.selected },
                     { 'price': price.value },
@@ -98,7 +85,7 @@
 
                 var form = document.createElement('form');
                 form.setAttribute('method', 'post');
-                form.setAttribute('action', '/admin/product/updatehandler');
+                form.setAttribute('action', '/admin/product/addhandler');
                 form.setAttribute('enctype', 'multipart/form-data');
 
                 for (var i = 0; i < params.length; i++) {

@@ -53,6 +53,12 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public JsonResult SearchResults(string param_0)
         {
             Analyze analyze = new Analyze();
@@ -77,6 +83,65 @@ namespace FashionShop.Controllers
             product.Id = hashTable["ProductID"].ToString();
             product.Name = hashTable["ProductName"].ToString();
             return Json(this.model.search(product, param_0), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public void AddHandler()
+        {
+            if (Request.Params["id"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["name"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["manufacturer"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["price"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["origin"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            if (Request.Params["sex"] == null)
+            {
+                Response.Redirect("/admin/product", false);
+            }
+
+            Product product = new Product();
+            product.Id = Request.Params["id"];
+            product.Name = Request.Params["name"];
+            product.Manufacturer = Request.Params["manufacturer"];
+            product.Price = Int32.Parse(Request.Params["price"]);
+            product.Origin = Request.Params["origin"];
+            product.Sex = Int32.Parse(Request.Params["sex"]);
+
+            if (Request.Files["image"].FileName != "")
+            {
+                product.Image = product.Id + ".jpg";
+            }
+
+            if (this.model.insert(product) == true)
+            {
+                if (Request.Files["image"].FileName != "")
+                {
+                    HttpPostedFileBase file = Request.Files["image"];
+                    string filePath = Path.Combine(HttpContext.Server.MapPath("~/Content/img/products"), Path.GetFileName(product.Id) + ".jpg");
+                    file.SaveAs(filePath);
+                }
+            }
+
+            Response.Redirect("/admin/product");
         }
 
         [HttpPost]
@@ -120,9 +185,14 @@ namespace FashionShop.Controllers
             product.Origin = Request.Params["origin"];
             product.Sex = Int32.Parse(Request.Params["sex"]);
 
+            if (Request.Files["image"].FileName != "")
+            {
+                product.Image = product.Id + ".jpg";
+            }
+
             if (this.model.update(product) == true)
             {
-                if (Request.Params["image"] != null)
+                if (Request.Files["image"].FileName != "")
                 {
                     HttpPostedFileBase file = Request.Files["image"];
                     string filePath = Path.Combine(HttpContext.Server.MapPath("~/Content/img/products"), Path.GetFileName(product.Id) + ".jpg");

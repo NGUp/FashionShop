@@ -125,11 +125,22 @@ namespace FashionShop.Models
             return products;
         }
 
+        public bool insert(Product product)
+        {
+            DateTime currentDate = new DateTime();
+
+            string sql = string.Format(
+                "Insert Into Product(ID, Name, Manufacturer, Price, Origin, Views, Sales, Image, State, Time, Sex) Values ('{0}', N'{1}', '{2}', {3}, N'{4}', 0, 0, '{5}', 1, '{6}', {7})",
+                product.Id, product.Name, product.Manufacturer, product.Price, product.Origin, product.Image, currentDate.ToLocalTime() , product.Sex);
+
+            return this.provider.executeNonQuery(sql);
+        }
+
         public bool update(Product product)
         {
             string sql = string.Format(
-                "Update Product Set Name = N'{0}', Manufacturer = N'{1}', Price = {2}, Origin = N'{3}', Sex = {4} Where ID = '{5}'",
-                product.Name, product.Manufacturer, product.Price, product.Origin, product.Sex, product.Id);
+                "Update Product Set Name = N'{0}', Manufacturer = N'{1}', Price = {2}, Origin = N'{3}', Sex = {4}, Image = '{5}' Where ID = '{6}'",
+                product.Name, product.Manufacturer, product.Price, product.Origin, product.Sex, product.Image, product.Id);
 
             return this.provider.executeNonQuery(sql);
         }

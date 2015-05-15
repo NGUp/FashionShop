@@ -46,7 +46,7 @@
             }
         })
 
-        .controller('IndexCtrl', ['$scope', '$http', 'Form', function (scope, http, form) {
+        .controller('IndexCtrl', ['$scope', '$http', '$location', 'Form', function (scope, http, location, form) {
             scope.currentPage = 1;
             scope.keyword = '';
 
@@ -144,6 +144,10 @@
                 id.value = '';
                 username.value = '';
                 dialog.toggle();
+            };
+
+            scope.add = function () {
+                window.location.href = '/admin/product/add';
             };
 
         } ]);

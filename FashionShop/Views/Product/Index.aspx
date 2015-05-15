@@ -23,6 +23,7 @@
     <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
     <link rel="import" href="/bower_components/paper-input/paper-input.html">
     <link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+    <link rel="import" href="/bower_components/paper-fab/paper-fab.html">
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
@@ -53,6 +54,8 @@
             <core-icon-button icon="search" ng-click="search()" ng-hide="isSearching"></core-icon-button>
             <core-icon-button icon="refresh" ng-click="refresh()" ng-show="isSearching"></core-icon-button>
         </div>
+
+        <paper-fab icon="add" ng-click="add()"></paper-fab>
 
         <paper-dialog heading="Tìm kiếm" id="paper-dialog" transition="paper-dialog-transition-center">
             <paper-input label="Mã sản phẩm" id="txtProductID" spellcheck="false" floatingLabel></paper-input>
