@@ -10,46 +10,89 @@ body {
     line-height: 24px;
 }
 
-core-header-panel {
-    height: 100%;
-}
-
-core-toolbar
+.center-screen
 {
-    background-color: #fff;
-    border-bottom: 1px solid #3f51b5;
+    margin: 0 auto;
 }
 
-core-toolbar img 
+.right
 {
-    height: 60px;
-    margin-bottom: 0;
-    
+    float: right;
 }
 
-core-toolbar.tall img 
+.clear
 {
-    height: 100px;
-    margin-bottom: 72px;
+    clear: both;
 }
 
-.header-info 
+header
 {
-    position: fixed;
-    top: 0;
-    right: 60px;
-    padding: 9px;
-    font-size: 16px;
-    color: #3f51b5;
-}
-
-.header-title {
-    color: #3f51b5;
+    padding: 0 32px;
     display: flex;
+    position: relative;
+    flex-direction: row;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
 }
 
-.header-title h1 {
-    font-weight: 400;
+.header-menu
+{
+    margin-top: 32px;
+}
+
+aside
+{
+    padding: 16px;
+    background-color: #fff;
+}
+
+aside .item
+{
+    margin: 8px 0;
+}
+
+.aside-sign-up
+{
+    margin-bottom: 16px;
+}
+
+.btn-sign-up
+{
+    width: 100%;
+    background-color: #03a9f4;
+    color: #fff;
+    margin: 0;
+}
+
+.aside-list
+{
+    list-style: outside none none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.aside-about
+{
+    position: absolute;
+    bottom: 32px;
+}
+
+.aside-about a 
+{
+    text-decoration: none;
+    color: #212121;
+}
+
+.aside-list li
+{
+    line-height: 48px;
+    border-top: 1px solid #673ab7;
+    text-align: center;
+}
+
+.aside-list li a
+{
+    text-decoration: none;
+    color: #212121;
 }
 
 .container 
@@ -60,34 +103,26 @@ core-toolbar.tall img
 
 footer 
 {
-    border-top: 1px solid #aaa;
+    height: 100px;
+    padding-top: 32px;
+    background-color: #03a9f4;
 }
 
-footer .social
+.social
 {
-    padding: 16px 0;
+    width: 300px;
+    margin: 0 auto;
     text-align: center;
 }
 
-footer .social a 
+.social a 
 {
     text-decoration: none;
-    margin: 0 8px;
 }
 
-footer .copyright 
+.copyright
 {
-    padding: 8px 0;
-    background-color: #3f51b5;
     color: #fff;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
-    font-weight: 400;
-}
-
-footer .copyright a 
-{
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
 }

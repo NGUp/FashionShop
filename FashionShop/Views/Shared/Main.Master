@@ -14,44 +14,72 @@
         <link href="/Content/css/template/main.css" rel="stylesheet" />
         <asp:ContentPlaceHolder ID="StyleSheetContent" runat="server"></asp:ContentPlaceHolder>
     </head>
-    <body fullbleed layout vertical>
-        <core-header-panel mode="waterfall-tall">
-            <core-toolbar>
-                <div class="header-info">
-                    <paper-button>Đăng nhập</paper-button>
+    <body unresolved>
+        <core-drawer-panel forceNarrow="true">
+            <aside drawer>
+                <div class="item">
+                    <core-icon-button icon="close" core-drawer-toggle></core-icon-button>
+                    <paper-button class="right">Đăng nhập</paper-button>
+                    <div class="clear"></div>
                 </div>
-                <div class="bottom indent title header-title">
-                    <h1>
-                        <img src="/Content/icon/logo.png" alt="Alternate Text" />
-                    </h1>
+                <div class="item aside-sign-up">
+                    <paper-button class="btn-sign-up">Đăng ký</paper-button>
                 </div>
-            </core-toolbar>
-            <section class="container">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-            </section>
-            <footer class="container">
-                <div class="social">
-                    <a href="https://www.facebook.com/">
-                        <img src="/Content/img/social/facebook.png" alt="Facebook" />
-                    </a>
-                    <a href="https://twitter.com/">
-                        <img src="/Content/img/social/twitter.png" alt="Twitter" />
-                    </a>
-                    <a href="https://instagram.com/">
-                        <img src="/Content/img/social/instagram.png" alt="Instagram" />
-                    </a>
-                    <a href="https://www.pinterest.com/">
-                        <img src="/Content/img/social/pinterest.png" alt="Pinterest" />
-                    </a>
-                    <a href="https://plus.google.com">
-                        <img src="/Content/img/social/google-plus.png" alt="Google Plus" />
-                    </a>
+                <div class="item">
+                    <ul class="aside-list">
+                        <li>
+                            <a href="/type">Loại sản phẩm</a>
+                        </li>
+                        <li>
+                            <a href="/product">Nhà sản xuất</a>
+                        </li>
+                        <li>
+                            <a href="/search">Tìm kiếm</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="copyright">
-                    &copy; <%=DateTime.Now.Year%> Fashion Shop. Mã nguồn chịu ảnh hưởng của giấy phép <a href="/index/about">MIT License</a>.
+                <div class="item aside-about">
+                    <a href="/index/about">Giới thiệu</a>
                 </div>
-            </footer>
-        </core-header-panel>
+            </aside>
+            <core-header-panel main>
+                <header>
+                    <div class="header-menu">
+                        <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
+                    </div>
+                    <div class="center-screen">
+                        <a href="/">
+                            <img src="/Content/icon/logo.png" alt="Kids Fashion" />
+                        </a>
+                    </div>
+                </header>
+                <section class="container">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </section>
+                <footer>
+                    <div class="social center-screen">
+                        <a href="https://www.facebook.com/">
+                            <img src="/Content/img/social/facebook.png" alt="Facebook" />
+                        </a>
+                        <a href="https://twitter.com/">
+                            <img src="/Content/img/social/twitter.png" alt="Twitter" />
+                        </a>
+                        <a href="https://instagram.com/">
+                            <img src="/Content/img/social/instagram.png" alt="Instagram" />
+                        </a>
+                        <a href="https://www.pinterest.com/">
+                            <img src="/Content/img/social/pinterest.png" alt="Pinterest" />
+                        </a>
+                        <a href="https://plus.google.com">
+                            <img src="/Content/img/social/google-plus.png" alt="Google Plus" />
+                        </a>
+                    </div>
+                    <div class="copyright">
+                        &copy; <%=DateTime.Now.Year%> - 110001NP Development Team
+                    </div>
+                </footer>
+            </core-header-panel>
+        </core-drawer-panel>
 
         <!-- JavaScript -->
         <script src="/Scripts/platform.js"></script>
@@ -59,8 +87,8 @@
 
         <!-- Web Components -->
         <link rel="import" href="/bower_components/core-header-panel/core-header-panel.html">
+        <link rel="import" href="/bower_components/core-drawer-panel/core-drawer-panel.html">
         <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
-        <link rel="import" href="/bower_components/core-toolbar/core-toolbar.html">
         <link rel="import" href="/bower_components/paper-button/paper-button.html">
         <asp:ContentPlaceHolder ID="WebComponentsContent" runat="server"></asp:ContentPlaceHolder>
     </body>

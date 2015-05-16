@@ -106,7 +106,6 @@
     <Content Include="Content\css\product\product-index.css" />
     <Content Include="Content\css\product\product-update.css" />
     <Content Include="Content\css\template\admin.css" />
-    <Content Include="Content\css\template\main-admin.css" />
     <Content Include="Content\css\template\main.css" />
     <Content Include="Content\icon\favicon.png" />
     <Content Include="Content\icon\logo.png" />

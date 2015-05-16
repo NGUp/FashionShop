@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/Content/icon/favicon.png" rel="shortcut icon">
         <link href="/Content/css/admin/admin-login.css" rel="stylesheet" type="text/css" />
+        <%--<link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">--%>
     </head>
     <body>
         <div class="wrap-content" ng-controller="LoginCtrl">

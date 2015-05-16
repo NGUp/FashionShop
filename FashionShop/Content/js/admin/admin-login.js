@@ -37,58 +37,58 @@
     *
     * @return {object} Security service
     */
-        .factory('Security', function () {
-            return {
+    .factory('Security', function () {
+        return {
 
-                /**
-                * Encode password
-                *
-                * @param  {string} password    The user password
-                * @return {string}             The hash
-                */
-                encode: function (password) {
-                    return md5(
-                        '922e1cd494659174bd2573' +
-                        (new jsSHA('password', 'TEXT')).getHash('SHA-1', 'HEX') +
-                        'fa7993697488f5e85f');
-                }
+            /**
+            * Encode password
+            *
+            * @param  {string} password    The user password
+            * @return {string}             The hash
+            */
+            encode: function (password) {
+                return md5(
+                    '922e1cd494659174bd2573' +
+                    (new jsSHA('password', 'TEXT')).getHash('SHA-1', 'HEX') +
+                    'fa7993697488f5e85f');
             }
-        })
+        }
+    })
 
     /**
     * Form service
     *
     * @return {object} Form service
     */
-        .factory('Form', function () {
-            return {
+    .factory('Form', function () {
+        return {
 
-                /**
-                * Submit a form
-                *
-                * @param  {array} params   The array of the parameters
-                */
-                submit: function (params) {
-                    var form = document.createElement('form');
-                    form.setAttribute('method', 'post');
-                    form.setAttribute('action', '/admin/loginhandler');
+            /**
+            * Submit a form
+            *
+            * @param  {array} params   The array of the parameters
+            */
+            submit: function (params) {
+                var form = document.createElement('form');
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', '/admin/loginhandler');
 
-                    for (var i = 0; i < params.length; i++) {
-                        var key = params[i],
-                            hiddenField = document.createElement("input");
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i],
+                        hiddenField = document.createElement("input");
 
-                        hiddenField.setAttribute("type", "hidden");
-                        hiddenField.setAttribute("name", Object.keys(key));
-                        hiddenField.setAttribute("value", key[Object.keys(key)]);
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", Object.keys(key));
+                    hiddenField.setAttribute("value", key[Object.keys(key)]);
 
-                        form.appendChild(hiddenField);
-                    }
-
-                    document.body.appendChild(form);
-                    form.submit();
+                    form.appendChild(hiddenField);
                 }
+
+                document.body.appendChild(form);
+                form.submit();
             }
-        })
+        }
+    })
 
     /**
     * Login Controller
@@ -97,26 +97,25 @@
     * @param  {Object} security    Security service
     * @param  {Object} form        Form service
     */
-        .controller('LoginCtrl',
-                ['$scope', 'Security', 'Form', function (scope, security, form) {
+    .controller('LoginCtrl',
+        ['$scope', 'Security', 'Form', function (scope, security, form) {
 
-                    /**
-                    * Login to admin page.
-                    *
-                    */
-                    scope.login = function () {
-                        console.log('SDHSA');
-                        var username = document.getElementById('txtUsername'),
-                            password = document.getElementById('txtPassword');
+            /**
+            * Login to admin page.
+            *
+            */
+            scope.login = function () {
+                var username = document.getElementById('txtUsername'),
+                    password = document.getElementById('txtPassword');
 
-                        if (username.value.length > 4 &&
-                        password.value.length > 7) {
-                            form.submit([
-                                { 'username': username.value },
-                                { 'password': security.encode(password.value) }
-                            ]);
-                        }
-                    };
-                } ]);
+                if (username.value.length > 4 &&
+                password.value.length > 7) {
+                    form.submit([
+                        { 'username': username.value },
+                        { 'password': security.encode(password.value) }
+                    ]);
+                }
+            };
+        } ]);
 
 })();
