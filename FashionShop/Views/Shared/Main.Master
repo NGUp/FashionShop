@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="FashionShop.Views.Shared.Main" %>
 
 <!DOCTYPE>
-<html>
+<html ng-app="kids-fashion">
     <head runat="server">
         <meta charset="UTF-8" />
         <title>
@@ -23,7 +23,9 @@
                     <div class="clear"></div>
                 </div>
                 <div class="item aside-sign-up">
-                    <paper-button class="btn-sign-up">Đăng ký</paper-button>
+                    <paper-button class="btn-sign-up">
+                        <a href="/index/signup">Đăng ký</a>
+                    </paper-button>
                 </div>
                 <div class="item">
                     <ul class="aside-list">
@@ -83,6 +85,7 @@
 
         <!-- JavaScript -->
         <script src="/Scripts/platform.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
         <asp:ContentPlaceHolder ID="ScriptContent" runat="server"></asp:ContentPlaceHolder>
 
         <!-- Web Components -->

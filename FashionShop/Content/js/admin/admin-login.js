@@ -49,7 +49,7 @@
             encode: function (password) {
                 return md5(
                     '922e1cd494659174bd2573' +
-                    (new jsSHA('password', 'TEXT')).getHash('SHA-1', 'HEX') +
+                    (new jsSHA(password, 'TEXT')).getHash('SHA-1', 'HEX') +
                     'fa7993697488f5e85f');
             }
         }

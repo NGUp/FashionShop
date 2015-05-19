@@ -47,5 +47,12 @@ namespace FashionShop.Misc
             var hash = Convert.FromBase64String(cipher);
             return Encoding.UTF8.GetString(hash);
         }
+
+        public string generateID()
+        {
+            string time = DateTime.Now.ToString();
+
+            return this.encodeSHA1(time);
+        }
     }
 }

@@ -63,6 +63,12 @@ aside .item
     margin: 0;
 }
 
+.btn-sign-up a
+{
+    text-decoration: none;
+    color: #fff;
+}
+
 .aside-list
 {
     list-style: outside none none;

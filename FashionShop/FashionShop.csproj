@@ -35,6 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Lab\Json60r8\Bin\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -77,6 +81,7 @@
     <Compile Include="Misc\Analyze.cs" />
     <Compile Include="Misc\Security.cs" />
     <Compile Include="Models\Objects\Account.cs" />
+    <Compile Include="Models\Objects\CaptchaResponse.cs" />
     <Compile Include="Models\Objects\Product.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\Provider.cs" />
@@ -102,6 +107,7 @@
     <Content Include="Content\css\account\account-update.css" />
     <Content Include="Content\css\admin\admin-index.css" />
     <Content Include="Content\css\admin\admin-login.css" />
+    <Content Include="Content\css\index\index-sign-up.css" />
     <Content Include="Content\css\product\product-add.css" />
     <Content Include="Content\css\product\product-index.css" />
     <Content Include="Content\css\product\product-update.css" />
@@ -126,6 +132,7 @@
     <Content Include="Content\js\account\account-index.js" />
     <Content Include="Content\js\account\account-update.js" />
     <Content Include="Content\js\admin\admin-index.js" />
+    <Content Include="Content\js\index\index-sign-up.js" />
     <Content Include="Content\js\product\product-add.js" />
     <Content Include="Content\js\product\product-index.js" />
     <Content Include="Content\js\product\product-update.js" />
@@ -140,6 +147,7 @@
     <Content Include="Views\Account\Update.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\Login.aspx" />
+    <Content Include="Views\Index\SignUp.aspx" />
     <Content Include="Views\Manufacturer\Index.aspx" />
     <Content Include="Views\Admin\Order.aspx" />
     <Content Include="Views\Product\Add.aspx" />

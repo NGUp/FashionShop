@@ -146,6 +146,16 @@ namespace FashionShop.Models
             return account;
         }
 
+        public bool insert(Account account)
+        {
+            string sql = string.Format(
+                "Insert Into Account(ID, Name, Birthday, City, Username, Password, State, Permission) Values('{0}', N'{1}', Cast('{2}' as Date), N'{3}', '{4}', '{5}', 1, 0)",
+                account.ID, account.Name, account.Birthday, account.City, account.Username, account.Password
+                );
+
+            return this.provider.executeNonQuery(sql);
+        }
+
         public bool update(Account account)
         {
             string sql = string.Format(
