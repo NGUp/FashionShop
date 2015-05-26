@@ -119,8 +119,6 @@
                 keyword = 'id=' + id.value + '&name=' + name.value;
                 keyword = Base64.encode(keyword);
 
-                console.log(keyword);
-
                 http.get('/admin/product/searchresults/' + keyword).then(function (total) {
                     scope.totalPages = total.data;
 

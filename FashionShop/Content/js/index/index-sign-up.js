@@ -28,11 +28,11 @@
 
     angular.module('kids-fashion', [])
 
-    /**
-    * Security service
-    *
-    * @return {object} Security service
-    */
+        /**
+        * Security service
+        *
+        * @return {object} Security service
+        */
         .factory('Security', function () {
             return {
 
@@ -51,7 +51,7 @@
             }
         })
 
-        .controller('SignUpCtrl', ['$scope', 'Security', function (scope, security) {
+        .controller('SignUpCtrl', ['$scope', '$http', 'Security', function (scope, http, security) {
             var isValidTime = function (day, month, year) {
                 if (day < 1 || day > 31) {
                     return false;
@@ -136,34 +136,44 @@
                     return;
                 }
 
-                var params = [
-                    { 'fullname': fullname.value },
-                    { 'username': username.value },
-                    { 'day': day.selected },
-                    { 'month': month.selected },
-                    { 'year': year.selected },
-                    { 'city': city.selected },
-                    { 'password': security.encode(password.value) },
-                    { 'captcha': captcha.value }
-                ];
+                var keyword = 'user=' + username.value;
+                keyword = Base64.encode(keyword);
 
-                var form = document.createElement('form');
-                form.setAttribute('method', 'post');
-                form.setAttribute('action', '/index/signuphandler');
+                http.get('/index/isexisted/' + keyword).then(function (result) {
+                    if (result.data === false) {
+                        var params = [
+                            { 'fullname': fullname.value },
+                            { 'username': username.value },
+                            { 'day': day.selected },
+                            { 'month': month.selected },
+                            { 'year': year.selected },
+                            { 'city': city.selected },
+                            { 'password': security.encode(password.value) },
+                            { 'captcha': captcha.value }
+                        ];
 
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i],
-                        hiddenField = document.createElement("input");
+                        var form = document.createElement('form');
+                        form.setAttribute('method', 'post');
+                        form.setAttribute('action', '/index/signuphandler');
 
-                    hiddenField.setAttribute("type", "hidden");
-                    hiddenField.setAttribute("name", Object.keys(key));
-                    hiddenField.setAttribute("value", key[Object.keys(key)]);
+                        for (var i = 0; i < params.length; i++) {
+                            var key = params[i],
+                                        hiddenField = document.createElement("input");
 
-                    form.appendChild(hiddenField);
-                }
+                            hiddenField.setAttribute("type", "hidden");
+                            hiddenField.setAttribute("name", Object.keys(key));
+                            hiddenField.setAttribute("value", key[Object.keys(key)]);
 
-                document.body.appendChild(form);
-                form.submit();
+                            form.appendChild(hiddenField);
+                        }
+
+                        document.body.appendChild(form);
+                        form.submit();
+                    } else {
+                        var dialog = document.getElementById('paper-dialog');
+                        dialog.toggle();
+                    }
+                });
             };
         } ]);
 })();

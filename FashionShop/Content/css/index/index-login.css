@@ -1,0 +1,24 @@
+﻿.container
+{
+    width: 300px;
+    margin: 32px auto;
+    min-height: 380px;
+}
+
+paper-input 
+{
+    width: 100%;
+}
+
+.div-captcha 
+{
+    margin-top: 16px;
+}
+
+.btn-login-form
+{
+    margin-top: 16px;
+    float: right;
+    background-color: #ff4081;
+    color: #fff;
+}

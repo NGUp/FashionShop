@@ -19,7 +19,9 @@
             <aside drawer>
                 <div class="item">
                     <core-icon-button icon="close" core-drawer-toggle></core-icon-button>
-                    <paper-button class="right">Đăng nhập</paper-button>
+                    <paper-button class="right btn-login">
+                        <a href="/index/login">Đăng nhập</a>
+                    </paper-button>
                     <div class="clear"></div>
                 </div>
                 <div class="item aside-sign-up">

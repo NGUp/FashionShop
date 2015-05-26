@@ -8,6 +8,7 @@ using FashionShop.Models.Objects;
 using Newtonsoft.Json;
 using FashionShop.Misc;
 using FashionShop.Models;
+using System.Collections;
 
 namespace FashionShop.Controllers
 {
@@ -37,6 +38,17 @@ namespace FashionShop.Controllers
         public ActionResult SignUp()
         {
             return View();
+        }
+
+        [HttpGet]
+        public JsonResult isExisted(string param_0)
+        {
+            Analyze analyze = new Analyze();
+            Security security = new Security();
+            Hashtable hashTable = analyze.analyzeUserName(security.decodeBase64(param_0));
+            string userName = hashTable["UserName"].ToString();
+
+            return Json(this.model.isExisted(userName), JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -127,6 +139,12 @@ namespace FashionShop.Controllers
             }
 
             Response.Redirect("/index/login", false);
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
         }
     }
 }

@@ -35,5 +35,14 @@ namespace FashionShop.Misc
 
             return hashTable;
         }
+
+        public Hashtable analyzeUserName(string data)
+        {
+            Hashtable hashTable = new Hashtable();
+
+            string[] tmp = data.Split('=');
+            hashTable.Add("UserName", tmp[1]);
+            return hashTable;
+        }
     }
 }

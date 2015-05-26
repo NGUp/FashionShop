@@ -55,6 +55,17 @@ aside .item
     margin-bottom: 16px;
 }
 
+.btn-login 
+{
+    width: 120px;
+}
+
+.btn-login a
+{
+    text-decoration: none;
+    color: #212121;
+}
+
 .btn-sign-up
 {
     width: 100%;
@@ -67,6 +78,12 @@ aside .item
 {
     text-decoration: none;
     color: #fff;
+}
+
+.btn-sign-up,
+.btn-login 
+{
+    height: 47px;
 }
 
 .aside-list

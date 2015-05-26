@@ -4,6 +4,10 @@
     Trang chủ
 </asp:Content>
 
+<asp:Content ID="Script" ContentPlaceHolderID="ScriptContent" runat="server">
+    <script src="/Content/js/index/index-index.js"></script>
+</asp:Content>
+
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat=server>
     
 

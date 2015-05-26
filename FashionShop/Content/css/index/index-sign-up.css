@@ -39,6 +39,11 @@ paper-dropdown #scroller
     width: inherit !important;
 }
 
+paper-button a
+{
+    height: auto !important;
+}
+
 .day paper-item,
 .month paper-item,
 .year paper-item
@@ -71,4 +76,16 @@ h5
     color: #757575;
     font-size: 0.75em;
     white-space: nowrap;
+}
+
+.error-status
+{
+    color: #f44336;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.done-button
+{
+    float: right;
 }

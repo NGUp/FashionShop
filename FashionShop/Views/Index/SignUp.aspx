@@ -12,6 +12,7 @@
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="/Scripts/sha1.js"></script>
     <script src="/Scripts/md5.js"></script>
+    <script src="/Scripts/base64.js"></script>
     <script src="/Content/js/index/index-sign-up.js"></script>
 </asp:Content>
 
@@ -22,6 +23,8 @@
     <link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html">
     <link rel="import" href="/bower_components/paper-item/paper-item.html">
     <link rel="import" href="/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+    <link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+    <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -120,6 +123,11 @@
         <paper-button class="right" ng-click="signup()" raised>Đăng ký</paper-button>
         
         <div class="clear"></div>
+
+        <paper-dialog heading="Thông báo" id="paper-dialog" transition="paper-dialog-transition-center">
+            <h4 class="error-status">Tên đăng nhập đã tồn tại.</h4>
+            <core-icon-button icon="done" affirmative autofocus class="done-button" ng-click="signup()"></core-icon-button>
+        </paper-dialog>
     </article>
 
 </asp:Content>

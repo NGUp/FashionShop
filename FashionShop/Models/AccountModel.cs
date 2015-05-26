@@ -172,5 +172,19 @@ namespace FashionShop.Models
 
             return this.provider.executeNonQuery(sql);
         }
+
+        public bool isExisted(string userName)
+        {
+            string sql = string.Format("select ID from Account where UserName = '{0}'", userName);
+
+            DataTable result = this.provider.executeQuery(sql);
+
+            if (result.Rows.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
