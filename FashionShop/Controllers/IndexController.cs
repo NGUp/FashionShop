@@ -146,5 +146,58 @@ namespace FashionShop.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public void LoginHandler()
+        {
+            if (Request.Params["username"] == null)
+            {
+                Response.Redirect("/index/signup", false);
+            }
+
+            if (Request.Params["password"] == null)
+            {
+                Response.Redirect("/index/signup", false);
+            }
+
+            if (Request.Params["captcha"] == null)
+            {
+                Response.Redirect("/index/signup", false);
+            }
+
+            string captcha = Request.Params["captcha"];
+            string url = "https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}";
+
+            const string secret = "6LdqAAcTAAAAAJksIEL3D7PqCRfqCauNYaQYpJIe";
+            var client = new WebClient();
+            var reply = client.DownloadString(string.Format(url, secret, captcha));
+            var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
+
+
+            if (captchaResponse.Success == true)
+            {
+                Account account = new Account();
+                account.Username = Request.Params["username"];
+                account.Password = Request.Params["password"];
+                account.Permission = 0;
+
+                string ID = this.model.login(account);
+
+                if (ID == null)
+                {
+                    Response.Redirect("/index/login", false);
+                }
+
+                Session["USER_ID"] = ID;
+                Session["USER_PERMISSION"] = 0;
+                Session["USER_ACCOUNT"] = account.Username;
+            }
+            else
+            {
+                Response.Redirect("/index/login", false);
+            }
+
+            Response.Redirect("/", false);
+        }
     }
 }

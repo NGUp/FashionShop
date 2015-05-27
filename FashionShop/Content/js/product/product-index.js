@@ -71,12 +71,12 @@
                     scope.currentPage++;
 
                     if (scope.isSearching === true) {
-                        http.get('/admin/account/search/' + scope.currentPage + '/' + keyword).then(function (data) {
-                            scope.accounts = data.data;
+                        http.get('/admin/product/search/' + scope.currentPage + '/' + keyword).then(function (data) {
+                            scope.products = data.data;
                         });
                     } else {
-                        http.get('/admin/account/get/' + scope.currentPage).then(function (data) {
-                            scope.accounts = data.data;
+                        http.get('/admin/product/get/' + scope.currentPage).then(function (data) {
+                            scope.products = data.data;
                         });
                     }
                 }
@@ -87,12 +87,12 @@
                     scope.currentPage--;
 
                     if (scope.isSearching === true) {
-                        http.get('/admin/account/search/' + scope.currentPage + '/' + keyword).then(function (data) {
-                            scope.accounts = data.data;
+                        http.get('/admin/product/search/' + scope.currentPage + '/' + keyword).then(function (data) {
+                            scope.products = data.data;
                         });
                     } else {
-                        http.get('/admin/account/get/' + scope.currentPage).then(function (data) {
-                            scope.accounts = data.data;
+                        http.get('/admin/product/get/' + scope.currentPage).then(function (data) {
+                            scope.products = data.data;
                         });
                     }
                 }

@@ -107,6 +107,7 @@
     <Content Include="Content\css\account\account-update.css" />
     <Content Include="Content\css\admin\admin-index.css" />
     <Content Include="Content\css\admin\admin-login.css" />
+    <Content Include="Content\js\index\index-index.js" />
     <Content Include="Content\css\index\index-sign-up.css" />
     <Content Include="Content\css\product\product-add.css" />
     <Content Include="Content\css\product\product-index.css" />
@@ -132,6 +133,8 @@
     <Content Include="Content\js\account\account-index.js" />
     <Content Include="Content\js\account\account-update.js" />
     <Content Include="Content\js\admin\admin-index.js" />
+    <Content Include="Content\css\index\index-login.css" />
+    <Content Include="Content\js\index\index-login.js" />
     <Content Include="Content\js\index\index-sign-up.js" />
     <Content Include="Content\js\product\product-add.js" />
     <Content Include="Content\js\product\product-index.js" />

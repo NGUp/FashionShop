@@ -50,11 +50,15 @@ namespace FashionShop.Models
 
         public int total()
         {
-            string sql = "Select (Count(ID) / 10 + 1) As Total From Product";
+            string sql = "Select Count(ID) As Total From Product";
 
             DataTable result = this.provider.executeQuery(sql);
 
-            return (int)result.Rows[0]["Total"];
+            int total = (int)result.Rows[0]["Total"];
+
+            total = (int)Math.Ceiling(total * 1f / 20);
+
+            return total;
         }
 
         public Product one(string ID)
@@ -81,7 +85,7 @@ namespace FashionShop.Models
         public int totalResults(Product product)
         {
             string sql = string.Format(
-                "Select (Count(ID) / 10 + 1) As Total From Product Where ID = '{0}' Or Name = '{1}'",
+                "Select (Count(ID) / 20 + 1) As Total From Product Where ID = '{0}' Or Name = '{1}'",
                 product.Id, product.Name);
 
             DataTable result = this.provider.executeQuery(sql);

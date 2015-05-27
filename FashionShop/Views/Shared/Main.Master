@@ -20,7 +20,11 @@
                 <div class="item">
                     <core-icon-button icon="close" core-drawer-toggle></core-icon-button>
                     <paper-button class="right btn-login">
-                        <a href="/index/login">Đăng nhập</a>
+                        <% if (HttpContext.Current.Session["USER_ID"] == null) { %>
+                            <a href="/index/login">Đăng nhập</a>
+                        <% } else { %>
+                           <a href="/index/logouthandler">Đăng xuất</a>
+                        <% } %>
                     </paper-button>
                     <div class="clear"></div>
                 </div>
