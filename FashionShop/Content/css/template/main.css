@@ -8,6 +8,7 @@ body {
     font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
     font-weight: 300;
     line-height: 24px;
+    background-color: #fff;
 }
 
 .center-screen
@@ -32,6 +33,7 @@ header
     position: relative;
     flex-direction: row;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+    background-color: #fff;
 }
 
 .header-menu
