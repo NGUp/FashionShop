@@ -25,7 +25,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
 
-<polymer-element name="md-logout-button">
+<polymer-element name="md-logout-button" attributes="href">
     <template>
         <core-icon-button on-click="{{logout}}" class="header-logout" src="/Content/img/admin/logout.png">
         </core-icon-button>
@@ -35,7 +35,7 @@
             logout: function () {
                 var form = document.createElement('form');
                 form.setAttribute('method', 'post');
-                form.setAttribute('action', '/admin/logouthandler');
+                form.setAttribute('action', this.href);
 
                 var hiddenField = document.createElement('input');
                 hiddenField.setAttribute('type', 'hidden');

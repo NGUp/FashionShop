@@ -19,20 +19,24 @@
             <aside drawer>
                 <div class="item">
                     <core-icon-button icon="close" core-drawer-toggle></core-icon-button>
-                    <paper-button class="right btn-login">
-                        <% if (HttpContext.Current.Session["USER_ID"] == null) { %>
+                    <% if (Session["USER_ID"] == null) { %>
+                        <paper-button class="right btn-login">
                             <a href="/index/login">Đăng nhập</a>
-                        <% } else { %>
-                           <a href="/index/logouthandler">Đăng xuất</a>
-                        <% } %>
-                    </paper-button>
+                        </paper-button>
+                    <% } else { %>
+                        <md-logout-button class="right" href="/index/logouthandler"></md-logout-button>
+                    <% } %>
                     <div class="clear"></div>
                 </div>
-                <div class="item aside-sign-up">
-                    <paper-button class="btn-sign-up">
-                        <a href="/index/signup">Đăng ký</a>
-                    </paper-button>
-                </div>
+                <% if (Session["USER_ID"] == null) { %>
+                    <div class="item aside-sign-up">
+                        <paper-button class="btn-sign-up">
+                            <a href="/index/signup">Đăng ký</a>
+                        </paper-button>
+                    </div>
+                <% } else { %>
+                    <p class="aside-info"><% Response.Write(Session["USER_ACCOUNT"].ToString()); %></p>
+                <% } %>
                 <div class="item">
                     <ul class="aside-list">
                         <li>
@@ -99,6 +103,7 @@
         <link rel="import" href="/bower_components/core-drawer-panel/core-drawer-panel.html">
         <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
         <link rel="import" href="/bower_components/paper-button/paper-button.html">
+        <link rel="import" href="/Content/WebComponents/md-logout-button.html">
         <asp:ContentPlaceHolder ID="WebComponentsContent" runat="server"></asp:ContentPlaceHolder>
     </body>
 </html> 

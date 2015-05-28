@@ -115,3 +115,11 @@ paper-dropdown #scroller
         display: block;
     }
 }
+
+@media(max-width: 335px)
+{
+    .product-info 
+    {
+        width: 300px;
+    }
+}

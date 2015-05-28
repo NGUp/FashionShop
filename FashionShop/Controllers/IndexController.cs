@@ -181,6 +181,10 @@ namespace FashionShop.Controllers
                 account.Password = Request.Params["password"];
                 account.Permission = 0;
 
+                Security security = new Security();
+                account.Password = "38f923kd02" + security.encodeSHA1(account.Password) + "99e9k32o";
+                account.Password = security.encodeMD5(account.Password);
+
                 string ID = this.model.login(account);
 
                 if (ID == null)
@@ -188,13 +192,30 @@ namespace FashionShop.Controllers
                     Response.Redirect("/index/login", false);
                 }
 
-                Session["USER_ID"] = ID;
-                Session["USER_PERMISSION"] = 0;
-                Session["USER_ACCOUNT"] = account.Username;
+                Session.Add("USER_ID", ID);
+                Session.Add("USER_PERMISSION", 0);
+                Session.Add("USER_ACCOUNT", account.Username);
             }
             else
             {
                 Response.Redirect("/index/login", false);
+            }
+
+            Response.Redirect("/", false);
+        }
+
+        [HttpPost]
+        public void LogoutHandler()
+        {
+            if (Request.Params["token"] != null)
+            {
+                if (Request.Params["token"] == "7zv34gd8d2j")
+                {
+                    Session["USER_ID"] = null;
+                    Session["USER_PERMISSION"] = null;
+                    Session["USER_ACCOUNT"] = null;
+                    Response.Redirect("/index/login", false);
+                }
             }
 
             Response.Redirect("/", false);

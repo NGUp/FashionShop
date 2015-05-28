@@ -39,7 +39,7 @@
                     </core-menu>
                 </section>
                 <div>
-                    <md-logout-button></md-logout-button>
+                    <md-logout-button href="/admin/logouthandler"></md-logout-button>
                 </div>
             </aside>
             <core-header-panel main>

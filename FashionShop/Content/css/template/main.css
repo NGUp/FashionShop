@@ -93,6 +93,16 @@ aside .item
     padding: 0px;
 }
 
+.aside-info 
+{
+    text-align: center;
+    padding: 16px 0;
+    background-color: #039be5;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 3px;
+}
+
 .aside-about
 {
     position: absolute;
