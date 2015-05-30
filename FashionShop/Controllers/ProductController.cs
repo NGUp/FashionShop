@@ -218,5 +218,17 @@ namespace FashionShop.Controllers
             this.model.delete(product);
             Response.Redirect("/admin/product");
         }
+
+        [HttpGet]
+        public JsonResult GetNews()
+        {
+            return Json(this.model.getNews(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetSales()
+        {
+            return Json(this.model.getSales(), JsonRequestBehavior.AllowGet);
+        }
     }
 }

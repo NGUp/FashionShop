@@ -28,7 +28,13 @@
 
     angular.module('kids-fashion', [])
 
-        .controller('IndexCtrl', ['$scope', function (scope) {
-            // TODO
+        .controller('IndexCtrl', ['$scope', '$http', function (scope, http) {
+            http.get('/product/getnews').then(function (data) {
+                scope.productsNew = data.data;
+            });
+
+            http.get('/product/getsales').then(function (data) {
+                scope.productsSale = data.data;
+            });
         } ]);
 })();

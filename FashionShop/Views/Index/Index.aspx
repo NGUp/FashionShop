@@ -13,147 +13,46 @@
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat=server>
-    <article>
-        <aside class="aside">
-            <img src="/Content/img/theme/phineas.png" alt="Phineas" />
-        </aside>
-        <div class="content">
-            <h2>Sản phẩm mới nhất</h2>
+    <div ng-controller="IndexCtrl">
+        <article >
+            <h2 class="title">
+                Sản phẩm mới nhất
+            </h2>
             <ul class="list-products">
-                <li>
+                <li ng-repeat="product in productsNew">
                     <div class="product-details" ng-click="showDetails(product)">
+                        <img class="new" src="/Content/img/theme/new.png" alt="New" />
                         <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
+                            <img ng-src="/Content/img/products/{{product.Image}}" alt="{{product.Id}}" />
                         </div>
                         <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="product-details" ng-click="showDetails(product)">
-                        <div class="product-image">
-                            <img ng-src="/Content/img/products/ad512225.jpg" alt="ad512225" />
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">Áo vest đỏ</h4>
-                            <h4 class="product-price">500.000 VND</h4>
+                            <h4 class="product-name">{{product.Name}}</h4>
+                            <h4 class="product-price">{{product.Price}} VND <span class="btn-details">Chi tiết</span></h4>
                         </div>
                     </div>
                 </li>
             </ul>
-        </div>
-    </article>
-    <div class="clear"></div>
+        </article>
+        <div class="clear"></div>
+        <article >
+            <h2 class="title">
+                Sản phẩm bán chạy nhất
+            </h2>
+            <ul class="list-products">
+                <li ng-repeat="product in productsSale">
+                    <div class="product-details" ng-click="showDetails(product)">
+                        <img class="new" src="/Content/img/theme/best_seller.jpg" alt="New" />
+                        <div class="product-image">
+                            <img ng-src="/Content/img/products/{{product.Image}}" alt="{{product.Id}}" />
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-name">{{product.Name}}</h4>
+                            <h4 class="product-price">{{product.Price}} VND <span class="btn-details">Chi tiết</span></h4>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </article>
+        <div class="clear"></div>
+    </div>    
 </asp:Content>

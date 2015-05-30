@@ -129,6 +129,64 @@ namespace FashionShop.Models
             return products;
         }
 
+        public Product[] getNews()
+        {
+            string sql = "SELECT * FROM ( SELECT ROW_NUMBER() OVER ( ORDER BY ID ) AS RowNum, * FROM Product) AS RowConstrainedResult " +
+                        "WHERE RowNum >= 1 AND RowNum < 13 And State = 1 ORDER BY Time DESC, RowNum";
+
+            DataTable result = this.provider.executeQuery(sql);
+            Product[] products = new Product[result.Rows.Count];
+            int index = 0;
+
+            foreach (DataRow row in result.Rows)
+            {
+                Product product = new Product();
+                product.Id = row["ID"].ToString();
+                product.Name = row["Name"].ToString();
+                product.Manufacturer = row["Manufacturer"].ToString();
+                product.Price = Int32.Parse(row["Price"].ToString());
+                product.Origin = row["Origin"].ToString();
+                product.Views = Int32.Parse(row["Views"].ToString());
+                product.Sales = Int32.Parse(row["Sales"].ToString());
+                product.Image = row["Image"].ToString();
+                product.State = Int32.Parse(row["State"].ToString());
+                product.Sex = Int32.Parse(row["Sex"].ToString());
+                products[index] = product;
+                index++;
+            }
+
+            return products;
+        }
+
+        public Product[] getSales()
+        {
+            string sql = "SELECT * FROM ( SELECT ROW_NUMBER() OVER ( ORDER BY ID ) AS RowNum, * FROM Product) AS RowConstrainedResult " +
+                        "WHERE RowNum >= 1 AND RowNum < 13 And State = 1 ORDER BY Sales DESC, RowNum";
+
+            DataTable result = this.provider.executeQuery(sql);
+            Product[] products = new Product[result.Rows.Count];
+            int index = 0;
+
+            foreach (DataRow row in result.Rows)
+            {
+                Product product = new Product();
+                product.Id = row["ID"].ToString();
+                product.Name = row["Name"].ToString();
+                product.Manufacturer = row["Manufacturer"].ToString();
+                product.Price = Int32.Parse(row["Price"].ToString());
+                product.Origin = row["Origin"].ToString();
+                product.Views = Int32.Parse(row["Views"].ToString());
+                product.Sales = Int32.Parse(row["Sales"].ToString());
+                product.Image = row["Image"].ToString();
+                product.State = Int32.Parse(row["State"].ToString());
+                product.Sex = Int32.Parse(row["Sex"].ToString());
+                products[index] = product;
+                index++;
+            }
+
+            return products;
+        }
+
         public bool insert(Product product)
         {
             DateTime currentTime = DateTime.Now;
