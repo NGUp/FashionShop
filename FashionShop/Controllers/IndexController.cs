@@ -142,6 +142,12 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public ActionResult Details()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Login()
         {
             return View();

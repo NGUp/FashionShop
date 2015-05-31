@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -80,8 +81,10 @@
     </Compile>
     <Compile Include="Misc\Analyze.cs" />
     <Compile Include="Misc\Security.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\Objects\Account.cs" />
     <Compile Include="Models\Objects\CaptchaResponse.cs" />
+    <Compile Include="Models\Objects\Category.cs" />
     <Compile Include="Models\Objects\Product.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\Provider.cs" />
@@ -151,6 +154,7 @@
     <Content Include="Views\Account\Update.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\Login.aspx" />
+    <Content Include="Views\Index\Details.aspx" />
     <Content Include="Views\Index\Login.aspx" />
     <Content Include="Views\Index\SignUp.aspx" />
     <Content Include="Views\Manufacturer\Index.aspx" />

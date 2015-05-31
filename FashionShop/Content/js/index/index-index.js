@@ -29,12 +29,32 @@
     angular.module('kids-fashion', [])
 
         .controller('IndexCtrl', ['$scope', '$http', function (scope, http) {
+
+            scope.removeProgressBar = function () {
+                var progressBar = document.getElementsByTagName('paper-progress');
+
+                for (var index = progressBar.length - 1; index >= 0; index--) {
+                    progressBar[index].parentNode.removeChild(progressBar[index]);
+                }
+            };
+
+            http.get('/category/getall').then(function (data) {
+                scope.categories = data.data;
+                console.log(data.data);
+            });
+
             http.get('/product/getnews').then(function (data) {
+                scope.removeProgressBar();
                 scope.productsNew = data.data;
             });
 
             http.get('/product/getsales').then(function (data) {
+                scope.removeProgressBar();
                 scope.productsSale = data.data;
             });
+
+            scope.showDetails = function (profile) {
+                window.location.href = '/index/details/' + profile.Id;
+            };
         } ]);
 })();

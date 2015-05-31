@@ -132,13 +132,12 @@ aside .item
 
 .container 
 {
-    width: 980px;
     margin: 16px auto;
 }
 
 footer 
 {
-    height: 100px;
+    height: 130px;
     padding-top: 32px;
     background-color: #03a9f4;
 }
@@ -160,4 +159,5 @@ footer
     color: #fff;
     font-size: 12px;
     text-align: center;
+    margin-top: 16px;
 }
