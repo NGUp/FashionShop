@@ -28,33 +28,52 @@
 
     angular.module('kids-fashion', [])
 
-        .controller('IndexCtrl', ['$scope', '$http', function (scope, http) {
+        .controller('DetailsCtrl', ['$scope', '$http', function (scope, http) {
+            var image = document.getElementById('product-id');
 
-            scope.removeProgressBar = function () {
-                var progressBar = document.getElementsByTagName('paper-progress');
-
-                for (var index = progressBar.length - 1; index >= 0; index--) {
-                    progressBar[index].parentNode.removeChild(progressBar[index]);
-                }
-            };
+            scope.ordered = false,
+            scope.canceled = true;
 
             http.get('/category/getall').then(function (data) {
                 scope.categories = data.data;
-                console.log(data.data);
             });
 
-            http.get('/product/getnews').then(function (data) {
-                scope.removeProgressBar();
-                scope.productsNew = data.data;
-            });
-
-            http.get('/product/getsales').then(function (data) {
-                scope.removeProgressBar();
-                scope.productsSale = data.data;
+            http.get('/admin/product/relativeproducts/' + image.attributes.alt.nodeValue).then(function (data) {
+                scope.products = data.data;
             });
 
             scope.showDetails = function (product) {
                 window.location.href = '/index/details/' + product.Id;
+            };
+
+            scope.order = function () {
+                http.get('/admin/product/orderproduct/' + image.attributes.alt.nodeValue).then(function (data) {
+                    scope.ordered = data.data;
+
+                    if (scope.ordered === true) {
+                        scope.canceled = false;
+                    } else {
+                        scope.canceled = true;
+                    }
+
+                    console.log(scope.ordered);
+                    console.log(scope.canceled);
+                });
+            };
+
+            scope.cancel = function () {
+                http.get('/admin/product/cancelorder/' + image.attributes.alt.nodeValue).then(function (data) {
+                    scope.canceled = data.data;
+
+                    if (scope.canceled === true) {
+                        scope.ordered = false;
+                    } else {
+                        scope.ordered = true;
+                    }
+
+                    console.log(scope.ordered);
+                    console.log(scope.canceled);
+                });
             };
         } ]);
 })();

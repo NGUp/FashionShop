@@ -110,7 +110,9 @@
     <Content Include="Content\css\account\account-update.css" />
     <Content Include="Content\css\admin\admin-index.css" />
     <Content Include="Content\css\admin\admin-login.css" />
+    <Content Include="Content\css\index\index-details.css" />
     <Content Include="Content\css\index\index-index.css" />
+    <Content Include="Content\js\index\index-details.js" />
     <Content Include="Content\js\index\index-index.js" />
     <Content Include="Content\css\index\index-sign-up.css" />
     <Content Include="Content\css\product\product-add.css" />

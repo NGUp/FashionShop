@@ -59,6 +59,36 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public JsonResult OrderProduct(string param_0)
+        {
+            string ID = param_0;
+            Product product = this.model.one(ID);
+
+            if (product == null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+
+            Session.Add(param_0, 1);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult CancelOrder(string param_0)
+        {
+            Product product = this.model.one(param_0.Replace("'", "''"));
+
+            if (product == null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+
+            Session[param_0] = null;
+
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public JsonResult SearchResults(string param_0)
         {
             Analyze analyze = new Analyze();
@@ -229,6 +259,12 @@ namespace FashionShop.Controllers
         public JsonResult GetSales()
         {
             return Json(this.model.getSales(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult RelativeProducts(string param_0)
+        {
+            return Json(this.model.getRelativeProducts(param_0.Replace("'", "''")), JsonRequestBehavior.AllowGet);
         }
     }
 }

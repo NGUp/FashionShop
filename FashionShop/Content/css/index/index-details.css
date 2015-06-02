@@ -1,0 +1,117 @@
+﻿h2
+{
+    color: #03a9f4;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+article
+{
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+}
+
+.content
+{
+    padding: 16px;
+}
+
+.category li
+{
+    line-height: 2.75em;
+    list-style-type: none;
+}
+
+.category li a
+{
+    color: #212121;
+}
+
+.category li a:hover
+{
+    color: #2196f3;
+    text-decoration: none;
+}
+
+.product-name
+{
+    color: #ff4081;
+}
+
+.product-price,
+.product-id,
+.product-origin,
+.product-sex,
+.product-views,
+.product-sales,
+.product-name
+{
+    margin: 16px 0;
+    font-weight: 400;
+}
+
+.product-info
+{
+    margin-top: 48px;
+}
+
+.btn-order
+{
+    margin: 0;
+    background-color: #009688;
+    color: #fff;
+}
+
+.products-relative
+{
+    margin-top: 72px;
+}
+
+.line
+{
+    border-top: 2px solid #03a9f4;
+    font-weight: 400;
+}
+
+.line span
+{
+    background-color: #03a9f4;
+    line-height: 1.75em;
+    padding: 8px;
+    color: #fff;
+}
+
+.relative-product-name
+{
+    color: #3f51b5;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 12px;
+    text-align: center;
+}
+
+.relative-product-price
+{
+    text-align: center;
+}
+
+.products-relative li
+{
+    float: left;
+    width: 150px;
+    list-style-type: none;
+}
+
+.product:hover 
+{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+@media(max-width: 991px)
+{
+    .phineas
+    {
+        display: none;
+    }
+}

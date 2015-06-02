@@ -63,8 +63,20 @@ namespace FashionShop.Models
 
         public Product one(string ID)
         {
-            string sql = string.Format("Select * From Product Where ID = '{0}'", ID);
+            string sql = string.Format(
+                "Select product.ID, product.Name, product.Price, product.Image, product.Origin, product.Sales, " +
+                        "product.Sex, product.Views, product.State, " +
+                        "manufacturer.Name as Manufacturer, category.CategoryName as Category " +
+                "From (Product product Join Manufacturer manufacturer On product.Manufacturer = manufacturer.ID) " +
+                        "Join Category category on product.Category = category.CategoryID " +
+                "Where product.ID = '{0}'", ID);
+
             DataTable result = this.provider.executeQuery(sql);
+
+            if (result.Rows.Count == 0) {
+                return null;
+            }
+
             DataRow row = result.Rows[0];
 
             Product product = new Product();
@@ -78,6 +90,7 @@ namespace FashionShop.Models
             product.Image = row["Image"].ToString();
             product.State = Int32.Parse(row["State"].ToString());
             product.Sex = Int32.Parse(row["Sex"].ToString());
+            product.Category = row["Category"].ToString();
 
             return product;
         }
@@ -180,6 +193,30 @@ namespace FashionShop.Models
                 product.Image = row["Image"].ToString();
                 product.State = Int32.Parse(row["State"].ToString());
                 product.Sex = Int32.Parse(row["Sex"].ToString());
+                products[index] = product;
+                index++;
+            }
+
+            return products;
+        }
+
+        public Product[] getRelativeProducts(string product_ID)
+        {
+            string sql = string.Format(
+                "Select top 5 * From Product Where State = 1 And ID != '{0}' And Category = (Select Category From Product Where ID = '{1}')", product_ID, product_ID);
+
+            DataTable result = this.provider.executeQuery(sql);
+            Product[] products = new Product[result.Rows.Count];
+            int index = 0;
+
+            foreach (DataRow row in result.Rows)
+            {
+                Product product = new Product();
+                product.Id = row["ID"].ToString();
+                product.Name = row["Name"].ToString();
+                product.Manufacturer = row["Manufacturer"].ToString();
+                product.Price = Int32.Parse(row["Price"].ToString());
+                product.Image = row["Image"].ToString();
                 products[index] = product;
                 index++;
             }

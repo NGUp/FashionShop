@@ -27,6 +27,14 @@ namespace FashionShop.Models.Objects
 
         private int sex;
 
+        private string category;
+
+        public string Category
+        {
+            get { return category; }
+            set { category = value; }
+        }
+
         public int Sex
         {
             get { return sex; }
