@@ -38,6 +38,10 @@
                 scope.categories = data.data;
             });
 
+            http.get('/manufacturer/gettopmanufacturers').then(function (data) {
+                scope.manufacturers = data.data;
+            });
+
             http.get('/admin/product/relativeproducts/' + image.attributes.alt.nodeValue).then(function (data) {
                 scope.products = data.data;
             });

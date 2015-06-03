@@ -8,12 +8,18 @@
 
 .cover 
 {
-    width: 100%;    
+    width: 100%;
+    margin-top: 10px; 
 }
 
 .title 
 {
     color: #f44336;
+}
+
+.div-products
+{
+    margin-top: 65px;
 }
 
 .new 
@@ -117,11 +123,6 @@ paper-progress
 
 paper-progress::shadow #activeProgress {
   background-color: #673ab7;
-}
-
-aside h2
-{
-    padding-left: 38px;
 }
 
 .category li 

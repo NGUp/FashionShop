@@ -19,13 +19,25 @@
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
     <article class="row" ng-controller="DetailsCtrl">
         <aside class="col-md-3">
-            <h2 class="line"><span>Loại mặt hàng</span></h2>
-            <ul class="category">
-                <li ng-repeat="category in categories">
-                    <a href="/index/category/{{category.ID.trim()}}/1">{{category.Name}}</a>
-                </li>
-            </ul>
-            <img src="/Content/img/theme/phineas.png" alt="Phineas" class="phineas" />
+            <div class="div-category">
+                <h2 class="line"><span>Loại mặt hàng</span></h2>
+                <ul class="category">
+                    <li ng-repeat="category in categories">
+                        <a href="/index/category/{{category.ID.trim()}}/1">{{category.Name}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="div-manufacturer">
+                <h2 class="line "><span>Nhà sản xuất</span></h2>
+                <ul class="category">
+                    <li ng-repeat="manufacturer in manufacturers">
+                        <a href="/index/manufacturer/{{manufacturer.Id.trim()}}/">{{manufacturer.Name}}</a>
+                    </li>
+                    <li>
+                        <a href="/index/manufacturers">Xem thêm...</a>
+                    </li>
+                </ul>
+            </div>
         </aside>
         <div class="col-md-9 content">
             <h2 class="line"><span>Chi tiết sản phẩm</span></h2>
@@ -84,4 +96,7 @@
             </div>
         </div>
     </article>
+    <% if (Session["USER_ID"] != null) { %>
+        <paper-fab icon="shopping-cart" class="btn-shopping-cart"></paper-fab>
+    <% } %>
 </asp:Content>

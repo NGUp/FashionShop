@@ -42,6 +42,10 @@
                 scope.categories = data.data;
             });
 
+            http.get('/manufacturer/gettopmanufacturers').then(function (data) {
+                scope.manufacturers = data.data;
+            });
+
             http.get('/product/getnews').then(function (data) {
                 scope.removeProgressBar();
                 scope.productsNew = data.data;

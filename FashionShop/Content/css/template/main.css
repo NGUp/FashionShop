@@ -161,3 +161,34 @@ footer
     text-align: center;
     margin-top: 16px;
 }
+
+.btn-shopping-cart
+{
+    position: fixed;
+    bottom: 8%;
+    right: 8%;
+    background-color: rgb(255, 64, 129);
+}
+
+.line
+{
+    border-top: 2px solid #03a9f4;
+    font-weight: 400;
+}
+
+.line span
+{
+    background-color: #03a9f4;
+    line-height: 1.75em;
+    padding: 8px;
+    color: #fff;
+}
+
+@media(max-width: 992px)
+{
+    .div-manufacturer,
+    .div-category
+    {
+        display: none;
+    }
+}

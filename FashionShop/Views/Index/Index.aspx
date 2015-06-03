@@ -20,17 +20,30 @@
     <div ng-controller="IndexCtrl">
         <article class="row">
             <aside class="col-md-3">
-                <h2>Loại mặt hàng</h2>
-                <ul class="category">
-                    <li ng-repeat="category in categories">
-                        <a href="/index/category/{{category.ID.trim()}}/1">{{category.Name}}</a>
-                    </li>
-                </ul>
+                <div class="div-category">
+                    <h2 class="line"><span>Loại mặt hàng</span></h2>
+                    <ul class="category">
+                        <li ng-repeat="category in categories">
+                            <a href="/index/category/{{category.ID.trim()}}/1">{{category.Name}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="div-manufacturer">
+                    <h2 class="line "><span>Nhà sản xuất</span></h2>
+                    <ul class="category">
+                        <li ng-repeat="manufacturer in manufacturers">
+                            <a href="/index/manufacturer/{{manufacturer.Id.trim()}}/">{{manufacturer.Name}}</a>
+                        </li>
+                        <li>
+                            <a href="/index/manufacturers">Xem thêm...</a>
+                        </li>
+                    </ul>
+                </div>
             </aside>
             <div class="col-md-9 content">
                 <img class="cover" src="/Content/img/theme/index.png" alt="Kids Fashion" />
-                <div>
-                    <h2 class="title">Sản phẩm mới nhất</h2>
+                <div class="div-products">
+                    <h2 class="line"><span>Sản phẩm mới nhất</span></h2>
                     <paper-progress indeterminate></paper-progress>
                     <ul class="list-products">
                         <li ng-repeat="product in productsNew">
@@ -48,7 +61,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h2 class="title">Sản phẩm bán chạy nhất</h2>
+                    <h2 class="line"><span>Sản phẩm bán chạy nhất</span></h2>
                     <paper-progress indeterminate></paper-progress>
                     <ul class="list-products">
                         <li ng-repeat="product in productsSale">
@@ -67,5 +80,8 @@
                 </div>
             </div>
         </article>
-    </div>    
+    </div>
+    <% if (Session["USER_ID"] != null) { %>
+        <paper-fab icon="shopping-cart" class="btn-shopping-cart"></paper-fab>
+    <% } %>
 </asp:Content>

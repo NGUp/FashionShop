@@ -82,9 +82,11 @@
     <Compile Include="Misc\Analyze.cs" />
     <Compile Include="Misc\Security.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\ManufacturerModel.cs" />
     <Compile Include="Models\Objects\Account.cs" />
     <Compile Include="Models\Objects\CaptchaResponse.cs" />
     <Compile Include="Models\Objects\Category.cs" />
+    <Compile Include="Models\Objects\Manufacturer.cs" />
     <Compile Include="Models\Objects\Product.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\Provider.cs" />
