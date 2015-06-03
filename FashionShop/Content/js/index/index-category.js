@@ -28,32 +28,34 @@
 
     angular.module('kids-fashion', [])
 
-        .controller('IndexCtrl', ['$scope', '$http', function (scope, http) {
-
-            scope.removeProgressBar = function () {
-                var progressBar = document.getElementsByTagName('paper-progress');
-
-                for (var index = progressBar.length - 1; index >= 0; index--) {
-                    progressBar[index].parentNode.removeChild(progressBar[index]);
-                }
-            };
+        .controller('CategoryCtrl', ['$scope', '$http', function (scope, http) {
 
             http.get('/category/getall').then(function (data) {
                 scope.categories = data.data;
             });
 
-            http.get('/product/getnews').then(function (data) {
-                scope.removeProgressBar();
-                scope.productsNew = data.data;
-            });
-
-            http.get('/product/getsales').then(function (data) {
-                scope.removeProgressBar();
-                scope.productsSale = data.data;
-            });
-
             scope.showDetails = function (product) {
-                window.location.href = '/index/details/' + product.Id;
+                window.location.href = '/index/details/' + product;
             };
+
+            var params = window.location.href.split('/');
+
+            scope.previous = function () {
+                var page = document.getElementById('page').innerHTML;
+
+                if (page > 1) {
+                    window.location.href = '/index/category/' + params[5] + '/' + (parseInt(page) - 1);
+                }
+            };
+
+            scope.next = function () {
+                var page = document.getElementById('page').innerHTML,
+                    maxPage = document.getElementById('page-total').innerHTML;
+
+                if (page < maxPage) {
+                    window.location.href = '/index/category/' + params[5] + '/' + (parseInt(page) + 1);
+                }
+            };
+
         } ]);
 })();

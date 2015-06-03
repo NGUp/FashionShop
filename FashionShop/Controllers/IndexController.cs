@@ -168,6 +168,19 @@ namespace FashionShop.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Category(string param_0, int param_1)
+        {
+            ProductModel productModel = new ProductModel();
+            CategoryModel categoryModel = new CategoryModel();
+
+            ViewData["page"] = param_1;
+            ViewData["total"] = productModel.getTotalPageByCategory(param_0);
+            ViewData["category"] = categoryModel.getCategoryName(param_0);
+            ViewData["products"] = productModel.getByCategory(param_0, param_1);
+            return View();
+        }
+
         [HttpPost]
         public void LoginHandler()
         {

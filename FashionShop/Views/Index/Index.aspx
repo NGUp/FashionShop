@@ -23,7 +23,7 @@
                 <h2>Loại mặt hàng</h2>
                 <ul class="category">
                     <li ng-repeat="category in categories">
-                        <a href="/index/category/{{category.ID}}">{{category.Name}}</a>
+                        <a href="/index/category/{{category.ID.trim()}}/1">{{category.Name}}</a>
                     </li>
                 </ul>
             </aside>

@@ -55,9 +55,6 @@
                     } else {
                         scope.canceled = true;
                     }
-
-                    console.log(scope.ordered);
-                    console.log(scope.canceled);
                 });
             };
 
@@ -70,9 +67,6 @@
                     } else {
                         scope.ordered = true;
                     }
-
-                    console.log(scope.ordered);
-                    console.log(scope.canceled);
                 });
             };
         } ]);

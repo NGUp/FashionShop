@@ -22,7 +22,7 @@
             <h2 class="line"><span>Loại mặt hàng</span></h2>
             <ul class="category">
                 <li ng-repeat="category in categories">
-                    <a href="/index/category/{{category.ID}}">{{category.Name}}</a>
+                    <a href="/index/category/{{category.ID.trim()}}/1">{{category.Name}}</a>
                 </li>
             </ul>
             <img src="/Content/img/theme/phineas.png" alt="Phineas" class="phineas" />
