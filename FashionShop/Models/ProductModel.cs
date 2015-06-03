@@ -98,21 +98,30 @@ namespace FashionShop.Models
         public int totalResults(Product product)
         {
             string sql = string.Format(
-                "Select (Count(ID) / 20 + 1) As Total From Product Where (ID = '{0}' Or Name = '{1}') And State = 1",
+                "Select (CEILING(Count(ID) / 20.0)) As Total From Product Where (ID = '{0}' Or Name = '{1}') And State = 1",
                 product.Id, product.Name);
 
             DataTable result = this.provider.executeQuery(sql);
 
-            return (int)result.Rows[0]["Total"];
+            return Int32.Parse(result.Rows[0]["Total"].ToString());
         }
 
         public int getTotalPageByCategory(string category)
         {
-            string sql = string.Format("Select (Count(ID) / 15)  As Total From Product Where State = 1 And Category = '{0}'", category);
+            string sql = string.Format("Select (CEILING(Count(ID) / 15.0))  As Total From Product Where State = 1 And Category = '{0}'", category);
 
             DataTable result = this.provider.executeQuery(sql);
 
-            return (int)result.Rows[0]["Total"];
+            return Int32.Parse(result.Rows[0]["Total"].ToString());
+        }
+
+        public int getTotalPageByManufacturer(string manufacturer)
+        {
+            string sql = string.Format("Select (CEILING(Count(ID) / 15.0))  As Total From Product Where State = 1 And Manufacturer = '{0}'", manufacturer);
+
+            DataTable result = this.provider.executeQuery(sql);
+
+            return Int32.Parse(result.Rows[0]["Total"].ToString());
         }
 
         public Product[] search(Product product, int page)
@@ -242,6 +251,40 @@ namespace FashionShop.Models
 
             command.Parameters["@page"].Value = page;
             command.Parameters["@category"].Value = category;
+
+            DataTable result = this.provider.executeQueryFromStoredProcedure(command);
+            Product[] products = new Product[result.Rows.Count];
+            int index = 0;
+
+            foreach (DataRow row in result.Rows)
+            {
+                Product product = new Product();
+                product.Id = row["ID"].ToString().Trim();
+                product.Name = row["Name"].ToString();
+                product.Manufacturer = row["Manufacturer"].ToString();
+                product.Price = Int32.Parse(row["Price"].ToString());
+                product.Origin = row["Origin"].ToString();
+                product.Views = Int32.Parse(row["Views"].ToString());
+                product.Sales = Int32.Parse(row["Sales"].ToString());
+                product.Image = row["Image"].ToString();
+                product.State = Int32.Parse(row["State"].ToString());
+                product.Sex = Int32.Parse(row["Sex"].ToString());
+                products[index] = product;
+                index++;
+            }
+
+            return products;
+        }
+
+        public Product[] getByManufacturer(string category, int page)
+        {
+            SqlCommand command = new SqlCommand("usp_getProductByManufacturer");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@page", SqlDbType.Int);
+            command.Parameters.Add("@manufacturer", SqlDbType.VarChar);
+
+            command.Parameters["@page"].Value = page;
+            command.Parameters["@manufacturer"].Value = category;
 
             DataTable result = this.provider.executeQueryFromStoredProcedure(command);
             Product[] products = new Product[result.Rows.Count];

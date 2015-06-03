@@ -20,12 +20,25 @@
     <div ng-controller="CategoryCtrl">
         <article class="row">
             <aside class="col-md-3">
-                <h2 class="line"><span>Loại mặt hàng</span></h2>
-                <ul class="category">
-                    <li ng-repeat="category in categories">
-                        <a href="/index/category/{{category.ID.trim()}}/1">{{category.Name}}</a>
-                    </li>
-                </ul>
+                <div class="div-category">
+                    <h2 class="line"><span>Loại mặt hàng</span></h2>
+                    <ul class="category">
+                        <li ng-repeat="category in categories">
+                            <a href="/index/category/{{category.ID.trim()}}/1">{{category.Name}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="div-manufacturer">
+                    <h2 class="line "><span>Nhà sản xuất</span></h2>
+                    <ul class="category">
+                        <li ng-repeat="manufacturer in manufacturers">
+                            <a href="/index/manufacturer/{{manufacturer.Id.trim()}}/1">{{manufacturer.Name}}</a>
+                        </li>
+                        <li>
+                            <a href="/index/manufacturers">Xem thêm...</a>
+                        </li>
+                    </ul>
+                </div>
             </aside>
             <div class="col-md-9 content">
                 <h2 class="line"><span>Mặt hàng: <%= ViewData["category"] %></span></h2>

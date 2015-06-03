@@ -30,5 +30,14 @@ namespace FashionShop.Models
 
             return manufacturers;
         }
+
+        public string getManufacturerName(string ID)
+        {
+            string sql = string.Format("Select Name From Manufacturer Where State = 1 And ID = '{0}'", ID);
+
+            DataTable result = this.provider.executeQuery(sql);
+
+            return result.Rows[0]["Name"].ToString();
+        }
     }
 }

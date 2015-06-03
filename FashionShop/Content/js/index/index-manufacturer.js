@@ -28,7 +28,7 @@
 
     angular.module('kids-fashion', [])
 
-        .controller('CategoryCtrl', ['$scope', '$http', function (scope, http) {
+        .controller('ManufacturerCtrl', ['$scope', '$http', function (scope, http) {
 
             http.get('/category/getall').then(function (data) {
                 scope.categories = data.data;
@@ -41,25 +41,5 @@
             scope.showDetails = function (product) {
                 window.location.href = '/index/details/' + product;
             };
-
-            var params = window.location.href.split('/');
-
-            scope.previous = function () {
-                var page = document.getElementById('page').innerHTML;
-
-                if (page > 1) {
-                    window.location.href = '/index/category/' + params[5] + '/' + (parseInt(page) - 1);
-                }
-            };
-
-            scope.next = function () {
-                var page = document.getElementById('page').innerHTML,
-                    maxPage = document.getElementById('page-total').innerHTML;
-
-                if (page < maxPage) {
-                    window.location.href = '/index/category/' + params[5] + '/' + (parseInt(page) + 1);
-                }
-            };
-
         } ]);
 })();

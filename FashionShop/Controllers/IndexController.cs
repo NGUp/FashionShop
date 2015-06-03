@@ -181,6 +181,19 @@ namespace FashionShop.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Manufacturer(string param_0, int param_1)
+        {
+            ProductModel productModel = new ProductModel();
+            ManufacturerModel manufacturerModel = new ManufacturerModel();
+
+            ViewData["page"] = param_1;
+            ViewData["total"] = productModel.getTotalPageByManufacturer(param_0);
+            ViewData["manufacturer"] = manufacturerModel.getManufacturerName(param_0);
+            ViewData["products"] = productModel.getByManufacturer(param_0, param_1);
+            return View();
+        }
+
         [HttpPost]
         public void LoginHandler()
         {

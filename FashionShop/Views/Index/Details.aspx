@@ -31,7 +31,7 @@
                 <h2 class="line "><span>Nhà sản xuất</span></h2>
                 <ul class="category">
                     <li ng-repeat="manufacturer in manufacturers">
-                        <a href="/index/manufacturer/{{manufacturer.Id.trim()}}/">{{manufacturer.Name}}</a>
+                        <a href="/index/manufacturer/{{manufacturer.Id.trim()}}/1">{{manufacturer.Name}}</a>
                     </li>
                     <li>
                         <a href="/index/manufacturers">Xem thêm...</a>

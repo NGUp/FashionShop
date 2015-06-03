@@ -109,6 +109,12 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public JsonResult getByManufacturer(string param_0, int param_1)
+        {
+            return Json(this.model.getByManufacturer(param_0.Trim(), param_1), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public JsonResult Search(int param_0, string param_1)
         {
             Analyze analyze = new Analyze();
