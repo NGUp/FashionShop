@@ -147,6 +147,7 @@
     <Content Include="Content\css\index\index-login.css" />
     <Content Include="Content\js\index\index-login.js" />
     <Content Include="Content\js\index\index-manufacturer.js" />
+    <Content Include="Content\js\index\index-manufacturers.js" />
     <Content Include="Content\js\index\index-sign-up.js" />
     <Content Include="Content\js\product\product-add.js" />
     <Content Include="Content\js\product\product-index.js" />
@@ -166,6 +167,7 @@
     <Content Include="Views\Index\Details.aspx" />
     <Content Include="Views\Index\Login.aspx" />
     <Content Include="Views\Index\Manufacturer.aspx" />
+    <Content Include="Views\Index\Manufacturers.aspx" />
     <Content Include="Views\Index\SignUp.aspx" />
     <Content Include="Views\Manufacturer\Index.aspx" />
     <Content Include="Views\Admin\Order.aspx" />

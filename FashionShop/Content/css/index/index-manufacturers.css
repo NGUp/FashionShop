@@ -1,0 +1,47 @@
+﻿h2
+{
+    color: #03a9f4;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+article
+{
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+}
+
+.content
+{
+    padding: 16px;
+}
+
+.category li
+{
+    line-height: 2.75em;
+    list-style-type: none;
+}
+
+.category li a
+{
+    color: #212121;
+}
+
+.category li a:hover
+{
+    color: #2196f3;
+    text-decoration: none;
+}
+
+.manufacturer 
+{
+    height: 32px;
+    line-height: 2.2em;
+    list-style-type: none;
+}
+
+.manufacturer:hover
+{
+    color: #03a9f4;
+    cursor: pointer;
+}

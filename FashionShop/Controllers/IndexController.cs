@@ -41,6 +41,14 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public ActionResult Manufacturers()
+        {
+            ManufacturerModel manufacturerModel = new ManufacturerModel();
+            ViewData["manufacturers"] = manufacturerModel.getAll();
+            return View();
+        }
+
+        [HttpGet]
         public JsonResult isExisted(string param_0)
         {
             Analyze analyze = new Analyze();
