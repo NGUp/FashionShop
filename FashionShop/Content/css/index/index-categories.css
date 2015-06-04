@@ -16,31 +16,31 @@ article
     padding: 16px;
 }
 
-.category li
+.manufacturers li
 {
     line-height: 2.75em;
     list-style-type: none;
 }
 
-.category li a
+.manufacturers li a
 {
     color: #212121;
 }
 
-.category li a:hover
+.manufacturers li a:hover
 {
     color: #2196f3;
     text-decoration: none;
 }
 
-.manufacturer 
+.category-element
 {
     height: 32px;
     line-height: 2.2em;
     list-style-type: none;
 }
 
-.manufacturer:hover
+.category-element:hover
 {
     color: #03a9f4;
     cursor: pointer;
@@ -48,7 +48,7 @@ article
 
 @media(max-width: 991px)
 {
-    .manufacturer
+    .category-element
     {
         height: 72px;
         line-height: 5em;

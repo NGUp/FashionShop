@@ -21,7 +21,7 @@ namespace FashionShop.Models
             foreach (DataRow row in result.Rows)
             {
                 Category category = new Category();
-                category.ID = row["CategoryID"].ToString();
+                category.ID = row["CategoryID"].ToString().Trim();
                 category.Name = row["CategoryName"].ToString().Trim();
 
                 categories[index] = category;

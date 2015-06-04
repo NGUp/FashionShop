@@ -49,6 +49,14 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public ActionResult Categories()
+        {
+            CategoryModel categoryModel = new CategoryModel();
+            ViewData["categories"] = categoryModel.getAll();
+            return View();
+        }
+
+        [HttpGet]
         public JsonResult isExisted(string param_0)
         {
             Analyze analyze = new Analyze();

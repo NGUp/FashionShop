@@ -29,7 +29,7 @@
             </div>
         </aside>
         <div class="col-md-9 content">
-            <h2 class="line"><span>Danh sách nhà sản xuất</span></h2>
+            <h2 class="line"><span>Nhà sản xuất</span></h2>
             <div>
                 <ul>
                     <% foreach (FashionShop.Models.Objects.Manufacturer manufacturer in (ViewData["manufacturers"] as IEnumerable<FashionShop.Models.Objects.Manufacturer>)) { %>

@@ -45,6 +45,9 @@
                             <a href="/index/manufacturers">Nhà sản xuất</a>
                         </li>
                         <li>
+                            <a href="/index/categories">Loại mặt hàng</a>
+                        </li>
+                        <li>
                             <a href="/search">Tìm kiếm</a>
                         </li>
                     </ul>
