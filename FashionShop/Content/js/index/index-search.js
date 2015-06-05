@@ -27,16 +27,21 @@
     'use strict';
 
     angular.module('kids-fashion', [])
+        .directive('ngEnter', function () {
+            return function (scope, element, attrs) {
+                element.bind("keydown keypress", function (event) {
+                    if (event.which === 13) {
+                        scope.$apply(function () {
+                            scope.$eval(attrs.ngEnter);
+                        });
 
-        .controller('IndexCtrl', ['$scope', '$http', function (scope, http) {
-
-            scope.removeProgressBar = function () {
-                var progressBar = document.getElementsByTagName('paper-progress');
-
-                for (var index = progressBar.length - 1; index >= 0; index--) {
-                    progressBar[index].parentNode.removeChild(progressBar[index]);
-                }
+                        event.preventDefault();
+                    }
+                });
             };
+        })
+
+        .controller('SearchCtrl', ['$scope', '$http', function (scope, http) {
 
             http.get('/category/getall').then(function (data) {
                 scope.categories = data.data;
@@ -46,18 +51,8 @@
                 scope.manufacturers = data.data;
             });
 
-            http.get('/product/getnews').then(function (data) {
-                scope.removeProgressBar();
-                scope.productsNew = data.data;
-            });
-
-            http.get('/product/getsales').then(function (data) {
-                scope.removeProgressBar();
-                scope.productsSale = data.data;
-            });
-
             scope.showDetails = function (product) {
-                window.location.href = '/index/details/' + product.Id;
+                window.location.href = '/index/details/' + product;
             };
 
             scope.search = function () {
@@ -69,8 +64,7 @@
                     return;
                 }
 
-                scope.keyword = Base64.encode(scope.keyword);
-                window.location.href = '/index/search/' + scope.keyword;
+                window.location.href = '/index/search/' + Base64.encode(scope.keyword);
             };
         } ]);
 })();

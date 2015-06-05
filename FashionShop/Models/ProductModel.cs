@@ -95,6 +95,30 @@ namespace FashionShop.Models
             return product;
         }
 
+        public Product[] searchSimple(string name)
+        {
+            string sql = string.Format(
+                "Select product.ID, product.Name, product.Price, product.Image From Product product " +
+                "Where product.Name Like '%{0}%'", name);
+
+            DataTable result = this.provider.executeQuery(sql);
+            Product[] products = new Product[result.Rows.Count];
+            int index = 0;
+
+            foreach (DataRow row in result.Rows)
+            {
+                Product product = new Product();
+                product.Id = row["ID"].ToString().Trim();
+                product.Name = row["Name"].ToString();
+                product.Price = Int32.Parse(row["Price"].ToString());
+                product.Image = row["Image"].ToString();
+                products[index] = product;
+                index++;
+            }
+
+            return products;
+        }
+
         public int totalResults(Product product)
         {
             string sql = string.Format(

@@ -117,6 +117,7 @@
     <Content Include="Content\css\index\index-details.css" />
     <Content Include="Content\css\index\index-index.css" />
     <Content Include="Content\css\index\index-manufacturer.css" />
+    <Content Include="Content\css\index\index-search.css" />
     <Content Include="Content\js\index\index-categories.js" />
     <Content Include="Content\js\index\index-category.js" />
     <Content Include="Content\js\index\index-details.js" />
@@ -151,10 +152,12 @@
     <Content Include="Content\js\index\index-manufacturer.js" />
     <Content Include="Content\css\index\index-manufacturers.css" />
     <Content Include="Content\js\index\index-manufacturers.js" />
+    <Content Include="Content\js\index\index-search.js" />
     <Content Include="Content\js\index\index-sign-up.js" />
     <Content Include="Content\js\product\product-add.js" />
     <Content Include="Content\js\product\product-index.js" />
     <Content Include="Content\js\product\product-update.js" />
+    <Content Include="Content\js\template\main.js" />
     <Content Include="Content\WebComponents\md-logout-button.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\admin\admin-login.js" />
@@ -172,6 +175,7 @@
     <Content Include="Views\Index\Login.aspx" />
     <Content Include="Views\Index\Manufacturer.aspx" />
     <Content Include="Views\Index\Manufacturers.aspx" />
+    <Content Include="Views\Index\Search.aspx" />
     <Content Include="Views\Index\SignUp.aspx" />
     <Content Include="Views\Manufacturer\Index.aspx" />
     <Content Include="Views\Admin\Order.aspx" />

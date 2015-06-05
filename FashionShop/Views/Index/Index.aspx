@@ -14,12 +14,20 @@
 
 <asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">
     <link rel="import" href="/bower_components/paper-progress/paper-progress.html">
+    <link rel="import" href="/bower_components/core-field/core-field.html">
+    <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat=server>
     <div ng-controller="IndexCtrl">
         <article class="row">
             <aside class="col-md-3">
+                <div>
+                    <core-field class="search-box">
+                        <input placeholder="Từ khóa" autocomplete="off" spellcheck="false" name="keyword" ng-model="keyword" flex>
+                        <core-icon-button icon="search" ng-click="search()"></core-icon-button>
+                    </core-field>
+                </div>
                 <div class="div-category">
                     <h2 class="line"><span>Loại mặt hàng</span></h2>
                     <ul class="category">
@@ -66,7 +74,7 @@
                     <ul class="list-products">
                         <li ng-repeat="product in productsSale">
                             <div class="product-details col-md-3" ng-click="showDetails(product)">
-                                <img class="new" src="/Content/img/theme/best_seller.jpg" alt="New" />
+                                <img class="new best-seller" src="/Content/img/theme/best_seller.jpg" alt="New" />
                                 <div class="product-image">
                                     <img ng-src="/Content/img/products/{{product.Image}}" alt="{{product.Id}}" />
                                 </div>

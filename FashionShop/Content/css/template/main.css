@@ -184,6 +184,14 @@ footer
     color: #fff;
 }
 
+.search-box 
+{
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding-left: 8px;
+    margin-top: 19px;
+}
+
 @media(max-width: 991px)
 {
     .div-manufacturer,

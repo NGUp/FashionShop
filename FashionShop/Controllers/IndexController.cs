@@ -57,6 +57,21 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public ActionResult Search(string param_0)
+        {
+            Security security = new Security();
+            ProductModel productModel = new ProductModel();
+
+            string keyword = security.decodeBase64(param_0);
+            keyword = keyword.Replace("'", "''");
+
+            ViewData["products"] = productModel.searchSimple(keyword);
+
+
+            return View();
+        }
+
+        [HttpGet]
         public JsonResult isExisted(string param_0)
         {
             Analyze analyze = new Analyze();
