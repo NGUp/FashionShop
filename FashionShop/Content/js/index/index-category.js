@@ -27,6 +27,19 @@
     'use strict';
 
     angular.module('kids-fashion', [])
+        .directive('ngEnter', function () {
+            return function (scope, element, attrs) {
+                element.bind("keydown keypress", function (event) {
+                    if (event.which === 13) {
+                        scope.$apply(function () {
+                            scope.$eval(attrs.ngEnter);
+                        });
+
+                        event.preventDefault();
+                    }
+                });
+            };
+        })
 
         .controller('CategoryCtrl', ['$scope', '$http', function (scope, http) {
 
@@ -59,6 +72,18 @@
                 if (page < maxPage) {
                     window.location.href = '/index/category/' + params[5] + '/' + (parseInt(page) + 1);
                 }
+            };
+
+            scope.search = function () {
+                if (scope.keyword === undefined) {
+                    return;
+                }
+
+                if (scope.keyword === '') {
+                    return;
+                }
+
+                window.location.href = '/index/search/' + Base64.encode(scope.keyword);
             };
 
         } ]);

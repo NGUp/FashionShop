@@ -50,6 +50,7 @@
             <div class="col-md-9 content">
                 <h2 class="line "><span>Tìm kiếm</span></h2>
                 <div>
+                    <h5 class="search-result">Từ khóa: <% Response.Write(ViewData["keyword"]); %></h5>
                     <h5 class="search-result">Kết quả: <% Response.Write((ViewData["products"] as IEnumerable<FashionShop.Models.Objects.Product>).Count()); %> sản phẩm.</h5>
                 </div>
                 <div>

@@ -24,7 +24,7 @@
             <aside class="col-md-3">
                 <div>
                     <core-field class="search-box">
-                        <input placeholder="Từ khóa" autocomplete="off" spellcheck="false" name="keyword" ng-model="keyword" flex>
+                        <input placeholder="Từ khóa" autocomplete="off" spellcheck="false" name="keyword" ng-model="keyword" ng-enter="search()" flex>
                         <core-icon-button icon="search" ng-click="search()"></core-icon-button>
                     </core-field>
                 </div>

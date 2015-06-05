@@ -63,6 +63,9 @@ namespace FashionShop.Controllers
             ProductModel productModel = new ProductModel();
 
             string keyword = security.decodeBase64(param_0);
+
+            ViewData["keyword"] = keyword;
+
             keyword = keyword.Replace("'", "''");
 
             ViewData["products"] = productModel.searchSimple(keyword);

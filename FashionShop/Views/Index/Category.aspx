@@ -13,6 +13,7 @@
 </asp:Content>
 
 <asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">
+    <link rel="import" href="/bower_components/core-field/core-field.html">
     <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
 </asp:Content>
 
@@ -20,6 +21,12 @@
     <div ng-controller="CategoryCtrl">
         <article class="row">
             <aside class="col-md-3">
+                <div>
+                    <core-field class="search-box">
+                        <input placeholder="Từ khóa" autocomplete="off" spellcheck="false" name="keyword" ng-model="keyword" ng-enter="search()" flex>
+                        <core-icon-button icon="search" ng-click="search()"></core-icon-button>
+                    </core-field>
+                </div>
                 <div class="div-category">
                     <h2 class="line"><span>Loại mặt hàng</span></h2>
                     <ul class="category">

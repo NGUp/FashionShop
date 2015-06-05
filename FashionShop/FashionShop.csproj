@@ -157,7 +157,6 @@
     <Content Include="Content\js\product\product-add.js" />
     <Content Include="Content\js\product\product-index.js" />
     <Content Include="Content\js\product\product-update.js" />
-    <Content Include="Content\js\template\main.js" />
     <Content Include="Content\WebComponents\md-logout-button.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\admin\admin-login.js" />
