@@ -35,11 +35,11 @@
                                 <div class="col-md-1 image">
                                     <img src="/Content/img/products/{{item.Product.Image}}" alt="{{item.Product.Id}}" />
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-8">
                                     <h5 class="product-name">{{item.Product.Manufacturer}} {{item.Product.Name}}</h5>
                                     <h5>{{item.Product.Id}} - {{item.Product.Price}} VND</h5>
                                 </div>
-                                <div class="col-md-4 div-function">
+                                <div class="col-md-3 div-function">
                                     <core-field class="search-box">
                                         <input placeholder="Số lượng" value="{{item.Quantity}}" ng-model="item.Quantity" autocomplete="off" spellcheck="false" name="keyword" flex>
                                     </core-field>
@@ -51,7 +51,6 @@
                         </li>
                     </ul>
             <% } %>
-            
         </div>
         <div class="clear"></div>
         <% if (Session["PRODUCTS"] != null && (Session["PRODUCTS"] as Hashtable).Count > 0) { %>
@@ -61,11 +60,11 @@
                     <paper-button raised ng-click="refresh()">
                         <core-icon icon="refresh"></core-icon> Làm mới
                     </paper-button>
-                    <paper-button raised class="btn-update">
+                    <paper-button raised class="btn-update" ng-click="update()">
                         <core-icon icon="system-update-tv"></core-icon> Cập nhật
                     </paper-button>
                     <div>
-                        <paper-button raised class="btn-payment">
+                        <paper-button raised class="btn-payment" ng-click="pay()">
                             <core-icon icon="payment"></core-icon> Thanh toán
                         </paper-button>
                     </div>

@@ -119,6 +119,27 @@ namespace FashionShop.Models
             return products;
         }
 
+        public int count(string ID)
+        {
+            string sql = string.Format(
+                "Select Quantity From Product Where ID = '{0}' And State = 1", ID);
+
+            DataTable result = this.provider.executeQuery(sql);
+
+            return Int32.Parse(result.Rows[0]["Quantity"].ToString());
+        }
+
+        public int payment(string ID, int quantity)
+        {
+            string sql = string.Format("Update Product Set Quantity = Quantity - {0} Where ID = '{1}'", quantity, ID);
+            this.provider.executeNonQuery(sql);
+            
+            sql = string.Format("Update Product Set Sales = Sales + {0} Where ID = '{1}'", quantity, ID);
+            this.provider.executeNonQuery(sql);
+            
+            return this.count(ID);
+        }
+
         public int totalResults(Product product)
         {
             string sql = string.Format(

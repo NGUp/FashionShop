@@ -27,6 +27,7 @@
     'use strict';
 
     angular.module('kids-fashion', [])
+
         .controller('CartCtrl', ['$scope', '$http', function (scope, http) {
             http.get('/index/getcart').then(function (data) {
                 scope.cart = data.data;
@@ -48,5 +49,37 @@
             scope.remove = function (index) {
                 scope.cart.splice(index, 1);
             };
+
+            scope.update = function () {
+                var form = document.createElement('form'),
+                    hiddenField = document.createElement("input");
+
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', '/cart/update');
+
+                hiddenField.setAttribute('type', 'hidden');
+                hiddenField.setAttribute('name', 'cart');
+                hiddenField.setAttribute('value', JSON.stringify(scope.cart));
+
+                form.appendChild(hiddenField);
+                document.body.appendChild(form);
+                form.submit();
+            }
+
+            scope.pay = function () {
+                var form = document.createElement('form'),
+                    hiddenField = document.createElement("input");
+
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', '/cart/payment');
+
+                hiddenField.setAttribute('type', 'hidden');
+                hiddenField.setAttribute('name', 'cart');
+                hiddenField.setAttribute('value', JSON.stringify(scope.cart));
+
+                form.appendChild(hiddenField);
+                document.body.appendChild(form);
+                form.submit();
+            }
         } ]);
 })();
