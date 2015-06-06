@@ -84,5 +84,9 @@
 
                 window.location.href = '/index/search/' + Base64.encode(scope.keyword);
             };
+
+            scope.goCart = function () {
+                window.location.href = '/index/cart';
+            };
         } ]);
 })();

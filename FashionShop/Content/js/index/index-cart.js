@@ -27,44 +27,26 @@
     'use strict';
 
     angular.module('kids-fashion', [])
-        .directive('ngEnter', function () {
-            return function (scope, element, attrs) {
-                element.bind("keydown keypress", function (event) {
-                    if (event.which === 13) {
-                        scope.$apply(function () {
-                            scope.$eval(attrs.ngEnter);
-                        });
-
-                        event.preventDefault();
-                    }
-                });
-            };
-        })
-
-        .controller('CategoriesCtrl', ['$scope', '$http', function (scope, http) {
-
-            http.get('/manufacturer/gettopmanufacturers').then(function (data) {
-                scope.manufacturers = data.data;
+        .controller('CartCtrl', ['$scope', '$http', function (scope, http) {
+            http.get('/index/getcart').then(function (data) {
+                scope.cart = data.data;
             });
 
-            scope.showDetails = function (category) {
-                window.location.href = '/index/category/' + category + '/1';
+            scope.total = function () {
+                var total = 0;
+                angular.forEach(scope.cart, function (item) {
+                    total += (item.Quantity * item.Product.Price);
+                });
+
+                return total;
             };
 
-            scope.search = function () {
-                if (scope.keyword === undefined) {
-                    return;
-                }
-
-                if (scope.keyword === '') {
-                    return;
-                }
-
-                window.location.href = '/index/search/' + Base64.encode(scope.keyword);
+            scope.refresh = function () {
+                window.location.href = '/cart/refresh';
             };
 
-            scope.goCart = function () {
-                window.location.href = '/index/cart';
+            scope.remove = function (index) {
+                scope.cart.splice(index, 1);
             };
         } ]);
 })();

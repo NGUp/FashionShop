@@ -41,6 +41,30 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public ActionResult Cart()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult getCart()
+        {
+            ProductModel productModel = new ProductModel();
+            Hashtable hashTable = (Session["PRODUCTS"] as Hashtable);
+            ArrayList list = new ArrayList();
+
+            foreach (DictionaryEntry entry in hashTable)
+            {
+                Cart cart = new Cart();
+                cart.Product = productModel.one(entry.Key.ToString());
+                cart.Quantity = Int32.Parse(entry.Value.ToString());
+                list.Add(cart);
+            }
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public ActionResult Manufacturers()
         {
             ManufacturerModel manufacturerModel = new ManufacturerModel();
@@ -276,6 +300,7 @@ namespace FashionShop.Controllers
                 Session.Add("USER_ID", ID);
                 Session.Add("USER_PERMISSION", 0);
                 Session.Add("USER_ACCOUNT", account.Username);
+                Session.Add("PRODUCTS", new Hashtable());
             }
             else
             {

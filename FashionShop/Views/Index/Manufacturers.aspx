@@ -46,8 +46,8 @@
                 </ul>
             </div>
         </div>
+        <% if (Session["USER_ID"] != null) { %>
+            <paper-fab icon="shopping-cart" ng-click="goCart()" class="btn-shopping-cart"></paper-fab>
+        <% } %>
     </article>
-    <% if (Session["USER_ID"] != null) { %>
-        <paper-fab icon="shopping-cart" class="btn-shopping-cart"></paper-fab>
-    <% } %>
 </asp:Content>

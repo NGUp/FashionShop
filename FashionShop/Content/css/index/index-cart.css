@@ -1,0 +1,106 @@
+﻿article
+{
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+}
+
+.cart
+{
+    margin-bottom: 150px;
+}
+
+.cart ul
+{
+    padding: 0;
+}
+
+.image 
+{
+    text-align: center;
+}
+
+.image img
+{
+    width: 50px;
+}
+
+.title
+{
+    color: #03a9f4;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 32px;
+}
+
+.product
+{
+    margin-bottom: 8px;
+    list-style-type: none;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.product-name
+{
+    color: #3f51b5;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.btn-remove
+{
+    color: #f44336;
+}
+
+.div-function
+{
+    display: flex;
+}
+
+.div-remove
+{
+    padding-top: 19px;
+    margin-left: 16px;
+}
+
+.div-payment
+{
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+}
+
+.div-payment paper-button
+{
+    margin: 0;
+}
+
+.bill
+{
+    font-size: 16px;
+    float: right;
+    color: #ff4081;
+}
+
+.btn-payment
+{
+    background-color: #03a9f4;
+    color: #fff;
+    width: 100%;
+    margin-top: 8px !important;
+}
+
+.btn-update
+{
+    background-color: #e0e0e0;
+}
+
+.title-empty
+{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 48px;
+}

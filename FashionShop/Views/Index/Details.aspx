@@ -76,15 +76,16 @@
                         <h5 class="product-views">Số lượt xem: <%= ViewData["product_Views"] %></h5>
                         <h5 class="product-sales">Số lượng bán: <%= ViewData["product_Sales"] %></h5>
                         <% if (Session["USER_ID"] != null) { %>
-                            <% if (Session[ViewData["product_ID"].ToString()] == null)
-                               { %>
+                            <% 
+                               Hashtable cart = (Session["PRODUCTS"] as Hashtable);
+                               
+                                if (cart[ViewData["product_ID"].ToString()] == null) { %>
                                 <paper-button raised class="btn-order" ng-hide="ordered" ng-click="order()">Đặt hàng</paper-button>
-                                <paper-button raised ng-hide="canceled" ng-click="cancel()">Hủy đặt hàng</paper-button>
+                                <div class="ordered" ng-show="ordered"><span>Đã đặt hàng</span></div>
                             <% }
                                else
                                { %>
-                                <paper-button raised class="btn-order" ng-show="ordered" ng-click="order()">Đặt hàng</paper-button>
-                                <paper-button raised ng-show="canceled" ng-click="cancel()">Hủy đặt hàng</paper-button>
+                                <div class="ordered"><span>Đã đặt hàng</span></div>
                             <% } %>
                         <% } %>
                     </div>
@@ -103,8 +104,8 @@
                 </ul>
             </div>
         </div>
-    </article>
     <% if (Session["USER_ID"] != null) { %>
-        <paper-fab icon="shopping-cart" class="btn-shopping-cart"></paper-fab>
+        <paper-fab icon="shopping-cart" ng-click="goCart()" class="btn-shopping-cart"></paper-fab>
     <% } %>
+    </article>
 </asp:Content>

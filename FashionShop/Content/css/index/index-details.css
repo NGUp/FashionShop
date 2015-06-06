@@ -99,6 +99,15 @@ article
     margin-top: 89px;
 }
 
+.ordered span
+{
+    background-color: #ffeb3b;
+    padding: 8px;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 rgba(3, 155, 229, 0.37);
+    border: 1px solid #fdd835;
+}
+
 @media(max-width: 541px)
 {
     .products-relative

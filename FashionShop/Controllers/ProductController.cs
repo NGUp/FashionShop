@@ -69,24 +69,27 @@ namespace FashionShop.Controllers
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
 
-            Session.Add(param_0, 1);
+            //Session.Add(param_0, 1);
+            Hashtable cart = (Session["PRODUCTS"] as Hashtable);
+            cart[param_0] = 1;
+            Session["PRODUCTS"] = cart;
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public JsonResult CancelOrder(string param_0)
-        {
-            Product product = this.model.one(param_0.Replace("'", "''"));
+        //[HttpGet]
+        //public JsonResult CancelOrder(string param_0)
+        //{
+        //    Product product = this.model.one(param_0.Replace("'", "''"));
 
-            if (product == null)
-            {
-                return Json(false, JsonRequestBehavior.AllowGet);
-            }
+        //    if (product == null)
+        //    {
+        //        return Json(false, JsonRequestBehavior.AllowGet);
+        //    }
 
-            Session[param_0] = null;
+        //    Session[param_0] = null;
 
-            return Json(true, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(true, JsonRequestBehavior.AllowGet);
+        //}
 
         [HttpGet]
         public JsonResult SearchResults(string param_0)

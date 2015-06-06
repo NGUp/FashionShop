@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Models\ManufacturerModel.cs" />
     <Compile Include="Models\Objects\Account.cs" />
     <Compile Include="Models\Objects\CaptchaResponse.cs" />
+    <Compile Include="Models\Objects\Cart.cs" />
     <Compile Include="Models\Objects\Category.cs" />
     <Compile Include="Models\Objects\Manufacturer.cs" />
     <Compile Include="Models\Objects\Product.cs" />
@@ -112,12 +114,14 @@
     <Content Include="Content\css\account\account-update.css" />
     <Content Include="Content\css\admin\admin-index.css" />
     <Content Include="Content\css\admin\admin-login.css" />
+    <Content Include="Content\css\index\index-cart.css" />
     <Content Include="Content\css\index\index-categories.css" />
     <Content Include="Content\css\index\index-category.css" />
     <Content Include="Content\css\index\index-details.css" />
     <Content Include="Content\css\index\index-index.css" />
     <Content Include="Content\css\index\index-manufacturer.css" />
     <Content Include="Content\css\index\index-search.css" />
+    <Content Include="Content\js\index\index-cart.js" />
     <Content Include="Content\js\index\index-categories.js" />
     <Content Include="Content\js\index\index-category.js" />
     <Content Include="Content\js\index\index-details.js" />
@@ -168,6 +172,7 @@
     <Content Include="Views\Account\Update.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\Login.aspx" />
+    <Content Include="Views\Index\Cart.aspx" />
     <Content Include="Views\Index\Categories.aspx" />
     <Content Include="Views\Index\Category.aspx" />
     <Content Include="Views\Index\Details.aspx" />

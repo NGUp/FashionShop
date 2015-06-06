@@ -66,24 +66,6 @@
             scope.order = function () {
                 http.get('/admin/product/orderproduct/' + image.attributes.alt.nodeValue).then(function (data) {
                     scope.ordered = data.data;
-
-                    if (scope.ordered === true) {
-                        scope.canceled = false;
-                    } else {
-                        scope.canceled = true;
-                    }
-                });
-            };
-
-            scope.cancel = function () {
-                http.get('/admin/product/cancelorder/' + image.attributes.alt.nodeValue).then(function (data) {
-                    scope.canceled = data.data;
-
-                    if (scope.canceled === true) {
-                        scope.ordered = false;
-                    } else {
-                        scope.ordered = true;
-                    }
                 });
             };
 
@@ -97,6 +79,10 @@
                 }
 
                 window.location.href = '/index/search/' + Base64.encode(scope.keyword);
+            };
+
+            scope.goCart = function () {
+                window.location.href = '/index/cart';
             };
         } ]);
 })();
