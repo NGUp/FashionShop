@@ -1,0 +1,72 @@
+h2
+{
+    color: #03a9f4;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+article
+{
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+}
+
+.content
+{
+    padding: 16px;
+}
+
+.category li
+{
+    line-height: 2.75em;
+    list-style-type: none;
+}
+
+.category li a
+{
+    color: #212121;
+}
+
+.category li a:hover
+{
+    color: #2196f3;
+    text-decoration: none;
+}
+
+.dropdown
+{
+    position: absolute;
+}
+
+.div-condition
+{
+    margin: 0 auto;
+    width: 240px;
+}
+
+paper-dropdown-menu
+{
+    width: 100%;
+}
+
+paper-dropdown
+{
+    width: 240px;
+}
+
+paper-dropdown #scroller
+{
+    width: 240px !important;
+}
+
+.space
+{
+    margin-top: 16px;
+}
+
+.btn-search
+{
+    width: 100%;
+    background-color: #ffeb3b;
+    margin: 0;
+}

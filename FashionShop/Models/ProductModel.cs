@@ -354,6 +354,95 @@ namespace FashionShop.Models
 
             return products;
         }
+        
+        public Product[] searchAdvance(string category, int sex, int price)
+        {
+            string condition = "";
+            string sql = "Select * From Product";
+            
+            if (category != "")
+            {
+                condition += string.Format(" Category = '{0}'", category);
+            }
+            
+            if (sex != -1)
+            {
+                if (condition == "")
+                {
+                    condition += string.Format(" Sex = {0}", sex);
+                }
+                else
+                {
+                    condition += string.Format(" Or Sex = {0}", sex);
+                }
+            }
+            
+            if (price != -1)
+            {
+                int min, max;
+                
+                min = 0;
+                max = 0;
+                
+                if (price == 0)
+                {
+                    min = 100000;
+                    max = 300000;
+                }
+                else if (price == 1)
+                {
+                    min = 300000;
+                    max = 500000;    
+                }
+                else if (price == 2)
+                {
+                    min = 500000;
+                    max = 1000000;    
+                }
+                else if (price == 3)
+                {
+                    min = 100000;
+                    max = 1000000;    
+                }
+                
+                if (condition == "")
+                {
+                    condition += string.Format(" (Price >= {0} And Price <= {1})", min, max);
+                }
+                else
+                {
+                    condition += string.Format(" Or (Price >= {0} And Price <= {1})", min, max);
+                }
+            }
+            
+            if (condition != "")
+            {
+                sql += " Where" + condition;
+            }
+            
+            DataTable result = this.provider.executeQuery(sql);
+            Product[] products = new Product[result.Rows.Count];
+            int index = 0;
+
+            foreach (DataRow row in result.Rows)
+            {
+                Product product = new Product();
+                product.Id = row["ID"].ToString().Trim();
+                product.Name = row["Name"].ToString();
+                product.Manufacturer = row["Manufacturer"].ToString();
+                product.Price = Int32.Parse(row["Price"].ToString());
+                product.Origin = row["Origin"].ToString();
+                product.Views = Int32.Parse(row["Views"].ToString());
+                product.Sales = Int32.Parse(row["Sales"].ToString());
+                product.Image = row["Image"].ToString();
+                product.State = Int32.Parse(row["State"].ToString());
+                product.Sex = Int32.Parse(row["Sex"].ToString());
+                products[index] = product;
+                index++;
+            }
+
+            return products;
+        }
 
         public bool insert(Product product)
         {

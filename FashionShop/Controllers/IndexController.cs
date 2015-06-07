@@ -71,6 +71,12 @@ namespace FashionShop.Controllers
             ViewData["manufacturers"] = manufacturerModel.getAll();
             return View();
         }
+        
+        [HttpGet]
+        public ActionResult Advance()
+        {
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Categories()
@@ -107,6 +113,36 @@ namespace FashionShop.Controllers
             string userName = hashTable["UserName"].ToString();
 
             return Json(this.model.isExisted(userName), JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpPost]
+        public ActionResult AdvanceSearch()
+        {
+            if (Request.Params["category"] == null)
+            {
+                Response.Redirect("/index/advance", false);
+            }
+            
+            if (Request.Params["sex"] == null)
+            {
+                Response.Redirect("/index/advance", false);
+            }
+            
+            if (Request.Params["price"] == null)
+            {
+                Response.Redirect("/index/advance", false);
+            }
+            
+            string category = Request.Params["category"];
+            int sex = Int32.Parse(Request.Params["sex"]);
+            int price = Int32.Parse(Request.Params["price"]);
+            
+            ProductModel productModel = new ProductModel();
+
+            ViewData["products"] = productModel.searchAdvance(category, sex, price);
+
+
+            return View();
         }
 
         //
