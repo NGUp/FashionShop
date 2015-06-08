@@ -25,6 +25,12 @@ namespace FashionShop.Controllers
          return View();   
         }
 
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Update()
         {
@@ -68,6 +74,29 @@ namespace FashionShop.Controllers
         }
 
         [HttpPost]
+        public void AddHandler()
+        {
+            if (Request.Params["id"] == null)
+            {
+                Response.Redirect("/admin/category", false);
+            }
+
+            if (Request.Params["name"] == null)
+            {
+                Response.Redirect("/admin/category", false);
+            }
+
+            // Assign params into Category Model
+            Category category = new Category();
+            category.ID = Request.Params["id"];
+            category.Name = Request.Params["name"];
+
+            // Execute update
+            this.model.insert(category);
+            Response.Redirect("/admin/category");
+        }
+
+        [HttpPost]
         public void UpdateHandler()
         {
             if (Request.Params["id"] == null)
@@ -85,9 +114,6 @@ namespace FashionShop.Controllers
             category.ID = Request.Params["id"];
             category.Name = Request.Params["name"];
 
-
-            Response.Write(category.ID);
-            Response.Write(category.Name);
             // Execute update
             this.model.update(category);
             Response.Redirect("/admin/category");

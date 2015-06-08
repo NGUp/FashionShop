@@ -118,6 +118,16 @@ namespace FashionShop.Models
             return categories;
         }
 
+        public bool insert(Category category)
+        {
+            string sql = string.Format(
+                "Insert Into Category(CategoryID, CategoryName, State) Values('{0}', N'{1}', 1)",
+                category.ID, category.Name
+                );
+
+            return this.provider.executeNonQuery(sql);
+        }
+
         public bool update(Category category)
         {
             string sql = string.Format(

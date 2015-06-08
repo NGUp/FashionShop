@@ -1,0 +1,36 @@
+﻿paper-button 
+{
+    width: 100px;
+}
+
+.content
+{
+    width: 270px;
+    margin: 0 auto;
+}
+
+.category-title
+{
+    color: #673ab7;
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 72px;
+}
+
+.category-id
+{
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.div-buttons
+{
+    text-align: center;
+    margin-top: 32px;
+}
+
+.btn-add
+{
+    background-color: #ffeb3b;
+}
