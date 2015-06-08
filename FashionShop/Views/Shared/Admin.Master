@@ -25,7 +25,7 @@
                             <a href="/admin/product"></a>
                         </core-item>
                         <core-item label="Loại sản phẩm">
-                            <a href="/admin/type"></a>
+                            <a href="/admin/category"></a>
                         </core-item>
                         <core-item label="Nhà sản xuất">
                             <a href="/admin/manufacturer"></a>
@@ -60,6 +60,7 @@
         <!-- JavaScript -->
         <script src="/Scripts/platform.js"></script>
         <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/Scripts/base64.js"></script>
         <asp:ContentPlaceHolder ID="ScriptContent" runat="server"></asp:ContentPlaceHolder>
 
         <!-- Web Components -->
@@ -70,6 +71,7 @@
         <link rel="import" href="/bower_components/core-item/core-item.html">
         <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
         <link rel="import" href="/Content/WebComponents/md-logout-button.html">
+        <link rel="import" href="/bower_components/paper-fab/paper-fab.html">
         <asp:ContentPlaceHolder ID="WebComponentsContent" runat="server"></asp:ContentPlaceHolder>
     </body>
 </html> 

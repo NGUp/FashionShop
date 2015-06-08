@@ -69,3 +69,20 @@ article.container
     clear: both;
     height: 72px;
 }
+
+.search-box 
+{
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding-left: 8px;
+    margin: 16px 8px;
+}
+
+paper-fab
+{
+    position: fixed;
+    bottom: 16px;
+    right: 48px;
+    background-color: #ffeb3b;
+    color: #212121;
+}

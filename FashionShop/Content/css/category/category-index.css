@@ -1,0 +1,61 @@
+﻿.button-delete,
+.button-update 
+{
+    color: #bdbdbd;
+}
+
+.categories
+{
+    margin: 0;
+    padding: 8px;
+}
+
+.categories li
+{
+    margin-bottom: 8px;
+    list-style-type: none;
+}
+
+.category
+{
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+    padding: 16px;
+}
+
+.category-id
+{
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.category-name
+{
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    color: #673ab7;
+}
+
+.div-buttons
+{
+    position: absolute;
+    right: 16px;
+    top: 16;
+}
+
+.category-paging 
+{
+    margin-left: 8px;
+    padding: 8px 16px;
+    background-color: #039be5;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    position: fixed;
+    bottom: 16;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+}

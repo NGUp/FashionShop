@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FashionShop.Models;
+using FashionShop.Misc;
 
 namespace FashionShop.Controllers
 {
@@ -15,6 +16,40 @@ namespace FashionShop.Controllers
         public JsonResult getAll()
         {
             return Json(this.model.getAll(), JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpGet]
+        public ActionResult Index()
+        {
+         return View();   
+        }
+        
+        [HttpGet]
+        public JsonResult Total()
+        {
+            return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpGet]
+        public JsonResult Get(int param_0)
+        {
+            return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult SearchResults(string param_0)
+        {
+            Security security = new Security();
+
+            return Json(this.model.totalResults(security.decodeBase64(param_0)), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult Search(int param_0, string param_1)
+        {
+            Security security = new Security();
+
+            return Json(this.model.search(security.decodeBase64(param_1), param_0), JsonRequestBehavior.AllowGet);
         }
     }
 }
