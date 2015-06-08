@@ -37,7 +37,7 @@
                     var hiddenField = document.createElement('input');
                     hiddenField.setAttribute('type', 'hidden');
                     hiddenField.setAttribute('name', 'category_ID');
-                    hiddenField.setAttribute('value', category.Id);
+                    hiddenField.setAttribute('value', category.ID);
                     form.appendChild(hiddenField);
 
                     document.body.appendChild(form);

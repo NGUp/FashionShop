@@ -34,7 +34,7 @@ namespace FashionShop.Models
         
         public int total()
         {
-            string sql = "Select Count(CategoryID) As Total From Category";
+            string sql = "Select Count(CategoryID) As Total From Category Where State = 1";
 
             DataTable result = this.provider.executeQuery(sql);
 
@@ -80,7 +80,7 @@ namespace FashionShop.Models
         public int totalResults(string keyword)
         {
             string sql = string.Format(
-                "Select Count(CategoryID) As Total From Category Where CategoryID = '{0}' Or CategoryName = '{0}'",
+                "Select Count(CategoryID) As Total From Category Where State = 1 And (CategoryID = '{0}' Or CategoryName = '{0}')",
                 keyword);
 
             DataTable result = this.provider.executeQuery(sql);
@@ -116,6 +116,13 @@ namespace FashionShop.Models
             }
 
             return categories;
+        }
+
+        public bool delete(Category category)
+        {
+            string sql = string.Format("Update Category Set State = 0 Where CategoryID = '{0}'", category.ID);
+
+            return this.provider.executeNonQuery(sql);
         }
     }
 }

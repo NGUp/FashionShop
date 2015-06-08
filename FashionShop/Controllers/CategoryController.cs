@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using FashionShop.Models;
 using FashionShop.Misc;
+using FashionShop.Models.Objects;
 
 namespace FashionShop.Controllers
 {
@@ -50,6 +51,24 @@ namespace FashionShop.Controllers
             Security security = new Security();
 
             return Json(this.model.search(security.decodeBase64(param_1), param_0), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public void Delete()
+        {
+            // Check param
+            if (Request.Params["category_ID"] == null)
+            {
+                Response.Redirect("/admin/category", false);
+            }
+
+            // Assign ID
+            Category category = new Category();
+            category.ID = Request.Params["category_ID"];
+
+            // Execute Delete
+            this.model.delete(category);
+            Response.Redirect("/admin/category");
         }
     }
 }
