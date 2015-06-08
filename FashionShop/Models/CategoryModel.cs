@@ -118,6 +118,16 @@ namespace FashionShop.Models
             return categories;
         }
 
+        public bool update(Category category)
+        {
+            string sql = string.Format(
+                "Update Category Set CategoryName = N'{0}' Where CategoryId = '{1}'",
+                    category.Name, category.ID
+                );
+
+            return this.provider.executeNonQuery(sql);
+        }
+
         public bool delete(Category category)
         {
             string sql = string.Format("Update Category Set State = 0 Where CategoryID = '{0}'", category.ID);

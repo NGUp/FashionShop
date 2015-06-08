@@ -115,6 +115,7 @@
     <Content Include="Content\css\admin\admin-index.css" />
     <Content Include="Content\css\admin\admin-login.css" />
     <Content Include="Content\css\category\category-index.css" />
+    <Content Include="Content\css\category\category-update.css" />
     <Content Include="Content\css\index\index-advance-search.css" />
     <Content Include="Content\css\index\index-advance.css" />
     <Content Include="Content\css\index\index-cart.css" />
@@ -125,6 +126,8 @@
     <Content Include="Content\css\index\index-manufacturer.css" />
     <Content Include="Content\css\index\index-search.css" />
     <Content Include="Content\js\category\category-index.js" />
+    <Content Include="Content\js\category\category-update.js" />
+    <Content Include="Content\js\index\index-advance-search.js" />
     <Content Include="Content\js\index\index-advance.js" />
     <Content Include="Content\js\index\index-cart.js" />
     <Content Include="Content\js\index\index-categories.js" />
@@ -178,6 +181,7 @@
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\Login.aspx" />
     <Content Include="Views\Category\Index.aspx" />
+    <Content Include="Views\Category\Update.aspx" />
     <Content Include="Views\Index\Advance.aspx" />
     <Content Include="Views\Index\AdvanceSearch.aspx" />
     <Content Include="Views\Index\Cart.aspx" />
