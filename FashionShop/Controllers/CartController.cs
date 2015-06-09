@@ -7,6 +7,7 @@ using System.Collections;
 using Newtonsoft.Json.Linq;
 using FashionShop.Models.Objects;
 using FashionShop.Models;
+using FashionShop.Misc;
 
 namespace FashionShop.Controllers
 {
@@ -74,7 +75,11 @@ namespace FashionShop.Controllers
             Hashtable hash = Session["PRODUCTS"] as Hashtable;
             Hashtable cart = (Hashtable)hash.Clone();
             ProductModel productModel = new ProductModel();
+            CartModel cartModel = new CartModel();
             int count, stored;
+            Security security = new Security();
+            string purchaseOrder = security.generateID();
+
 
             foreach (string key in hash.Keys)
             {
@@ -82,8 +87,9 @@ namespace FashionShop.Controllers
                 stored = count - (int)hash[key];
                 if (stored > -1)
                 {
-                    if (stored == productModel.payment(key, (int)hash[key]))
+                    if (stored == productModel.payment(purchaseOrder, key, (int)hash[key]))
                     {
+                        cartModel.save(purchaseOrder, key, (int)hash[key]);
                         cart.Remove(key);
                     }
                 }
@@ -97,6 +103,7 @@ namespace FashionShop.Controllers
             else
             {
                 (Session["PRODUCTS"] as Hashtable).Clear();
+                cartModel.saveOrder(Session["USER_ID"] as string, purchaseOrder);
                 Response.Redirect("/");
             }
         }

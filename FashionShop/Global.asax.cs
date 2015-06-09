@@ -17,6 +17,18 @@ namespace FashionShop
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Order", // Route name
+                "Admin/Order/{action}/{param_0}/{param_1}", // URL with parameters
+                new
+                {
+                    controller = "Order",
+                    action = "Index",
+                    param_0 = UrlParameter.Optional,
+                    param_1 = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
                 "Category", // Route name
                 "Admin/Category/{action}/{param_0}/{param_1}", // URL with parameters
                 new

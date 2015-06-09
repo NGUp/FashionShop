@@ -9,7 +9,7 @@
 	Quản lý Nhà sản xuất
 </asp:Content>
 
-<asp:Content ID="Selected" ContentPlaceHolderID="SelectedContent" runat="server">1</asp:Content>
+<asp:Content ID="Selected" ContentPlaceHolderID="SelectedContent" runat="server">2</asp:Content>
 
 <asp:Content ID="StyleSheet" ContentPlaceHolderID="StyleSheetContent" runat="server">
     <link href="/Content/css/manufacturer/manufacturer-add.css" rel="stylesheet" />

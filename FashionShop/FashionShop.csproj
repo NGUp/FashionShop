@@ -76,12 +76,14 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Misc\Analyze.cs" />
     <Compile Include="Misc\Security.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\ManufacturerModel.cs" />
     <Compile Include="Models\Objects\Account.cs" />
@@ -89,7 +91,9 @@
     <Compile Include="Models\Objects\Cart.cs" />
     <Compile Include="Models\Objects\Category.cs" />
     <Compile Include="Models\Objects\Manufacturer.cs" />
+    <Compile Include="Models\Objects\Order.cs" />
     <Compile Include="Models\Objects\Product.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\AccountModel.cs" />
@@ -129,6 +133,8 @@
     <Content Include="Content\css\manufacturer\manufacturer-add.css" />
     <Content Include="Content\css\manufacturer\manufacturer-index.css" />
     <Content Include="Content\css\manufacturer\manufacturer-update.css" />
+    <Content Include="Content\css\order\order-index.css" />
+    <Content Include="Content\css\order\order-update.css" />
     <Content Include="Content\js\category\category-add.js" />
     <Content Include="Content\js\category\category-index.js" />
     <Content Include="Content\js\category\category-update.js" />
@@ -174,6 +180,8 @@
     <Content Include="Content\js\manufacturer\manufacturer-add.js" />
     <Content Include="Content\js\manufacturer\manufacturer-index.js" />
     <Content Include="Content\js\manufacturer\manufacturer-update.js" />
+    <Content Include="Content\js\order\order-index.js" />
+    <Content Include="Content\js\order\order-update.js" />
     <Content Include="Content\js\product\product-add.js" />
     <Content Include="Content\js\product\product-index.js" />
     <Content Include="Content\js\product\product-update.js" />
@@ -204,11 +212,11 @@
     <Content Include="Views\Index\SignUp.aspx" />
     <Content Include="Views\Manufacturer\Add.aspx" />
     <Content Include="Views\Manufacturer\Index.aspx" />
-    <Content Include="Views\Admin\Order.aspx" />
     <Content Include="Views\Manufacturer\Update.aspx" />
+    <Content Include="Views\Order\Index.aspx" />
+    <Content Include="Views\Order\Update.aspx" />
     <Content Include="Views\Product\Add.aspx" />
     <Content Include="Views\Product\Index.aspx" />
-    <Content Include="Views\Admin\Type.aspx" />
     <Content Include="Views\Index\About.aspx" />
     <Content Include="Views\Index\Index.aspx" />
     <Content Include="Views\Product\Update.aspx" />

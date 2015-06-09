@@ -129,14 +129,14 @@ namespace FashionShop.Models
             return Int32.Parse(result.Rows[0]["Quantity"].ToString());
         }
 
-        public int payment(string ID, int quantity)
+        public int payment(string purchaseOrder, string ID, int quantity)
         {
             string sql = string.Format("Update Product Set Quantity = Quantity - {0} Where ID = '{1}'", quantity, ID);
             this.provider.executeNonQuery(sql);
             
             sql = string.Format("Update Product Set Sales = Sales + {0} Where ID = '{1}'", quantity, ID);
             this.provider.executeNonQuery(sql);
-            
+
             return this.count(ID);
         }
 
