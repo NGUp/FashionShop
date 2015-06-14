@@ -20,11 +20,14 @@
                     </h1>
                     <div>
                         <core-field>
-                            <input placeholder="Tên đăng nhập" id="txtUsername" autocomplete="off" spellcheck="false" name="username" flex>
+                            <input placeholder="Tên đăng nhập" id="txtUsername" autocomplete="off" spellcheck="false" name="username" flex ng-enter="login()">
                         </core-field>
                         <core-field>
-                            <input placeholder="Mật khẩu" id="txtPassword" autocomplete="off" spellcheck="false" type="password" name="password" flex>
+                            <input placeholder="Mật khẩu" id="txtPassword" autocomplete="off" spellcheck="false" type="password" name="password" flex ng-enter="login()">
                         </core-field>
+                    </div>
+                    <div class="error" ng-click="hideError()" ng-show="isError">
+                        <h6 class="title-error">Tên đăng nhập hoặc mật khẩu không hợp lệ.</h6>
                     </div>
                     <div class="div-button">
                         <paper-button raised ng-click="login()">Đăng nhập</paper-button>

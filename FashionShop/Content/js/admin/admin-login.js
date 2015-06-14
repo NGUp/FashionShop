@@ -90,6 +90,20 @@
         }
     })
 
+    .directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if (event.which === 13) {
+                    scope.$apply(function () {
+                        scope.$eval(attrs.ngEnter);
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    })
+
     /**
     * Login Controller
     *
@@ -109,12 +123,18 @@
                     password = document.getElementById('txtPassword');
 
                 if (username.value.length > 4 &&
-                password.value.length > 7) {
+                        password.value.length > 7) {
                     form.submit([
                         { 'username': username.value },
                         { 'password': security.encode(password.value) }
                     ]);
+                } else {
+                    scope.isError = true;
                 }
+            };
+
+            scope.hideError = function () {
+                scope.isError = false;
             };
         } ]);
 
