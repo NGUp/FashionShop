@@ -1,8 +1,8 @@
 ﻿h2
 {
-    color: #03a9f4;
     font-size: 24px;
     font-weight: 400;
+    color: #03a9f4;
 }
 
 article
@@ -58,8 +58,8 @@ article
 .btn-order
 {
     margin: 0;
-    background-color: #009688;
     color: #fff;
+    background-color: #009688;
 }
 
 .products-relative
@@ -69,11 +69,11 @@ article
 
 .relative-product-name
 {
-    color: #3f51b5;
-    white-space: nowrap;
     overflow: hidden;
     font-size: 12px;
+    color: #3f51b5;
     text-align: center;
+    white-space: nowrap;
 }
 
 .relative-product-price
@@ -101,11 +101,11 @@ article
 
 .ordered span
 {
-    background-color: #ffeb3b;
     padding: 8px;
+    background-color: #ffeb3b;
+    border: 1px solid #fdd835;
     border-radius: 3px;
     box-shadow: 0 1px 4px 0 rgba(3, 155, 229, 0.37);
-    border: 1px solid #fdd835;
 }
 
 @media(max-width: 541px)

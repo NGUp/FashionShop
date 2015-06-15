@@ -26,22 +26,13 @@
 
     'use strict';
 
-    angular.module('kids-fashion', [])
-        .directive('ngEnter', function () {
-            return function (scope, element, attrs) {
-                element.bind("keydown keypress", function (event) {
-                    if (event.which === 13) {
-                        scope.$apply(function () {
-                            scope.$eval(attrs.ngEnter);
-                        });
+    angular.module('kids-fashion')
 
-                        event.preventDefault();
-                    }
-                });
-            };
-        })
+        .controller('CategoryCtrl', ['$scope', '$http', 'Normalization', function (scope, http, normalization) {
 
-        .controller('CategoryCtrl', ['$scope', '$http', function (scope, http) {
+            var params = window.location.href.split('/');
+
+            scope.standardizePrice = normalization.standardizePrice;
 
             http.get('/category/getall').then(function (data) {
                 scope.categories = data.data;
@@ -55,10 +46,8 @@
                 window.location.href = '/index/details/' + product;
             };
 
-            var params = window.location.href.split('/');
-
             scope.previous = function () {
-                var page = document.getElementById('page').innerHTML;
+                var page = $('#page').text();
 
                 if (page > 1) {
                     window.location.href = '/index/category/' + params[5] + '/' + (parseInt(page) - 1);
@@ -66,8 +55,8 @@
             };
 
             scope.next = function () {
-                var page = document.getElementById('page').innerHTML,
-                    maxPage = document.getElementById('page-total').innerHTML;
+                var page = $('#page').text(),
+                    maxPage = $('#page-total').text();
 
                 if (page < maxPage) {
                     window.location.href = '/index/category/' + params[5] + '/' + (parseInt(page) + 1);
