@@ -26,6 +26,13 @@
 
     'use strict';
 
+    String.prototype.insert = function (index, string) {
+        if (index > 0)
+            return this.substring(0, index) + string + this.substring(index, this.length);
+        else
+            return string + this;
+    };
+
     angular.module('kids-fashion', [])
 
         .directive('ngEnter', function () {
@@ -40,6 +47,28 @@
                     }
                 });
             };
+        })
+
+        .factory('Normalization', function () {
+            return {
+                standardizePrice: function (param) {
+                    var price = param.toString(),
+                        step = 0,
+                        index;
+
+                    for (index = price.length - 1; index > 0; index--) {
+                        if (step === 2) {
+                            price = price.insert(index, '.');
+                            index--;
+                            step = 0;
+                        }
+
+                        step++;
+                    }
+
+                    return price;
+                }
+            }
         })
 
         .run(['$http', function (http) {

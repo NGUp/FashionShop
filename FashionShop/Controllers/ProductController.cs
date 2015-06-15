@@ -26,11 +26,12 @@ namespace FashionShop.Controllers
         [HttpPost]
         public ActionResult Update()
         {
-            Product product = this.model.one(Request.Params["product_ID"]);
+            Product product = this.model.one(Request.Params["product_ID"].Replace("'", "''"));
+
             ViewData["product_ID"] = product.Id;
             ViewData["product_Name"] = product.Name;
             ViewData["product_Manufacturer"] = product.Manufacturer.Trim();
-            ViewData["product_Price"] = product.Price;
+            ViewData["product_Price"] = Normalization.standardizePrice(product.Price);
             ViewData["product_Origin"] = product.Origin;
             ViewData["product_Views"] = product.Views;
             ViewData["product_Sales"] = product.Sales;
@@ -74,7 +75,7 @@ namespace FashionShop.Controllers
         {
             if (security.checkToken(Request.Headers["Authorization"].ToString()))
             {
-                string ID = param_0;
+                string ID = param_0.Replace("'", "''");
                 Product product = this.model.one(ID);
 
                 if (product == null)
@@ -83,7 +84,7 @@ namespace FashionShop.Controllers
                 }
 
                 Hashtable cart = (Session["PRODUCTS"] as Hashtable);
-                cart[param_0] = 1;
+                cart[ID] = 1;
                 Session["PRODUCTS"] = cart;
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
@@ -97,7 +98,7 @@ namespace FashionShop.Controllers
             if (security.checkToken(Request.Headers["Authorization"].ToString()))
             {
                 Analyze analyze = new Analyze();
-                Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_0));
+                Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_0.Replace("'", "''")));
 
                 Product product = new Product();
                 product.Id = hashTable["ProductID"].ToString();
@@ -114,7 +115,7 @@ namespace FashionShop.Controllers
         {
             if (security.checkToken(Request.Headers["Authorization"].ToString()))
             {
-                return Json(this.model.getByCategory(param_0.Trim(), param_1), JsonRequestBehavior.AllowGet);
+                return Json(this.model.getByCategory(param_0.Replace("'", "''").Trim(), param_1), JsonRequestBehavior.AllowGet);
             }
 
             return null;
@@ -125,7 +126,7 @@ namespace FashionShop.Controllers
         {
             if (security.checkToken(Request.Headers["Authorization"].ToString()))
             {
-                return Json(this.model.getByManufacturer(param_0.Trim(), param_1), JsonRequestBehavior.AllowGet);
+                return Json(this.model.getByManufacturer(param_0.Replace("'", "''").Trim(), param_1), JsonRequestBehavior.AllowGet);
             }
 
             return null;
@@ -137,7 +138,7 @@ namespace FashionShop.Controllers
             if (security.checkToken(Request.Headers["Authorization"].ToString()))
             {
                 Analyze analyze = new Analyze();
-                Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_1));
+                Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_1.Replace("'", "''")));
 
                 Product product = new Product();
                 product.Id = hashTable["ProductID"].ToString();

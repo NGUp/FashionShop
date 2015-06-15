@@ -241,17 +241,20 @@ namespace FashionShop.Controllers
             ProductModel model = new ProductModel();
             Product product = model.one(param_0.Replace("'", "''"));
 
-            ViewData["product_ID"] = product.Id;
-            ViewData["product_Name"] = product.Name;
-            ViewData["product_Manufacturer"] = product.Manufacturer;
-            ViewData["product_Price"] = product.Price;
-            ViewData["product_Origin"] = product.Origin;
-            ViewData["product_Views"] = product.Views;
-            ViewData["product_Sales"] = product.Sales;
-            ViewData["product_Image"] = product.Image;
-            ViewData["product_State"] = product.State;
-            ViewData["product_Sex"] = product.Sex;
-            ViewData["product_Category"] = product.Category;
+            if (product != null)
+            {
+                ViewData["product_ID"] = product.Id;
+                ViewData["product_Name"] = product.Name;
+                ViewData["product_Manufacturer"] = product.Manufacturer;
+                ViewData["product_Price"] = Normalization.standardizePrice(product.Price);
+                ViewData["product_Origin"] = product.Origin;
+                ViewData["product_Views"] = product.Views;
+                ViewData["product_Sales"] = product.Sales;
+                ViewData["product_Image"] = product.Image;
+                ViewData["product_State"] = product.State;
+                ViewData["product_Sex"] = product.Sex;
+                ViewData["product_Category"] = product.Category;
+            }
 
             return View();
         }

@@ -82,6 +82,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Misc\Analyze.cs" />
+    <Compile Include="Misc\Normalization.cs" />
     <Compile Include="Misc\Security.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />

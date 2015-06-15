@@ -26,26 +26,15 @@
 
     'use strict';
 
-    angular.module('kids-fashion', [])
-        .directive('ngEnter', function () {
-            return function (scope, element, attrs) {
-                element.bind("keydown keypress", function (event) {
-                    if (event.which === 13) {
-                        scope.$apply(function () {
-                            scope.$eval(attrs.ngEnter);
-                        });
+    angular.module('kids-fashion')
 
-                        event.preventDefault();
-                    }
-                });
-            };
-        })
-
-        .controller('DetailsCtrl', ['$scope', '$http', function (scope, http) {
+        .controller('DetailsCtrl', ['$scope', '$http', 'Normalization', function (scope, http, normalization) {
             var image = document.getElementById('product-id');
 
             scope.ordered = false,
             scope.canceled = true;
+
+            scope.standardizePrice = normalization.standardizePrice;
 
             http.get('/category/getall').then(function (data) {
                 scope.categories = data.data;
