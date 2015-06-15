@@ -68,7 +68,9 @@ namespace FashionShop.Controllers
         public ActionResult Manufacturers()
         {
             ManufacturerModel manufacturerModel = new ManufacturerModel();
+
             ViewData["manufacturers"] = manufacturerModel.getAll();
+
             return View();
         }
         
