@@ -15,7 +15,6 @@
 <asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">
     <link rel="import" href="/bower_components/paper-progress/paper-progress.html">
     <link rel="import" href="/bower_components/core-field/core-field.html">
-    <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat=server>
@@ -88,6 +87,7 @@
                 </div>
             </div>
         </article>
+
         <% if (Session["USER_ID"] != null) { %>
             <paper-fab icon="shopping-cart" ng-click="goCart()" class="btn-shopping-cart"></paper-fab>
         <% } %>

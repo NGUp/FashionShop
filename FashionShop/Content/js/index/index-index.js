@@ -26,25 +26,12 @@
 
     'use strict';
 
-    angular.module('kids-fashion', [])
-        .directive('ngEnter', function () {
-            return function (scope, element, attrs) {
-                element.bind("keydown keypress", function (event) {
-                    if (event.which === 13) {
-                        scope.$apply(function () {
-                            scope.$eval(attrs.ngEnter);
-                        });
-
-                        event.preventDefault();
-                    }
-                });
-            };
-        })
+    angular.module('kids-fashion')
 
         .controller('IndexCtrl', ['$scope', '$http', function (scope, http) {
 
             scope.removeProgressBar = function () {
-                var progressBar = document.getElementsByTagName('paper-progress');
+                var progressBar = $('paper-progress');
 
                 for (var index = progressBar.length - 1; index >= 0; index--) {
                     progressBar[index].parentNode.removeChild(progressBar[index]);

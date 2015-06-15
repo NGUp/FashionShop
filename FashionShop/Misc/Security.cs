@@ -54,5 +54,15 @@ namespace FashionShop.Misc
 
             return this.encodeSHA1(time);
         }
+
+        public bool checkToken(string token)
+        {
+            if (this.decodeBase64(token) == "976937382740-a20lnb19c37ae12to721nj1mkm8aqid9")
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

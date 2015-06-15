@@ -12,6 +12,7 @@ namespace FashionShop.Controllers
     public class ManufacturerController : Controller
     {
         private ManufacturerModel model = new ManufacturerModel();
+        private Security security = new Security();
 
         //
         // GET: /Manufacturer/
@@ -27,38 +28,73 @@ namespace FashionShop.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Update()
+        {
+            if (Request.Params["manufacturer_ID"] == null)
+            {
+                Response.Redirect("/admin/manufacturer", false);
+            }
+
+            ViewData["ID"] = Request.Params["manufacturer_ID"].Trim();
+            ViewData["Name"] = this.model.getManufacturerName(Request.Params["manufacturer_ID"]);
+
+            return View();
+        }
+
         [HttpGet]
         public JsonResult getTopManufacturers()
         {
-            return Json(this.model.getTopManufacturers(), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.getTopManufacturers(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult Total()
         {
-            return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult Get(int param_0)
         {
-            return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult Search(int param_0, string param_1)
         {
-            Security security = new Security();
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.search(security.decodeBase64(param_1), param_0), JsonRequestBehavior.AllowGet);
+            }
 
-            return Json(this.model.search(security.decodeBase64(param_1), param_0), JsonRequestBehavior.AllowGet);
+            return null;
         }
 
         [HttpGet]
         public JsonResult SearchResults(string param_0)
         {
-            Security security = new Security();
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.totalResults(security.decodeBase64(param_0)), JsonRequestBehavior.AllowGet);
+            }
 
-            return Json(this.model.totalResults(security.decodeBase64(param_0)), JsonRequestBehavior.AllowGet);
+            return null;
         }
 
         [HttpPost]
@@ -82,20 +118,6 @@ namespace FashionShop.Controllers
             // Execute update
             this.model.insert(manufacturer);
             Response.Redirect("/admin/manufacturer");
-        }
-
-        [HttpPost]
-        public ActionResult Update()
-        {
-            if (Request.Params["manufacturer_ID"] == null)
-            {
-                Response.Redirect("/admin/manufacturer", false);
-            }
-
-            ViewData["ID"] = Request.Params["manufacturer_ID"].Trim();
-            ViewData["Name"] = this.model.getManufacturerName(Request.Params["manufacturer_ID"]);
-
-            return View();
         }
 
         [HttpPost]

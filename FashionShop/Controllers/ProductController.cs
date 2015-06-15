@@ -14,24 +14,13 @@ namespace FashionShop.Controllers
     public class ProductController : Controller
     {
         private ProductModel model = new ProductModel();
+        private Security security = new Security();
 
         //
         // GET: /Product/
         public ActionResult Index()
         {
             return View();
-        }
-
-        [HttpGet]
-        public JsonResult Get(int param_0)
-        {
-            return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult Total()
-        {
-            return Json(this.model.total(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -59,59 +48,137 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
-        public JsonResult OrderProduct(string param_0)
+        public JsonResult Get(int param_0)
         {
-            string ID = param_0;
-            Product product = this.model.one(ID);
-
-            if (product == null)
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
             {
-                return Json(false, JsonRequestBehavior.AllowGet);
+                return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
             }
 
-            Hashtable cart = (Session["PRODUCTS"] as Hashtable);
-            cart[param_0] = 1;
-            Session["PRODUCTS"] = cart;
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return null;
+        }
+
+        [HttpGet]
+        public JsonResult Total()
+        {
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
+        }
+
+        [HttpGet]
+        public JsonResult OrderProduct(string param_0)
+        {
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                string ID = param_0;
+                Product product = this.model.one(ID);
+
+                if (product == null)
+                {
+                    return Json(false, JsonRequestBehavior.AllowGet);
+                }
+
+                Hashtable cart = (Session["PRODUCTS"] as Hashtable);
+                cart[param_0] = 1;
+                Session["PRODUCTS"] = cart;
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult SearchResults(string param_0)
         {
-            Analyze analyze = new Analyze();
-            Security security = new Security();
-            Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_0));
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                Analyze analyze = new Analyze();
+                Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_0));
 
-            Product product = new Product();
-            product.Id = hashTable["ProductID"].ToString();
-            product.Name = hashTable["ProductName"].ToString();
+                Product product = new Product();
+                product.Id = hashTable["ProductID"].ToString();
+                product.Name = hashTable["ProductName"].ToString();
 
-            return Json(this.model.totalResults(product), JsonRequestBehavior.AllowGet);
+                return Json(this.model.totalResults(product), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult getByCategory(string param_0, int param_1)
         {
-            return Json(this.model.getByCategory(param_0.Trim(), param_1), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.getByCategory(param_0.Trim(), param_1), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult getByManufacturer(string param_0, int param_1)
         {
-            return Json(this.model.getByManufacturer(param_0.Trim(), param_1), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.getByManufacturer(param_0.Trim(), param_1), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult Search(int param_0, string param_1)
         {
-            Analyze analyze = new Analyze();
-            Security security = new Security();
-            Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_1));
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                Analyze analyze = new Analyze();
+                Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_1));
 
-            Product product = new Product();
-            product.Id = hashTable["ProductID"].ToString();
-            product.Name = hashTable["ProductName"].ToString();
-            return Json(this.model.search(product, param_0), JsonRequestBehavior.AllowGet);
+                Product product = new Product();
+                product.Id = hashTable["ProductID"].ToString();
+                product.Name = hashTable["ProductName"].ToString();
+                return Json(this.model.search(product, param_0), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
+        }
+
+        [HttpGet]
+        public JsonResult GetNews()
+        {
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.getNews(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
+        }
+
+        [HttpGet]
+        public JsonResult GetSales()
+        {
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.getSales(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
+        }
+
+        [HttpGet]
+        public JsonResult RelativeProducts(string param_0)
+        {
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.getRelativeProducts(param_0.Replace("'", "''")), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpPost]
@@ -246,24 +313,6 @@ namespace FashionShop.Controllers
 
             this.model.delete(product);
             Response.Redirect("/admin/product");
-        }
-
-        [HttpGet]
-        public JsonResult GetNews()
-        {
-            return Json(this.model.getNews(), JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult GetSales()
-        {
-            return Json(this.model.getSales(), JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult RelativeProducts(string param_0)
-        {
-            return Json(this.model.getRelativeProducts(param_0.Replace("'", "''")), JsonRequestBehavior.AllowGet);
         }
     }
 }

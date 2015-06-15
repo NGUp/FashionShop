@@ -12,12 +12,7 @@ namespace FashionShop.Controllers
     public class CategoryController : Controller
     {
         private CategoryModel model = new CategoryModel();
-
-        [HttpGet]
-        public JsonResult getAll()
-        {
-            return Json(this.model.getAll(), JsonRequestBehavior.AllowGet);
-        }
+        private Security security = new Security();
         
         [HttpGet]
         public ActionResult Index()
@@ -46,23 +41,47 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public JsonResult getAll()
+        {
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.getAll(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
+        }
+
+        [HttpGet]
         public JsonResult Total()
         {
-            return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
         
         [HttpGet]
         public JsonResult Get(int param_0)
         {
-            return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult SearchResults(string param_0)
         {
-            Security security = new Security();
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.totalResults(security.decodeBase64(param_0)), JsonRequestBehavior.AllowGet);
+            }
 
-            return Json(this.model.totalResults(security.decodeBase64(param_0)), JsonRequestBehavior.AllowGet);
+            return null;
         }
 
         [HttpGet]
