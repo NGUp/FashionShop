@@ -271,10 +271,16 @@ namespace FashionShop.Controllers
             ProductModel productModel = new ProductModel();
             CategoryModel categoryModel = new CategoryModel();
 
-            ViewData["page"] = param_1;
-            ViewData["total"] = productModel.getTotalPageByCategory(param_0);
-            ViewData["category"] = categoryModel.getCategoryName(param_0);
-            ViewData["products"] = productModel.getByCategory(param_0, param_1);
+            Product[] products = productModel.getByCategory(param_0.Replace("'", "''"), param_1);
+
+            if (products.Length > 0)
+            {
+                ViewData["page"] = param_1;
+                ViewData["total"] = productModel.getTotalPageByCategory(param_0.Replace("'", "''"));
+                ViewData["category"] = categoryModel.getCategoryName(param_0.Replace("'", "''"));
+                ViewData["products"] = products;
+            }
+
             return View();
         }
 
@@ -284,10 +290,16 @@ namespace FashionShop.Controllers
             ProductModel productModel = new ProductModel();
             ManufacturerModel manufacturerModel = new ManufacturerModel();
 
-            ViewData["page"] = param_1;
-            ViewData["total"] = productModel.getTotalPageByManufacturer(param_0);
-            ViewData["manufacturer"] = manufacturerModel.getManufacturerName(param_0);
-            ViewData["products"] = productModel.getByManufacturer(param_0, param_1);
+            Product[] products = productModel.getByManufacturer(param_0.Replace("'", "''"), param_1);
+
+            if (products.Length > 0)
+            {
+                ViewData["page"] = param_1;
+                ViewData["total"] = productModel.getTotalPageByManufacturer(param_0.Replace("'", "''"));
+                ViewData["manufacturer"] = manufacturerModel.getManufacturerName(param_0.Replace("'", "''"));
+                ViewData["products"] = products;
+            }
+
             return View();
         }
 

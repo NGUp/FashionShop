@@ -29,7 +29,7 @@
     angular.module('kids-fashion')
 
         .controller('DetailsCtrl', ['$scope', '$http', 'Normalization', function (scope, http, normalization) {
-            var image = document.getElementById('product-id');
+            var image = $('#product-id');
 
             scope.ordered = false,
             scope.canceled = true;
@@ -44,7 +44,7 @@
                 scope.manufacturers = data.data;
             });
 
-            http.get('/admin/product/relativeproducts/' + image.attributes.alt.nodeValue).then(function (data) {
+            http.get('/admin/product/relativeproducts/' + $(image).attr('alt')).then(function (data) {
                 scope.products = data.data;
             });
 
@@ -53,7 +53,7 @@
             };
 
             scope.order = function () {
-                http.get('/admin/product/orderproduct/' + image.attributes.alt.nodeValue).then(function (data) {
+                http.get('/admin/product/orderproduct/' + $(image).attr('alt')).then(function (data) {
                     scope.ordered = data.data;
                 });
             };

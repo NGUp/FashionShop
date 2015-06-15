@@ -1,8 +1,8 @@
 ﻿h2
 {
-    color: #03a9f4;
     font-size: 24px;
     font-weight: 400;
+    color: #03a9f4;
 }
 
 article
@@ -37,13 +37,13 @@ article
 .btn-details 
 {
     float: right;
-    background-color: #009688;
     padding: 0 8px;
+    margin-top: -8px;
+    font-weight: 400;
     line-height: 2em;
     color: #fff;
-    font-weight: 400;
+    background-color: #009688;
     border-radius: 3px;
-    margin-top: -8px;
 }
 
 .product-details
@@ -60,25 +60,25 @@ article
 
 h4 
 {
-    font-weight: 400;
-    font-size: 12px;
     margin: 0 16px;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .product-manufacturer
 {
-    font-size: 12px;
     margin: 8px 0;
+    font-size: 12px;
     text-align: center;
 }
 
 .product-name
 {
+    overflow: hidden;
     font-size: 16px;
     line-height: 2em;
-    white-space: nowrap;
-    overflow: hidden;
     color: rgb(3, 155, 229);
+    white-space: nowrap;
 }
 
 .product-image
@@ -98,18 +98,24 @@ h4
 {   
     padding: 16px 0;
     margin-bottom: 16px;
-    border-bottom: 1px solid #e0e0e0;
     border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .div-paging
 {
     width: 150px;
+    padding: 8px 0;
+    margin-top: 32px;
+    color: #fff;
     text-align: center;
     background-color: #039be5;
-    padding: 8px 0;
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
-    color: #fff;
     border-radius: 3px;
-    margin-top: 32px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.not-found h2
+{
+    font-weight: 400;
+    color: #212121;
 }
