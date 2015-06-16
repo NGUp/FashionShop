@@ -28,7 +28,14 @@
                     <h5 class="title-empty">Giỏ hàng trống</h5>
             <% }
                else
-               { %>
+               {
+                   if (Session["ALERT"] != null)
+                   {
+            %>
+                <h3 class="error"><% Response.Write(Session["ALERT"]); %></h3>
+            <%
+                   }
+            %>
                     <ul>
                         <li class="product" ng-repeat="item in cart">
                             <div class="row">
@@ -37,7 +44,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h5 class="product-name">{{item.Product.Manufacturer}} {{item.Product.Name}}</h5>
-                                    <h5>{{item.Product.Id}} - {{item.Product.Price}} VND</h5>
+                                    <h5>{{item.Product.Id}} - {{standardizePrice(item.Product.Price)}} VND</h5>
                                 </div>
                                 <div class="col-md-3 div-function">
                                     <core-field class="search-box">
@@ -50,15 +57,17 @@
                             </div>
                         </li>
                     </ul>
-            <% } %>
+            <% 
+               }
+            %>
         </div>
         <div class="clear"></div>
         <% if (Session["PRODUCTS"] != null && (Session["PRODUCTS"] as Hashtable).Count > 0) { %>
            <div class="div-payment">
-                <h3 class="bill">Tổng tiền: {{total()}} VND</h3>
+                <h3 class="bill">Tổng tiền: {{standardizePrice(total())}} VND</h3>
                 <div class="clear">
                     <paper-button raised ng-click="refresh()">
-                        <core-icon icon="refresh"></core-icon> Làm mới
+                        <core-icon icon="delete"></core-icon> Làm mới
                     </paper-button>
                     <paper-button raised class="btn-update" ng-click="update()">
                         <core-icon icon="system-update-tv"></core-icon> Cập nhật

@@ -98,13 +98,15 @@ namespace FashionShop.Controllers
             if (cart.Count > 0)
             {
                 Session["PRODUCTS"] = cart;
-                Response.Redirect("/index/cart");
+                Session["ALERT"] = "Danh sách các mặt hàng không đủ số lượng để thanh toán.<br/>Các mặt hàng còn lại đã được thanh toán.";
+                Response.Redirect("/index/cart", false);
             }
             else
             {
+                Session["ALERT"] = null;
                 (Session["PRODUCTS"] as Hashtable).Clear();
                 cartModel.saveOrder(Session["USER_ID"] as string, purchaseOrder);
-                Response.Redirect("/");
+                Response.Redirect("/", false);
             }
         }
     }

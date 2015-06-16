@@ -26,9 +26,12 @@
 
     'use strict';
 
-    angular.module('kids-fashion', [])
+    angular.module('kids-fashion')
 
-        .controller('CartCtrl', ['$scope', '$http', function (scope, http) {
+        .controller('CartCtrl', ['$scope', '$http', 'Normalization', function (scope, http, normalization) {
+
+            scope.standardizePrice = normalization.standardizePrice;
+
             http.get('/index/getcart').then(function (data) {
                 scope.cart = data.data;
             });
