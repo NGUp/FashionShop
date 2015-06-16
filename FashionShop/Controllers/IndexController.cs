@@ -47,24 +47,6 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
-        public JsonResult getCart()
-        {
-            ProductModel productModel = new ProductModel();
-            Hashtable hashTable = (Session["PRODUCTS"] as Hashtable);
-            ArrayList list = new ArrayList();
-
-            foreach (DictionaryEntry entry in hashTable)
-            {
-                Cart cart = new Cart();
-                cart.Product = productModel.one(entry.Key.ToString());
-                cart.Quantity = Int32.Parse(entry.Value.ToString());
-                list.Add(cart);
-            }
-
-            return Json(list, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
         public ActionResult Manufacturers()
         {
             ManufacturerModel manufacturerModel = new ManufacturerModel();
@@ -77,6 +59,12 @@ namespace FashionShop.Controllers
         [HttpGet]
         public ActionResult Advance()
         {
+            // Check if is administrator
+            if (Session["USER_PERMISSION"] != null && Convert.ToInt32(Session["USER_PERMISSION"]) == 1)
+            {
+                Response.Redirect("/admin", false);
+            }
+
             return View();
         }
 
@@ -106,6 +94,134 @@ namespace FashionShop.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AdvanceSearch()
+        {
+            // Check if is administrator
+            if (Session["USER_PERMISSION"] != null && Convert.ToInt32(Session["USER_PERMISSION"]) == 1)
+            {
+                Response.Redirect("/admin", false);
+            }
+
+            if (Request.Params["category"] == null)
+            {
+                Response.Redirect("/index/advance", false);
+            }
+
+            if (Request.Params["sex"] == null)
+            {
+                Response.Redirect("/index/advance", false);
+            }
+
+            if (Request.Params["price"] == null)
+            {
+                Response.Redirect("/index/advance", false);
+            }
+
+            string category = Request.Params["category"];
+            int sex = Int32.Parse(Request.Params["sex"]);
+            int price = Int32.Parse(Request.Params["price"]);
+
+            ProductModel productModel = new ProductModel();
+
+            ViewData["products"] = productModel.searchAdvance(category, sex, price);
+
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Details(string param_0)
+        {
+            ProductModel model = new ProductModel();
+            Product product = model.one(param_0.Replace("'", "''"));
+
+            if (product != null)
+            {
+                ViewData["product_ID"] = product.Id;
+                ViewData["product_Name"] = product.Name;
+                ViewData["product_Manufacturer"] = product.Manufacturer;
+                ViewData["product_Price"] = Normalization.standardizePrice(product.Price);
+                ViewData["product_Origin"] = product.Origin;
+                ViewData["product_Views"] = product.Views;
+                ViewData["product_Sales"] = product.Sales;
+                ViewData["product_Image"] = product.Image;
+                ViewData["product_State"] = product.State;
+                ViewData["product_Sex"] = product.Sex;
+                ViewData["product_Category"] = product.Category;
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Category(string param_0, int param_1)
+        {
+            ProductModel productModel = new ProductModel();
+            CategoryModel categoryModel = new CategoryModel();
+
+            Product[] products = productModel.getByCategory(param_0.Replace("'", "''"), param_1);
+
+            if (products.Length > 0)
+            {
+                ViewData["page"] = param_1;
+                ViewData["total"] = productModel.getTotalPageByCategory(param_0.Replace("'", "''"));
+                ViewData["category"] = categoryModel.getCategoryName(param_0.Replace("'", "''"));
+                ViewData["products"] = products;
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Manufacturer(string param_0, int param_1)
+        {
+            ProductModel productModel = new ProductModel();
+            ManufacturerModel manufacturerModel = new ManufacturerModel();
+
+            Product[] products = productModel.getByManufacturer(param_0.Replace("'", "''"), param_1);
+
+            if (products.Length > 0)
+            {
+                ViewData["page"] = param_1;
+                ViewData["total"] = productModel.getTotalPageByManufacturer(param_0.Replace("'", "''"));
+                ViewData["manufacturer"] = manufacturerModel.getManufacturerName(param_0.Replace("'", "''"));
+                ViewData["products"] = products;
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult loginSuccess()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult getCart()
+        {
+            ProductModel productModel = new ProductModel();
+            Hashtable hashTable = (Session["PRODUCTS"] as Hashtable);
+            ArrayList list = new ArrayList();
+
+            foreach (DictionaryEntry entry in hashTable)
+            {
+                Cart cart = new Cart();
+                cart.Product = productModel.one(entry.Key.ToString());
+                cart.Quantity = Int32.Parse(entry.Value.ToString());
+                list.Add(cart);
+            }
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public JsonResult isExisted(string param_0)
         {
@@ -115,36 +231,6 @@ namespace FashionShop.Controllers
             string userName = hashTable["UserName"].ToString();
 
             return Json(this.model.isExisted(userName), JsonRequestBehavior.AllowGet);
-        }
-        
-        [HttpPost]
-        public ActionResult AdvanceSearch()
-        {
-            if (Request.Params["category"] == null)
-            {
-                Response.Redirect("/index/advance", false);
-            }
-            
-            if (Request.Params["sex"] == null)
-            {
-                Response.Redirect("/index/advance", false);
-            }
-            
-            if (Request.Params["price"] == null)
-            {
-                Response.Redirect("/index/advance", false);
-            }
-            
-            string category = Request.Params["category"];
-            int sex = Int32.Parse(Request.Params["sex"]);
-            int price = Int32.Parse(Request.Params["price"]);
-            
-            ProductModel productModel = new ProductModel();
-
-            ViewData["products"] = productModel.searchAdvance(category, sex, price);
-
-
-            return View();
         }
 
         //
@@ -235,80 +321,6 @@ namespace FashionShop.Controllers
             }
 
             Response.Redirect("/index/login", false);
-        }
-
-        [HttpGet]
-        public ActionResult Details(string param_0)
-        {
-            ProductModel model = new ProductModel();
-            Product product = model.one(param_0.Replace("'", "''"));
-
-            if (product != null)
-            {
-                ViewData["product_ID"] = product.Id;
-                ViewData["product_Name"] = product.Name;
-                ViewData["product_Manufacturer"] = product.Manufacturer;
-                ViewData["product_Price"] = Normalization.standardizePrice(product.Price);
-                ViewData["product_Origin"] = product.Origin;
-                ViewData["product_Views"] = product.Views;
-                ViewData["product_Sales"] = product.Sales;
-                ViewData["product_Image"] = product.Image;
-                ViewData["product_State"] = product.State;
-                ViewData["product_Sex"] = product.Sex;
-                ViewData["product_Category"] = product.Category;
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Category(string param_0, int param_1)
-        {
-            ProductModel productModel = new ProductModel();
-            CategoryModel categoryModel = new CategoryModel();
-
-            Product[] products = productModel.getByCategory(param_0.Replace("'", "''"), param_1);
-
-            if (products.Length > 0)
-            {
-                ViewData["page"] = param_1;
-                ViewData["total"] = productModel.getTotalPageByCategory(param_0.Replace("'", "''"));
-                ViewData["category"] = categoryModel.getCategoryName(param_0.Replace("'", "''"));
-                ViewData["products"] = products;
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Manufacturer(string param_0, int param_1)
-        {
-            ProductModel productModel = new ProductModel();
-            ManufacturerModel manufacturerModel = new ManufacturerModel();
-
-            Product[] products = productModel.getByManufacturer(param_0.Replace("'", "''"), param_1);
-
-            if (products.Length > 0)
-            {
-                ViewData["page"] = param_1;
-                ViewData["total"] = productModel.getTotalPageByManufacturer(param_0.Replace("'", "''"));
-                ViewData["manufacturer"] = manufacturerModel.getManufacturerName(param_0.Replace("'", "''"));
-                ViewData["products"] = products;
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult loginSuccess()
-        {
-            return View();
         }
 
         [HttpPost]

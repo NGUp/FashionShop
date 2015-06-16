@@ -17,6 +17,13 @@
         <asp:ContentPlaceHolder ID="StyleSheetContent" runat="server"></asp:ContentPlaceHolder>
     </head>
     <body unresolved>
+        <%
+            if (Session["USER_PERMISSION"] != null && Convert.ToInt32(Session["USER_PERMISSION"]) == 1)
+            {
+                Response.Redirect("/admin", false);
+                return;
+            }    
+         %>
         <core-drawer-panel forceNarrow="true">
             <aside drawer>
                 <div class="item">

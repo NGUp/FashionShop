@@ -11,8 +11,7 @@ namespace FashionShop.Views.Shared
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string ID = Session["USER_ID"].ToString();
-            string ID = "ABCXYZ";
+           
         }
     }
 }

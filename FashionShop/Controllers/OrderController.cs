@@ -7,12 +7,14 @@ using FashionShop.Models;
 using FashionShop.Models.Objects;
 using Newtonsoft.Json.Linq;
 using System.Collections;
+using FashionShop.Misc;
 
 namespace FashionShop.Controllers
 {
     public class OrderController : Controller
     {
         private OrderModel model = new OrderModel();
+        private Security security = new Security();
 
         //
         // GET: Admin/Order/
@@ -58,20 +60,35 @@ namespace FashionShop.Controllers
         [HttpGet]
         public JsonResult Total()
         {
-            return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult Get(int param_0)
         {
-            return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.get(param_0), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpGet]
         public JsonResult getCartByPurchaseOrder(string param_0)
         {
-            CartModel cartModel = new CartModel();
-            return Json(cartModel.getCartByPurchaseOrder(param_0.Trim()), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                CartModel cartModel = new CartModel();
+                return Json(cartModel.getCartByPurchaseOrder(param_0.Trim().Replace("'", "''")), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         [HttpPost]
