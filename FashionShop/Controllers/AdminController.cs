@@ -17,7 +17,7 @@ namespace FashionShop.Controllers
         public ActionResult Index()
         {
             // Check if is administrator
-            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
             {
                 Response.Redirect("/admin/login", false);
             }
@@ -40,62 +40,6 @@ namespace FashionShop.Controllers
                 {
                     Response.Redirect("/"); // Anonymous/Guest/Registerd User
                 }
-            }
-
-            return View();
-        }
-
-        // Product
-        // GET: /Admin/Product
-        [HttpGet]
-        public ActionResult Product()
-        {
-            // Check if is administrator
-            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
-            {
-                Response.Redirect("/admin", false);
-            }
-
-            return View();
-        }
-
-        // Product type
-        // GET: /Admin/Type
-        [HttpGet]
-        public ActionResult Type()
-        {
-            // Check if is administrator
-            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
-            {
-                Response.Redirect("/admin", false);
-            }
-
-            return View();
-        }
-
-        // Manufacturer
-        // GET: /Admin/Manufacturer
-        [HttpGet]
-        public ActionResult Manufacturer()
-        {
-            // Check if is administrator
-            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
-            {
-                Response.Redirect("/admin", false);
-            }
-
-            return View();
-        }
-
-        // PurchaseOrder
-        // GET: /Admin/Order
-        [HttpGet]
-        public ActionResult Order()
-        {
-            // Check if is administrator
-            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
-            {
-                Response.Redirect("/admin", false);
             }
 
             return View();

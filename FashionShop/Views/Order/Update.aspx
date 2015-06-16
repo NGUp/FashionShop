@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-8">
                             <h5 class="product-name">{{item.Product.Manufacturer}} {{item.Product.Name}}</h5>
-                            <h5>{{item.Product.Id}} - {{item.Product.Price}} VND</h5>
+                            <h5>{{item.Product.Id}} - {{standardizePrice(item.Product.Price)}} VND</h5>
                         </div>
                         <div class="col-md-3 div-function">
                             <core-field class="search-box">
@@ -60,7 +60,7 @@
             </ul>
         </div>
         <div class="div-payment">
-            <h3 class="bill">Tổng tiền: {{total()}} VND</h3>
+            <h3 class="bill">Tổng tiền: {{standardizePrice(total())}} VND</h3>
             <div class="clear">
                 <paper-button raised ng-click="cancel()">Hủy</paper-button>
                 <paper-button raised class="btn-update" ng-click="update()">Cập nhật</paper-button>

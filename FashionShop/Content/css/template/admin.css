@@ -86,3 +86,18 @@ paper-fab
     background-color: #ffeb3b;
     color: #212121;
 }
+
+.navigator
+{
+    padding: 8px;
+}
+
+.right 
+{
+    float: right;
+}
+
+.left
+{
+    float: left;
+}

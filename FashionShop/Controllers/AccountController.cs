@@ -25,10 +25,9 @@ namespace FashionShop.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            // Check if is administrator
-            if (Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
             {
-                Response.Redirect("/admin", false);
+                Response.Redirect("/admin/login", false);
             }
 
             return View();
@@ -37,6 +36,11 @@ namespace FashionShop.Controllers
         [HttpPost]
         public ActionResult Update()
         {
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin/login", false);
+            }
+
             Account account = this.model.one(Request.Params["account_ID"]);
             ViewData["ID"] = account.ID;
             ViewData["Name"] = account.Name;
@@ -45,6 +49,7 @@ namespace FashionShop.Controllers
             ViewData["Birthday"] = account.Birthday.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
             ViewData["State"] = account.State;
             ViewData["Permission"] = account.Permission;
+
             return View();
         }
 
@@ -53,7 +58,12 @@ namespace FashionShop.Controllers
         [HttpGet]
         public JsonResult Total()
         {
-            return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.total(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
         }
 
         //

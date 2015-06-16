@@ -19,18 +19,33 @@ namespace FashionShop.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin/login", false);
+            }
+
             return View();
         }
 
         [HttpGet]
         public ActionResult Add()
         {
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin/login", false);
+            }
+
             return View();
         }
 
         [HttpPost]
         public ActionResult Update()
         {
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin/login", false);
+            }
+
             if (Request.Params["manufacturer_ID"] == null)
             {
                 Response.Redirect("/admin/manufacturer", false);

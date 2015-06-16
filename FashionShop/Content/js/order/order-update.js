@@ -28,12 +28,14 @@
 
     angular.module('admin')
 
-        .controller('UpdateCtrl', ['$scope', '$http', function (scope, http) {
+        .controller('UpdateCtrl', ['$scope', '$http', 'Normalization', function (scope, http, normalization) {
             var purchaseID = document.getElementById('purchase-id').value;
 
             http.get('/admin/order/getcartbypurchaseorder/' + purchaseID).then(function (data) {
                 scope.cart = data.data;
             });
+
+            scope.standardizePrice = normalization.standardizePrice;
 
             scope.total = function () {
                 var total = 0;

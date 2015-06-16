@@ -19,6 +19,39 @@ namespace FashionShop.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin/login", false);
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult update()
+        {
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin/login", false);
+            }
+
+            if (Request.Params["customer_ID"] == null)
+            {
+                Response.Redirect("/admin/order");
+            }
+
+            if (Request.Params["purchase_ID"] == null)
+            {
+                Response.Redirect("/admin/order");
+            }
+
+            AccountModel accountModel = new AccountModel();
+            Account account = accountModel.one(Request.Params["customer_ID"].ToString().Trim());
+
+            ViewData["CUSTOMER_ID"] = account.ID;
+            ViewData["CUSTOMER_NAME"] = account.Name;
+            ViewData["PURCHASE_ID"] = Request.Params["purchase_ID"].ToString().Trim();
+
             return View();
         }
 
@@ -39,29 +72,6 @@ namespace FashionShop.Controllers
         {
             CartModel cartModel = new CartModel();
             return Json(cartModel.getCartByPurchaseOrder(param_0.Trim()), JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        public ActionResult update()
-        {
-            if (Request.Params["customer_ID"] == null)
-            {
-                Response.Redirect("/admin/order");
-            }
-
-            if (Request.Params["purchase_ID"] == null)
-            {
-                Response.Redirect("/admin/order");
-            }
-
-            AccountModel accountModel = new AccountModel();
-            Account account = accountModel.one(Request.Params["customer_ID"].ToString().Trim());
-
-            ViewData["CUSTOMER_ID"] = account.ID;
-            ViewData["CUSTOMER_NAME"] = account.Name;
-            ViewData["PURCHASE_ID"] = Request.Params["purchase_ID"].ToString().Trim();
-
-            return View();
         }
 
         [HttpPost]

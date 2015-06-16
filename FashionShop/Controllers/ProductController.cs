@@ -20,12 +20,22 @@ namespace FashionShop.Controllers
         // GET: /Product/
         public ActionResult Index()
         {
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin/login", false);
+            }
+
             return View();
         }
 
         [HttpPost]
         public ActionResult Update()
         {
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin/login", false);
+            }
+
             Product product = this.model.oneForUpdate(Request.Params["product_ID"].Replace("'", "''"));
 
             ViewData["product_ID"] = product.Id;
@@ -45,6 +55,11 @@ namespace FashionShop.Controllers
         [HttpGet]
         public ActionResult Add()
         {
+            if (Session["USER_PERMISSION"] == null || Convert.ToInt32(Session["USER_PERMISSION"]) != 1)
+            {
+                Response.Redirect("/admin/login", false);
+            }
+
             return View();
         }
 
