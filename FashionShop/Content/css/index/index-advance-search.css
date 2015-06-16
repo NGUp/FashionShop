@@ -1,9 +1,9 @@
 .list-products
 {
+    padding: 0;
+    margin: 0;
     overflow: hidden;
     list-style: outside none none;
-    margin: 0;
-    padding: 0;
 }
 
 .cover 
@@ -38,13 +38,14 @@
 .btn-details 
 {
     float: right;
-    background-color: #009688;
     padding: 0 8px;
+    margin-top: -8px;
+    font-weight: 400;
     line-height: 2em;
     color: #fff;
-    font-weight: 400;
+    background-color: #009688;
     border-radius: 3px;
-    margin-top: -8px;
+    
 }
 
 .product-details
@@ -61,25 +62,25 @@
 
 h4 
 {
-    font-weight: 400;
-    font-size: 12px;
     margin: 0 16px;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .product-manufacturer
 {
-    font-size: 12px;
     margin: 8px 0;
+    font-size: 12px;
     text-align: center;
 }
 
 .product-name
 {
+    overflow: hidden;
     font-size: 16px;
     line-height: 2em;
-    white-space: nowrap;
-    overflow: hidden;
     color: rgb(3, 155, 229);
+    white-space: nowrap;
 }
 
 .product-image
@@ -99,15 +100,15 @@ h4
 {
     padding: 16px 0;
     margin-bottom: 16px;
-    border-bottom: 1px solid #e0e0e0;
     border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 h2
 {
-    color: #03a9f4;
     font-size: 24px;
     font-weight: 400;
+    color: #03a9f4;
 }
 
 article 

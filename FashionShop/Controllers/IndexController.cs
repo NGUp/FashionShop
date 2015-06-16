@@ -310,55 +310,35 @@ namespace FashionShop.Controllers
         {
             if (Request.Params["username"] == null)
             {
-                Response.Redirect("/index/signup", false);
+                Response.Redirect("/index/login", false);
             }
 
             if (Request.Params["password"] == null)
             {
-                Response.Redirect("/index/signup", false);
-            }
-
-            if (Request.Params["captcha"] == null)
-            {
-                Response.Redirect("/index/signup", false);
-            }
-
-            string captcha = Request.Params["captcha"];
-            string url = "https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}";
-
-            const string secret = "6LdqAAcTAAAAAJksIEL3D7PqCRfqCauNYaQYpJIe";
-            var client = new WebClient();
-            var reply = client.DownloadString(string.Format(url, secret, captcha));
-            var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
-
-
-            if (captchaResponse.Success == true)
-            {
-                Account account = new Account();
-                account.Username = Request.Params["username"];
-                account.Password = Request.Params["password"];
-                account.Permission = 0;
-
-                Security security = new Security();
-                account.Password = "38f923kd02" + security.encodeSHA1(account.Password) + "99e9k32o";
-                account.Password = security.encodeMD5(account.Password);
-
-                string ID = this.model.login(account);
-
-                if (ID == null)
-                {
-                    Response.Redirect("/index/login", false);
-                }
-
-                Session.Add("USER_ID", ID);
-                Session.Add("USER_PERMISSION", 0);
-                Session.Add("USER_ACCOUNT", account.Username);
-                Session.Add("PRODUCTS", new Hashtable());
-            }
-            else
-            {
                 Response.Redirect("/index/login", false);
             }
+
+            Account account = new Account();
+            account.Username = Request.Params["username"];
+            account.Password = Request.Params["password"];
+            account.Permission = 0;
+
+            Security security = new Security();
+            account.Password = "38f923kd02" + security.encodeSHA1(account.Password) + "99e9k32o";
+            account.Password = security.encodeMD5(account.Password);
+
+            string ID = this.model.login(account);
+
+            if (ID == null)
+            {
+                Response.Redirect("/index/login", false);
+                return;
+            }
+
+            Session.Add("USER_ID", ID);
+            Session.Add("USER_PERMISSION", 0);
+            Session.Add("USER_ACCOUNT", account.Username);
+            Session.Add("PRODUCTS", new Hashtable());
 
             Response.Redirect("/", false);
         }

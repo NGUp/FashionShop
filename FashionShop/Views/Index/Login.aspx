@@ -9,7 +9,6 @@
 </asp:Content>
 
 <asp:Content ID="Script" ContentPlaceHolderID="ScriptContent" runat="server">
-    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="/Scripts/sha1.js"></script>
     <script src="/Scripts/md5.js"></script>
     <script src="/Content/js/index/index-login.js"></script>
@@ -35,9 +34,6 @@
                     <input is="core-input" type="password" id="txtPassword" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{8,}$">
                 </paper-input-decorator>
             </template>
-        </div>
-        <div class="div-captcha">
-            <div class="g-recaptcha" data-sitekey="6LdqAAcTAAAAAHjgN3wATwz_hrV_fmmo_BT8dHCJ"></div>
         </div>
         <div>
             <paper-button raised class="btn-login-form" id="btn-submit" ng-click="login()">Đăng nhập</paper-button>

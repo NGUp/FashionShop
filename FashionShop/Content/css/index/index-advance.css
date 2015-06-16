@@ -1,8 +1,8 @@
 h2
 {
-    color: #03a9f4;
     font-size: 24px;
     font-weight: 400;
+    color: #03a9f4;
 }
 
 article
@@ -40,8 +40,8 @@ article
 
 .div-condition
 {
-    margin: 0 auto;
     width: 240px;
+    margin: 0 auto;
 }
 
 paper-dropdown-menu
@@ -67,6 +67,6 @@ paper-dropdown #scroller
 .btn-search
 {
     width: 100%;
-    background-color: #ffeb3b;
     margin: 0;
+    background-color: #ffeb3b;
 }

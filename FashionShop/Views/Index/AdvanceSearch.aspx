@@ -60,7 +60,7 @@
                             </div>
                             <div class="product-info">
                                 <h4 class="product-name"><% Response.Write(product.Name); %></h4>
-                                <h4 class="product-price"><% Response.Write(product.Price); %> VND <span class="btn-details">Chi tiết</span></h4>
+                                <h4 class="product-price">{{standardizePrice(<% Response.Write(product.Price); %>)}} VND <span class="btn-details">Chi tiết</span></h4>
                             </div>
                         </div>
                     <% } %>

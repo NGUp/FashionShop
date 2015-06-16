@@ -1,8 +1,10 @@
 ﻿.container
 {
-    width: 333px;
-    margin: 32px auto;
-    min-height: 380px;
+    position: relative;
+    width: 275px;
+    height: 300px;
+    padding-top: 8px;
+    margin: 72px auto;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
 }
@@ -12,15 +14,10 @@ paper-input
     width: 100%;
 }
 
-.div-captcha 
-{
-    margin-top: 16px;
-}
-
 .btn-login-form
 {
-    margin-top: 16px;
-    float: right;
-    background-color: #ff4081;
-    color: #fff;
+    position: absolute;
+    right: 8px;
+    color: #FFF;
+    background-color: #FF4081;
 }

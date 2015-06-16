@@ -26,7 +26,7 @@
 
     'use strict';
 
-    angular.module('kids-fashion', [])
+    angular.module('kids-fashion')
 
         /**
         * Security service
@@ -52,10 +52,10 @@
         })
 
         .controller('LoginCtrl', ['$scope', 'Security', function (scope, security) {
+
             scope.login = function () {
                 var userName = document.getElementById('txtUserName'),
-                    password = document.getElementById('txtPassword'),
-                    captcha = document.getElementById('g-recaptcha-response');
+                    password = document.getElementById('txtPassword');
 
                 if (userName.value.length === 0 &&
                     userName.validity.valid === false) {
@@ -67,14 +67,9 @@
                     return;
                 }
 
-                if (captcha.value.length === 0) {
-                    return;
-                }
-
                 var params = [
                     { 'username': userName.value },
-                    { 'password': security.encode(password.value) },
-                    { 'captcha': captcha.value }
+                    { 'password': security.encode(password.value) }
                 ];
 
                 var form = document.createElement('form');
