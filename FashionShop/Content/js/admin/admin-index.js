@@ -30,6 +30,6 @@
     * A part of the admin module
     *
     */
-    angular.module('admin', [])
+    angular.module('admin')
 
 })();

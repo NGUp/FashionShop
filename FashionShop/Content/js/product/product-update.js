@@ -26,20 +26,16 @@
 
     'use strict';
 
-    angular.module('admin', [])
-        .controller('UpdateCtrl', ['$scope', function (scope) {
+    angular.module('admin')
+
+        .controller('UpdateCtrl', ['$scope', '$http', function (scope, http) {
             scope.cancel = function () {
                 window.location.href = '/admin/product';
             };
 
-            // TODO
-            scope.manufacturers = [
-                'F&F',
-                'Old Navy',
-                'HG Kids',
-                'Regatta',
-                'Tommy'
-            ];
+            http.get('/manufacturer/getall').then(function (data) {
+                scope.manufacturers = data.data;
+            });
 
             scope.remove = function () {
                 var form = document.createElement('form');

@@ -26,7 +26,8 @@
 
     'use strict';
 
-    angular.module('admin', [])
+    angular.module('admin')
+
         .controller('UpdateCtrl', ['$scope', '$http', function (scope, http) {
             var purchaseID = document.getElementById('purchase-id').value;
 

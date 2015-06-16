@@ -47,10 +47,12 @@
             }
         })
 
-        .controller('IndexCtrl', ['$scope', '$http', '$location', 'Form', function (scope, http, location, form) {
+        .controller('IndexCtrl', ['$scope', '$http', '$location', 'Form', 'Normalization', function (scope, http, location, form, normalization) {
             scope.currentPage = 1;
             scope.keyword = '';
             var currentKeyword = '';
+
+            scope.standardizePrice = normalization.standardizePrice;
 
             http.get('/admin/product/total').then(function (total) {
                 scope.totalPages = total.data;

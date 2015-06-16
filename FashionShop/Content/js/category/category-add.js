@@ -26,7 +26,8 @@
 
     'use strict';
 
-    angular.module('admin', [])
+    angular.module('admin')
+
         .controller('AddCtrl', ['$scope', function (scope) {
             scope.cancel = function () {
                 window.location.href = '/admin/category';

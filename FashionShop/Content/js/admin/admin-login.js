@@ -30,112 +30,98 @@
     * A part of the admin module
     *
     */
-    angular.module('admin', [])
+    angular.module('admin')
 
-    /**
-    * Security service
-    *
-    * @return {object} Security service
-    */
-    .factory('Security', function () {
-        return {
+        /**
+        * Security service
+        *
+        * @return {object} Security service
+        */
+        .factory('Security', function () {
+            return {
 
-            /**
-            * Encode password
-            *
-            * @param  {string} password    The user password
-            * @return {string}             The hash
-            */
-            encode: function (password) {
-                return md5(
-                    '922e1cd494659174bd2573' +
-                    (new jsSHA(password, 'TEXT')).getHash('SHA-1', 'HEX') +
-                    'fa7993697488f5e85f');
+                /**
+                * Encode password
+                *
+                * @param  {string} password    The user password
+                * @return {string}             The hash
+                */
+                encode: function (password) {
+                    return md5(
+                        '922e1cd494659174bd2573' +
+                        (new jsSHA(password, 'TEXT')).getHash('SHA-1', 'HEX') +
+                        'fa7993697488f5e85f');
+                }
             }
-        }
-    })
+        })
 
-    /**
-    * Form service
-    *
-    * @return {object} Form service
-    */
-    .factory('Form', function () {
-        return {
+        /**
+        * Form service
+        *
+        * @return {object} Form service
+        */
+        .factory('Form', function () {
+            return {
 
-            /**
-            * Submit a form
-            *
-            * @param  {array} params   The array of the parameters
-            */
-            submit: function (params) {
-                var form = document.createElement('form');
-                form.setAttribute('method', 'post');
-                form.setAttribute('action', '/admin/loginhandler');
+                /**
+                * Submit a form
+                *
+                * @param  {array} params   The array of the parameters
+                */
+                submit: function (params) {
+                    var form = document.createElement('form');
+                    form.setAttribute('method', 'post');
+                    form.setAttribute('action', '/admin/loginhandler');
 
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i],
-                        hiddenField = document.createElement("input");
+                    for (var i = 0; i < params.length; i++) {
+                        var key = params[i],
+                            hiddenField = document.createElement("input");
 
-                    hiddenField.setAttribute("type", "hidden");
-                    hiddenField.setAttribute("name", Object.keys(key));
-                    hiddenField.setAttribute("value", key[Object.keys(key)]);
+                        hiddenField.setAttribute("type", "hidden");
+                        hiddenField.setAttribute("name", Object.keys(key));
+                        hiddenField.setAttribute("value", key[Object.keys(key)]);
 
-                    form.appendChild(hiddenField);
+                        form.appendChild(hiddenField);
+                    }
+
+                    document.body.appendChild(form);
+                    form.submit();
                 }
-
-                document.body.appendChild(form);
-                form.submit();
             }
-        }
-    })
+        })
 
-    .directive('ngEnter', function () {
-        return function (scope, element, attrs) {
-            element.bind("keydown keypress", function (event) {
-                if (event.which === 13) {
-                    scope.$apply(function () {
-                        scope.$eval(attrs.ngEnter);
-                    });
+        /**
+        * Login Controller
+        *
+        * @param  {Object} scope       Angular Object
+        * @param  {Object} security    Security service
+        * @param  {Object} form        Form service
+        */
+        .controller('LoginCtrl',
+            ['$scope', 'Security', 'Form', function (scope, security, form) {
 
-                    event.preventDefault();
-                }
-            });
-        };
-    })
+                /**
+                * Login to admin page.
+                *
+                */
+                scope.login = function () {
+                    var username = document.getElementById('txtUsername'),
+                        password = document.getElementById('txtPassword');
 
-    /**
-    * Login Controller
-    *
-    * @param  {Object} scope       Angular Object
-    * @param  {Object} security    Security service
-    * @param  {Object} form        Form service
-    */
-    .controller('LoginCtrl',
-        ['$scope', 'Security', 'Form', function (scope, security, form) {
+                    if (username.value.length > 4 &&
+                            password.value.length > 7) {
+                        form.submit([
+                            { 'username': username.value },
+                            { 'password': security.encode(password.value) }
+                        ]);
+                    } else {
+                        scope.isError = true;
+                    }
+                };
 
-            /**
-            * Login to admin page.
-            *
-            */
-            scope.login = function () {
-                var username = document.getElementById('txtUsername'),
-                    password = document.getElementById('txtPassword');
-
-                if (username.value.length > 4 &&
-                        password.value.length > 7) {
-                    form.submit([
-                        { 'username': username.value },
-                        { 'password': security.encode(password.value) }
-                    ]);
-                } else {
-                    scope.isError = true;
-                }
-            };
-
-            scope.hideError = function () {
-                scope.isError = false;
-            };
-        } ]);
+                scope.hideError = function () {
+                    scope.isError = false;
+                };
+            } ]);
 
 })();

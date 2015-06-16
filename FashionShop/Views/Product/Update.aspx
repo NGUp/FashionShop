@@ -11,7 +11,7 @@
 <asp:Content ID="Selected" ContentPlaceHolderID="SelectedContent" runat="server">0</asp:Content>
 
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitleContent" runat="server">
-    Cập nhật Sản phẩm
+    Sản phẩm
 </asp:Content>
 
 <asp:Content ID="Script" ContentPlaceHolderID="ScriptContent" runat="server">
@@ -50,7 +50,7 @@
                     <paper-dropdown-menu label="Chọn nhà sản xuất">
                         <paper-dropdown class="dropdown">
                             <core-menu class="menu" id="product-manufacturer" valueattr="value" selected="<%= ViewData["product_Manufacturer"] %>">
-                                <paper-item ng-repeat="manufacturer in manufacturers" value="{{manufacturer}}">{{manufacturer}}</paper-item>
+                                <paper-item ng-repeat="manufacturer in manufacturers" value="{{manufacturer.Id}}">{{manufacturer.Name}}</paper-item>
                             </core-menu>
                         </paper-dropdown>
                     </paper-dropdown-menu>

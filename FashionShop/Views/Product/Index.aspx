@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitleContent" runat="server">
-	Quản lý Sản phẩm
+	Sản phẩm
 </asp:Content>
 
 <asp:Content ID="Selected" ContentPlaceHolderID="SelectedContent" runat="server">0</asp:Content>
@@ -46,7 +46,7 @@
                     <div class="product-info">
                         <h4>{{product.Id}}</h4>
                         <h4 class="product-name">{{product.Name}}</h4>
-                        <h4>{{product.Price}} VND</h4>
+                        <h4>{{standardizePrice(product.Price)}} VND</h4>
                     </div>
                 </div>
             </li>

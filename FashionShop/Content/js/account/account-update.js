@@ -26,7 +26,8 @@
 
     'use strict';
 
-    angular.module('admin', [])
+    angular.module('admin')
+
         .factory('Form', function () {
             return {
                 submit: function (params) {

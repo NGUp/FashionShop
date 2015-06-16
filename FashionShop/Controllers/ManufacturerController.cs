@@ -43,6 +43,17 @@ namespace FashionShop.Controllers
         }
 
         [HttpGet]
+        public JsonResult getAll()
+        {
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.getAll(), JsonRequestBehavior.AllowGet);
+            }
+
+            return null;
+        }
+
+        [HttpGet]
         public JsonResult getTopManufacturers()
         {
             if (security.checkToken(Request.Headers["Authorization"].ToString()))

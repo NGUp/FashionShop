@@ -11,7 +11,7 @@
 <asp:Content ID="Selected" ContentPlaceHolderID="SelectedContent" runat="server">0</asp:Content>
 
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitleContent" runat="server">
-    Thêm Sản phẩm
+    Sản phẩm
 </asp:Content>
 
 <asp:Content ID="Script" ContentPlaceHolderID="ScriptContent" runat="server">
@@ -35,7 +35,7 @@
         <div class="content">
             <div class="product-info">
                 <div>
-                    <paper-input label="ID" id="product-id" floatingLabel></paper-input>
+                    <paper-input label="Mã sản phẩm" id="product-id" floatingLabel></paper-input>
                 </div>
                 <div>
                     <paper-input label="Tên sản phẩm" floatingLabel id="product-name" autocomplete="false"></paper-input>
@@ -45,7 +45,7 @@
                     <paper-dropdown-menu label="Chọn nhà sản xuất">
                         <paper-dropdown class="dropdown">
                             <core-menu class="menu" id="product-manufacturer" selected="F&F" valueattr="value">
-                                <paper-item ng-repeat="manufacturer in manufacturers" value="{{manufacturer}}">{{manufacturer}}</paper-item>
+                                <paper-item ng-repeat="manufacturer in manufacturers" value="{{manufacturer.Id}}">{{manufacturer.Name}}</paper-item>
                             </core-menu>
                         </paper-dropdown>
                     </paper-dropdown-menu>

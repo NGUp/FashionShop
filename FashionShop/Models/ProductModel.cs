@@ -73,6 +73,36 @@ namespace FashionShop.Models
 
             DataTable result = this.provider.executeQuery(sql);
 
+            if (result.Rows.Count == 0)
+            {
+                return null;
+            }
+
+            DataRow row = result.Rows[0];
+
+            Product product = new Product();
+            product.Id = row["ID"].ToString();
+            product.Name = row["Name"].ToString();
+            product.Manufacturer = row["Manufacturer"].ToString();
+            product.Price = Int32.Parse(row["Price"].ToString());
+            product.Origin = row["Origin"].ToString();
+            product.Views = Int32.Parse(row["Views"].ToString());
+            product.Sales = Int32.Parse(row["Sales"].ToString());
+            product.Image = row["Image"].ToString();
+            product.State = Int32.Parse(row["State"].ToString());
+            product.Sex = Int32.Parse(row["Sex"].ToString());
+            product.Category = row["Category"].ToString();
+
+            return product;
+        }
+
+        public Product oneForUpdate(string ID)
+        {
+            string sql = string.Format(
+                "Select * From Product Where ID = '{0}'", ID);
+
+            DataTable result = this.provider.executeQuery(sql);
+
             if (result.Rows.Count == 0) {
                 return null;
             }

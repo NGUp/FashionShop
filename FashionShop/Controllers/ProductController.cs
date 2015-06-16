@@ -26,12 +26,12 @@ namespace FashionShop.Controllers
         [HttpPost]
         public ActionResult Update()
         {
-            Product product = this.model.one(Request.Params["product_ID"].Replace("'", "''"));
+            Product product = this.model.oneForUpdate(Request.Params["product_ID"].Replace("'", "''"));
 
             ViewData["product_ID"] = product.Id;
             ViewData["product_Name"] = product.Name;
             ViewData["product_Manufacturer"] = product.Manufacturer.Trim();
-            ViewData["product_Price"] = Normalization.standardizePrice(product.Price);
+            ViewData["product_Price"] = product.Price;
             ViewData["product_Origin"] = product.Origin;
             ViewData["product_Views"] = product.Views;
             ViewData["product_Sales"] = product.Sales;
