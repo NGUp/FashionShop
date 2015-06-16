@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitleContent" runat="server">
-	Quản lý Nhà sản xuất
+	Nhà sản xuất
 </asp:Content>
 
 <asp:Content ID="Selected" ContentPlaceHolderID="SelectedContent" runat="server">2</asp:Content>
@@ -44,7 +44,7 @@
             </template>
             <div class="div-buttons">
                 <paper-button raised ng-click="cancel()">Hủy</paper-button>
-                <paper-button raised class="btn-add" ng-click="add()">Cập nhật</paper-button>
+                <paper-button raised class="btn-add" ng-click="add()">Thêm</paper-button>
             </div>
         </div>
         

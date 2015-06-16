@@ -27,6 +27,7 @@
     'use strict';
 
     angular.module('admin', [])
+
         .controller('UpdateCtrl', ['$scope', function (scope) {
             scope.cancel = function () {
                 window.location.href = '/admin/manufacturer';

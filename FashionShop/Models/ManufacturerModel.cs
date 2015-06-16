@@ -77,7 +77,7 @@ namespace FashionShop.Models
         public int totalResults(string keyword)
         {
             string sql = string.Format(
-                "Select Count(ID) As Total From Manufacturer Where State = 1 And (ID Like '%{0}%' Or Name Like '%{0}%')",
+                "Select Count(ID) As Total From Manufacturer Where State = 1 And (ID Like '%{0}%' Or Name Like N'%{0}%')",
                 keyword);
 
             DataTable result = this.provider.executeQuery(sql);
@@ -117,7 +117,7 @@ namespace FashionShop.Models
             SqlCommand command = new SqlCommand("usp_searchManufacturers");
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add("@page", SqlDbType.Int);
-            command.Parameters.Add("@keyword", SqlDbType.VarChar);
+            command.Parameters.Add("@keyword", SqlDbType.NVarChar);
 
             command.Parameters["@page"].Value = page;
             command.Parameters["@keyword"].Value = keyword;

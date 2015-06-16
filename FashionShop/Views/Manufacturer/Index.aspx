@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitleContent" runat="server">
-	Quản lý Nhà sản xuất
+	Nhà sản xuất
 </asp:Content>
 
 <asp:Content ID="Selected" ContentPlaceHolderID="SelectedContent" runat="server">2</asp:Content>
