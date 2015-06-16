@@ -160,9 +160,17 @@ namespace FashionShop.Models
 
         public bool delete(Manufacturer manufacturer)
         {
-            string sql = string.Format("Update Manufacturer Set State = 0 Where ID = '{0}'", manufacturer.Id);
+            bool result = false;
 
-            return this.provider.executeNonQuery(sql);
+            string sql = string.Format("Update Manufacturer Set State = 0 Where ID = '{0}'", manufacturer.Id);
+           
+            result =  this.provider.executeNonQuery(sql);
+
+            sql = string.Format("Update Product Set State = 0 Where Manufacturer = '{0}'", manufacturer.Id);
+
+            result = this.provider.executeNonQuery(sql);
+
+            return result;
         }
     }
 }

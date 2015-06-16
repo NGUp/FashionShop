@@ -25,7 +25,7 @@ namespace FashionShop.Models
         public string login(Account account)
         {
             string sql = String.Format(
-                    "Select ID From Account Where Username = '{0}' And Password = '{1}' And Permission = {2}",
+                    "Select ID From Account Where State = 1 And Username = '{0}' And Password = '{1}' And Permission = {2}",
                     account.Username, account.Password, account.Permission);
 
             DataTable result = this.provider.executeQuery(sql);

@@ -140,9 +140,17 @@ namespace FashionShop.Models
 
         public bool delete(Category category)
         {
+            bool result = false;
+
             string sql = string.Format("Update Category Set State = 0 Where CategoryID = '{0}'", category.ID);
 
-            return this.provider.executeNonQuery(sql);
+            result = this.provider.executeNonQuery(sql);
+
+            sql = string.Format("Update Product Set State = 0 Where Category = '{0}'", category.ID);
+
+            result = this.provider.executeNonQuery(sql);
+
+            return result;
         }
     }
 }
