@@ -61,6 +61,7 @@
         <script src="/Scripts/platform.js"></script>
         <script src="/bower_components/angular/angular.min.js"></script>
         <script src="/Scripts/base64.js"></script>
+        <script src="/Content/js/template/admin.js"></script>
         <asp:ContentPlaceHolder ID="ScriptContent" runat="server"></asp:ContentPlaceHolder>
 
         <!-- Web Components -->

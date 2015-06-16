@@ -26,7 +26,7 @@
 
     'user strict';
 
-    angular.module('admin', [])
+    angular.module('admin')
         .factory('Form', function () {
             return {
                 submitForm: function (product, url) {

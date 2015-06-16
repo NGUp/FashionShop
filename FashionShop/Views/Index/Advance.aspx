@@ -61,7 +61,7 @@
                                     <paper-item ng-repeat="category in categories" value="{{category.ID.trim()}}">
                                         {{category.Name}}
                                     </paper-item>
-                                    <paper-item value="-1">Tất cả</paper-item>
+                                    <paper-item value="all">Tất cả</paper-item>
                                 </core-menu>
                             </paper-dropdown>
                         </paper-dropdown-menu>

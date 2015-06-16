@@ -59,28 +59,32 @@
             scope.goCart = function () {
                 window.location.href = '/index/cart';
             };
-            
-            scope.searchAdvance = function() {
+
+            scope.searchAdvance = function () {
                 var category = document.getElementById('category'),
                     sex = document.getElementById('sex'),
                     price = document.getElementById('price');
-                    
+
                 if (category.selected === null) {
                     category.selected = '';
                 }
-                
+
                 if (sex.selected === null) {
                     sex.selected = -1;
                 }
-                
+
                 if (price.selected === null) {
                     price.selected = -1;
                 }
-                
-                if (category.selected === null && sex.selected === null && price.selected === null) {
+
+                if (category.selected === '' && sex.selected === -1 && price.selected === -1) {
                     return;
                 }
-                
+
+                console.log(category.selected);
+                console.log(sex.selected);
+                console.log(price.selected);
+
                 var params = [
                     { 'category': category.selected },
                     { 'price': price.selected },

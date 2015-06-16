@@ -1,19 +1,19 @@
 ﻿.container
 {
     width: 350px;
+    padding-bottom: 16px;
     margin: 32px auto;
     background-color: #FFF;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
-    padding-bottom: 16px;
 }
 
 h3
 {
-    color: #03A9F4;
+    margin-top: 16px;
+    margin-bottom: 0;
     font-size: 24px;
     font-weight: 400;
-    margin-bottom: 0px;
-    margin-top: 16px;
+    color: #03A9F4;    
 }
 
 .div-captcha
@@ -80,23 +80,23 @@ paper-button a
 h5 
 {
     margin-bottom: 0;
-    font-weight: 400;
-    text-overflow: ellipsis;
-    color: #757575;
     font-size: 0.75em;
+    font-weight: 400;
+    color: #757575;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .error-status
 {
-    color: #f44336;
     font-size: 16px;
     font-weight: 400;
+    color: #f44336;
 }
 
 .done-button
 {
     float: right;
-    background-color: #ff4081;
     color: #fff;
+    background-color: #ff4081;
 }

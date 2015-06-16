@@ -186,6 +186,7 @@
     <Content Include="Content\js\product\product-add.js" />
     <Content Include="Content\js\product\product-index.js" />
     <Content Include="Content\js\product\product-update.js" />
+    <Content Include="Content\js\template\admin.js" />
     <Content Include="Content\js\template\main.js" />
     <Content Include="Content\WebComponents\md-logout-button.html" />
     <Content Include="Global.asax" />
@@ -235,6 +236,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Main.Master" />

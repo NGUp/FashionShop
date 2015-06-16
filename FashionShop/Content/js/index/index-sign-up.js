@@ -52,6 +52,7 @@
         })
 
         .controller('SignUpCtrl', ['$scope', '$http', 'Security', function (scope, http, security) {
+
             var isValidTime = function (day, month, year) {
                 if (day < 1 || day > 31) {
                     return false;
@@ -164,7 +165,7 @@
 
                         for (var i = 0; i < params.length; i++) {
                             var key = params[i],
-                                        hiddenField = document.createElement("input");
+                                hiddenField = document.createElement("input");
 
                             hiddenField.setAttribute("type", "hidden");
                             hiddenField.setAttribute("name", Object.keys(key));

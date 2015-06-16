@@ -360,12 +360,12 @@ namespace FashionShop.Models
             string condition = "";
             string sql = "Select * From Product";
             
-            if (category != "")
+            if (category != "" && category != "all")
             {
                 condition += string.Format(" Category = '{0}'", category);
             }
             
-            if (sex != -1)
+            if (sex != 2 && sex != -1)
             {
                 if (condition == "")
                 {
@@ -377,7 +377,7 @@ namespace FashionShop.Models
                 }
             }
             
-            if (price != -1)
+            if (price != 3 && price != -1)
             {
                 int min, max;
                 
