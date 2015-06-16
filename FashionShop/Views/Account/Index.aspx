@@ -33,7 +33,7 @@
             
         <div class="account-container" ng-repeat="account in accounts">
             <div>
-                <strong>{{account.ID}}</strong> - <span>{{account.Username}}</span>
+                <span>{{account.Username}}</span>
                 <div class="core-icon-button">
                     <div class="account-state">
                         <img src="/Content/img/admin/state.png" alt="State" ng-class="{alive: isAlive(account.State)}" />

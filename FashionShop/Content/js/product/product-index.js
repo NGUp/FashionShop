@@ -27,6 +27,7 @@
     'user strict';
 
     angular.module('admin')
+
         .factory('Form', function () {
             return {
                 submitForm: function (product, url) {
@@ -49,6 +50,7 @@
         .controller('IndexCtrl', ['$scope', '$http', '$location', 'Form', function (scope, http, location, form) {
             scope.currentPage = 1;
             scope.keyword = '';
+            var currentKeyword = '';
 
             http.get('/admin/product/total').then(function (total) {
                 scope.totalPages = total.data;
@@ -71,7 +73,7 @@
                     scope.currentPage++;
 
                     if (scope.isSearching === true) {
-                        http.get('/admin/product/search/' + scope.currentPage + '/' + keyword).then(function (data) {
+                        http.get('/admin/product/search/' + scope.currentPage + '/' + Base64.encode(scope.keyword)).then(function (data) {
                             scope.products = data.data;
                         });
                     } else {
@@ -87,7 +89,7 @@
                     scope.currentPage--;
 
                     if (scope.isSearching === true) {
-                        http.get('/admin/product/search/' + scope.currentPage + '/' + keyword).then(function (data) {
+                        http.get('/admin/product/search/' + scope.currentPage + '/' + Base64.encode(scope.keyword)).then(function (data) {
                             scope.products = data.data;
                         });
                     } else {
@@ -101,47 +103,42 @@
             scope.refresh = function () {
                 http.get('/admin/product/total').then(function (total) {
                     scope.totalPages = total.data;
+                    scope.isSearching = false;
+                    scope.keyword = '';
 
-                    http.get('/admin/product/get/1').then(function (data) {
-                        scope.products = data.data;
-                    });
-                });
-            };
-
-            scope.searchProducts = function () {
-                var id = document.getElementById('txtProductID'),
-                    name = document.getElementById('txtProductName');
-
-                if (id.value.length === 0 && name.value.length === 0) {
-                    return;
-                }
-
-                keyword = 'id=' + id.value + '&name=' + name.value;
-                keyword = Base64.encode(keyword);
-
-                http.get('/admin/product/searchresults/' + keyword).then(function (total) {
-                    scope.totalPages = total.data;
-
-                    http.get('/admin/product/search/1/' + keyword).then(function (data) {
-                        console.log(data);
-                        scope.products = data.data;
-
-                        var dialog = document.getElementById('paper-dialog');
-                        dialog.close();
-                        scope.isSearching = true;
-                        scope.currentPage = 1;
-                    });
+                    if (scope.totalPages === 0) {
+                        scope.currentPage = 0;
+                        scope.products = null;
+                    } else {
+                        http.get('/admin/product/get/1').then(function (data) {
+                            scope.products = data.data;
+                            scope.currentPage = 1;
+                        });
+                    }
                 });
             };
 
             scope.search = function () {
-                var id = document.getElementById('txtProductID'),
-                    username = document.getElementById('txtProductName'),
-                    dialog = document.querySelector('paper-dialog');
+                if (scope.keyword === '') {
+                    return;
+                }
 
-                id.value = '';
-                username.value = '';
-                dialog.toggle();
+                var keyword = Base64.encode(scope.keyword);
+
+                http.get('/admin/product/searchresults/' + keyword).then(function (total) {
+                    scope.totalPages = total.data;
+                    scope.isSearching = true;
+
+                    if (scope.totalPages === 0) {
+                        scope.currentPage = 0;
+                        scope.products = null;
+                    } else {
+                        http.get('/admin/product/search/1/' + keyword).then(function (data) {
+                            scope.products = data.data;
+                            scope.currentPage = 1;
+                        });
+                    }
+                });
             };
 
             scope.add = function () {

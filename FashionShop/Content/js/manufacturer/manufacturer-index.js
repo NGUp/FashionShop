@@ -122,8 +122,6 @@
                     return;
                 }
 
-                console.log(scope.keyword);
-
                 var keyword = Base64.encode(scope.keyword);
 
                 http.get('/admin/manufacturer/searchresults/' + keyword).then(function (total) {

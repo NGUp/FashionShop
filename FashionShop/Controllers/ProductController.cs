@@ -97,14 +97,8 @@ namespace FashionShop.Controllers
         {
             if (security.checkToken(Request.Headers["Authorization"].ToString()))
             {
-                Analyze analyze = new Analyze();
-                Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_0.Replace("'", "''")));
-
-                Product product = new Product();
-                product.Id = hashTable["ProductID"].ToString();
-                product.Name = hashTable["ProductName"].ToString();
-
-                return Json(this.model.totalResults(product), JsonRequestBehavior.AllowGet);
+                string keyword = security.decodeBase64(param_0.Replace("'", "''"));
+                return Json(this.model.totalResults(keyword), JsonRequestBehavior.AllowGet);
             }
 
             return null;
@@ -137,13 +131,8 @@ namespace FashionShop.Controllers
         {
             if (security.checkToken(Request.Headers["Authorization"].ToString()))
             {
-                Analyze analyze = new Analyze();
-                Hashtable hashTable = analyze.analyzeProductIdAndName(security.decodeBase64(param_1.Replace("'", "''")));
-
-                Product product = new Product();
-                product.Id = hashTable["ProductID"].ToString();
-                product.Name = hashTable["ProductName"].ToString();
-                return Json(this.model.search(product, param_0), JsonRequestBehavior.AllowGet);
+                string keyword = security.decodeBase64(param_1.Replace("'", "''"));
+                return Json(this.model.search(keyword, param_0), JsonRequestBehavior.AllowGet);
             }
 
             return null;

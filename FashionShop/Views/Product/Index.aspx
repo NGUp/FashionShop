@@ -20,15 +20,22 @@
 </asp:Content>
 
 <asp:Content ID="WebComponents" ContentPlaceHolderID="WebComponentsContent" runat="server">
-    <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
     <link rel="import" href="/bower_components/paper-input/paper-input.html">
     <link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
     <link rel="import" href="/bower_components/paper-fab/paper-fab.html">
+    <link rel="import" href="/bower_components/core-field/core-field.html">
+    <link rel="import" href="/bower_components/core-icon-button/core-icon-button.html">
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
 
     <article class="container" ng-controller="IndexCtrl">
+        <div>
+            <core-field class="search-box">
+                <input placeholder="Từ khóa" autocomplete="off" spellcheck="false" name="keyword" ng-model="keyword" ng-enter="search()" flex>
+                <core-icon-button icon="search" ng-click="search()"></core-icon-button>
+            </core-field>
+        </div>
         <ul class="list-products">
             <li ng-repeat="product in products">
                 <div class="product-details" ng-click="showDetails(product)">
@@ -51,7 +58,6 @@
             <core-icon-button icon="arrow-back" ng-click="previous()" active="false"></core-icon-button>
             <span>{{currentPage}} - {{totalPages}}</span>
             <core-icon-button icon="arrow-forward" ng-click="next()"></core-icon-button>
-            <core-icon-button icon="search" ng-click="search()" ng-hide="isSearching"></core-icon-button>
             <core-icon-button icon="refresh" ng-click="refresh()" ng-show="isSearching"></core-icon-button>
         </div>
 

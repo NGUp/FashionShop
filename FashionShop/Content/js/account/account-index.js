@@ -47,6 +47,7 @@
         })
 
         .controller('IndexCtrl', ['$scope', '$http', 'Form', function (scope, http, form) {
+
             scope.currentPage = 1;
             scope.keyword = '';
 
