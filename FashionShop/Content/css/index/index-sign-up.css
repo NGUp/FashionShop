@@ -1,6 +1,6 @@
 ﻿.container
 {
-    width: 333px;
+    width: 350px;
     margin: 32px auto;
     background-color: #FFF;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
@@ -25,6 +25,12 @@ h3
 .div-captcha .g-recaptcha
 {
     margin-top: 8px;
+}
+
+.dropdown
+{
+    position: absolute;
+    max-height: 300px;
 }
 
 paper-dropdown-menu
@@ -91,4 +97,6 @@ h5
 .done-button
 {
     float: right;
+    background-color: #ff4081;
+    color: #fff;
 }

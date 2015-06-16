@@ -74,8 +74,8 @@
                         <paper-dropdown class="dropdown">
                             <core-menu id="birthday-year" class="menu" valueattr="value" selected="1994">
                                 <%
-                                    int maxYear = DateTime.Now.Year + 1;
-                                    for (int year = 1930; year < maxYear; year++)
+                                    int maxYear = DateTime.Now.Year;
+                                    for (int year = maxYear; year > 1929; year--)
                                     {
                                        Response.Write("<paper-item value=" + year + ">" + year + "</paper-item>");
                                     }
@@ -87,12 +87,8 @@
             </div>
             <paper-dropdown-menu label="Bạn sống tại" class="city">
                 <paper-dropdown class="dropdown">
-                    <core-menu id="city" class="menu" valueattr="value" selected="TP.HCM">
-                        <paper-item value="TP.HCM">TP.HCM</paper-item>
-                        <paper-item value="Hà Nội">Hà Nội</paper-item>
-                        <paper-item value="Hải Phòng">Hải Phòng</paper-item>
-                        <paper-item value="Cần Thơ">Cần Thơ</paper-item>
-                        <paper-item value="Đà Nẵng">Đà Nẵng</paper-item>
+                    <core-menu id="city" class="menu" valueattr="value" selected="Tp.Hồ Chí Minh">
+                        <paper-item ng-repeat="province in provinces" value="{{province}}">{{province}}</paper-item>
                     </core-menu>
                 </paper-dropdown>
             </paper-dropdown-menu>
@@ -104,6 +100,7 @@
                     <input is="core-input" id="txtUsername" spellcheck="false" type="text" pattern="^[a-zA-Z0-9]{4,}$">
                 </paper-input-decorator>
             </template>
+            <h5 class="error-status" ng-show="isnAvailable">Tên đăng nhập đã tồn tại.</h5>
             <template is="auto-binding">
                 <paper-input-decorator label="Mật khẩu" floatingLabel isInvalid="{{!$.txtPassword.validity.valid}}" error="Mật khẩu không hợp lệ.">
                     <input is="core-input" type="password" id="txtPassword" pattern="^[a-zA-Z0-9!@#$%^&*?_~]{8,}$">
@@ -120,14 +117,7 @@
             <h3>Xác nhận</h3>
             <div class="g-recaptcha" data-sitekey="6LdqAAcTAAAAAHjgN3wATwz_hrV_fmmo_BT8dHCJ"></div>
         </div>
-        <paper-button class="right" ng-click="signup()" raised>Đăng ký</paper-button>
-        
-        <div class="clear"></div>
-
-        <paper-dialog heading="Thông báo" id="paper-dialog" transition="paper-dialog-transition-center">
-            <h4 class="error-status">Tên đăng nhập đã tồn tại.</h4>
-            <core-icon-button icon="done" affirmative autofocus class="done-button" ng-click="signup()"></core-icon-button>
-        </paper-dialog>
+        <paper-button class="done-button" ng-click="signup()" raised>Đăng ký</paper-button>
     </article>
 
 </asp:Content>

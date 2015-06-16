@@ -26,13 +26,13 @@
 
     'use strict';
 
-    angular.module('kids-fashion', [])
+    angular.module('kids-fashion')
 
-        /**
-        * Security service
-        *
-        * @return {object} Security service
-        */
+    /**
+    * Security service
+    *
+    * @return {object} Security service
+    */
         .factory('Security', function () {
             return {
 
@@ -79,6 +79,10 @@
 
                 return false;
             }
+
+            http.get('/Content/data/provinces.json').then(function (data) {
+                scope.provinces = data.data;
+            });
 
             scope.signup = function () {
                 var fullname = document.getElementById('txtFullName'),
@@ -141,6 +145,8 @@
 
                 http.get('/index/isexisted/' + keyword).then(function (result) {
                     if (result.data === false) {
+                        scope.isnAvailable = false;
+
                         var params = [
                             { 'fullname': fullname.value },
                             { 'username': username.value },
@@ -170,8 +176,7 @@
                         document.body.appendChild(form);
                         form.submit();
                     } else {
-                        var dialog = document.getElementById('paper-dialog');
-                        dialog.toggle();
+                        scope.isnAvailable = true;
                     }
                 });
             };
