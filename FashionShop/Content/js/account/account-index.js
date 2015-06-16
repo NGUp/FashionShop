@@ -51,6 +51,7 @@
 
             scope.currentPage = 1;
             scope.keyword = '';
+            var currentKeyword = '';
 
             http.get('/admin/account/total').then(function (total) {
                 scope.totalPages = total.data;
@@ -128,41 +129,6 @@
                 });
             };
 
-            scope.searchAccounts = function () {
-                var id = document.getElementById('txtID'),
-                    username = document.getElementById('txtUsername');
-
-                if (id.validity.valid === false) {
-                    id.focus();
-                    return;
-                }
-
-                if (username.validity.valid === false) {
-                    username.focus();
-                    return;
-                }
-
-                if (id.value.length === 0 && username.value.length === 0) {
-                    return;
-                }
-
-                keyword = 'id=' + id.value + '&username=' + username.value;
-                keyword = Base64.encode(keyword);
-
-                http.get('/admin/account/searchresults/' + keyword).then(function (total) {
-                    scope.totalPages = total.data;
-
-                    http.get('/admin/account/search/1/' + keyword).then(function (data) {
-                        scope.accounts = data.data;
-
-                        var dialog = document.getElementById('paper-dialog');
-                        dialog.close();
-                        scope.isSearching = true;
-                        scope.currentPage = 1;
-                    });
-                });
-            };
-
             scope.toDate = function (value) {
                 var pattern = /Date\(([^)]+)\)/;
                 var results = pattern.exec(value);
@@ -172,13 +138,26 @@
             };
 
             scope.search = function () {
-                var id = document.getElementById('txtID'),
-                    username = document.getElementById('txtUsername'),
-                    dialog = document.querySelector('paper-dialog');
+                if (scope.keyword === '') {
+                    return;
+                }
 
-                id.value = '';
-                username.value = '';
-                dialog.toggle();
+                var keyword = Base64.encode(scope.keyword);
+
+                http.get('/admin/account/searchresults/' + keyword).then(function (total) {
+                    scope.totalPages = total.data;
+                    scope.isSearching = true;
+
+                    if (scope.totalPages === 0) {
+                        scope.currentPage = 0;
+                        scope.accounts = null;
+                    } else {
+                        http.get('/admin/account/search/1/' + keyword).then(function (data) {
+                            scope.accounts = data.data;
+                            scope.currentPage = 1;
+                        });
+                    }
+                });
             };
 
         } ]);

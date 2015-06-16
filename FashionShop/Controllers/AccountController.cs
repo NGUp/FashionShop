@@ -18,6 +18,8 @@ namespace FashionShop.Controllers
         /// </summary>
         private AccountModel model = new AccountModel();
 
+        private Security security = new Security();
+
         //
         // GET: /Admin/Account
         [HttpGet]
@@ -59,15 +61,12 @@ namespace FashionShop.Controllers
         [HttpGet]
         public JsonResult SearchResults(string param_0)
         {
-            Analyze analyze = new Analyze();
-            Security security = new Security();
-            Hashtable hashTable = analyze.analyzeIdAndUser(security.decodeBase64(param_0));
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.totalResults(security.decodeBase64(param_0)), JsonRequestBehavior.AllowGet);
+            }
 
-            Account account = new Account();
-            account.ID = hashTable["ID"].ToString();
-            account.Username = hashTable["Username"].ToString();
-
-            return Json(this.model.totalResults(account), JsonRequestBehavior.AllowGet);
+            return null;
         }
 
         //
@@ -83,14 +82,12 @@ namespace FashionShop.Controllers
         [HttpGet]
         public JsonResult Search(int param_0, string param_1)
         {
-            Analyze analyze = new Analyze();
-            Security security = new Security();
-            Hashtable hashTable = analyze.analyzeIdAndUser(security.decodeBase64(param_1));
+            if (security.checkToken(Request.Headers["Authorization"].ToString()))
+            {
+                return Json(this.model.search(security.decodeBase64(param_1), param_0), JsonRequestBehavior.AllowGet);
+            }
 
-            Account account = new Account();
-            account.ID = hashTable["ID"].ToString();
-            account.Username = hashTable["Username"].ToString();
-            return Json(this.model.search(account, param_0), JsonRequestBehavior.AllowGet);
+            return null;
         }
 
         //

@@ -51,11 +51,11 @@ namespace FashionShop.Models
             return (int) result.Rows[0]["Total"];
         }
 
-        public int totalResults(Account account)
+        public int totalResults(string keyword)
         {
             string sql = string.Format(
-                "Select Count(ID) As Total From Account Where ID = '{0}' Or Username = '{1}'",
-                account.ID, account.Username);
+                "Select Count(ID) As Total From Account Where ID Like '%{0}%' Or Username Like '%{0}%'",
+                keyword);
 
             DataTable result = this.provider.executeQuery(sql);
 
@@ -99,17 +99,15 @@ namespace FashionShop.Models
             return accounts;
         }
 
-        public Account[] search(Account account, int page)
+        public Account[] search(string keyword, int page)
         {
             SqlCommand command = new SqlCommand("usp_searchAccounts");
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add("@page", SqlDbType.Int);
-            command.Parameters.Add("@id", SqlDbType.VarChar);
-            command.Parameters.Add("@user", SqlDbType.VarChar);
+            command.Parameters.Add("@keyword", SqlDbType.NVarChar);
 
             command.Parameters["@page"].Value = page;
-            command.Parameters["@id"].Value = account.ID;
-            command.Parameters["@user"].Value = account.Username;
+            command.Parameters["@keyword"].Value = keyword;
 
             DataTable result = this.provider.executeQueryFromStoredProcedure(command);
             Account[] accounts = new Account[result.Rows.Count];
@@ -117,7 +115,7 @@ namespace FashionShop.Models
 
             foreach (DataRow row in result.Rows)
             {
-                account = new Account();
+                Account account = new Account();
                 account.ID = row["ID"].ToString();
                 account.Birthday = DateTime.Parse(row["Birthday"].ToString());
                 account.Name = row["Name"].ToString();

@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="HeaderTitle" ContentPlaceHolderID="HeaderTitleContent" runat="server">
-	Quản lý Tài khoản
+	Tài khoản
 </asp:Content>
 
 <asp:Content ID="Selected" ContentPlaceHolderID="SelectedContent" runat="server">3</asp:Content>
@@ -30,7 +30,12 @@
 <asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
 
     <article class="container" ng-controller="IndexCtrl">
-            
+        <div>
+            <core-field class="search-box">
+                <input placeholder="Từ khóa" autocomplete="off" spellcheck="false" name="keyword" ng-model="keyword" ng-enter="search()" flex>
+                <core-icon-button icon="search" ng-click="search()"></core-icon-button>
+            </core-field>
+        </div>    
         <div class="account-container" ng-repeat="account in accounts">
             <div>
                 <span>{{account.Username}}</span>
@@ -58,23 +63,8 @@
             <core-icon-button icon="arrow-back" ng-click="previous()" active="false"></core-icon-button>
             <span>{{currentPage}} - {{totalPages}}</span>
             <core-icon-button icon="arrow-forward" ng-click="next()"></core-icon-button>
-            <core-icon-button icon="search" ng-click="search()" ng-hide="isSearching"></core-icon-button>
             <core-icon-button icon="refresh" ng-click="refresh()" ng-show="isSearching"></core-icon-button>
         </div>
-
-        <paper-dialog heading="Tìm kiếm" id="paper-dialog" transition="paper-dialog-transition-center">
-            <template is="auto-binding">
-                <paper-input-decorator label="Mã tài khoản" floatingLabel isInvalid="{{!$.txtID.validity.valid}}" error="Mã tài khoản không hợp lệ.">
-                    <input is="core-input" id="txtID" spellcheck="false" type="text" pattern="^[a-z0-9]{5,50}$">
-                </paper-input-decorator>
-            </template>
-            <template is="auto-binding">
-                <paper-input-decorator label="Tên tài khoản" floatingLabel isInvalid="{{!$.txtUsername.validity.valid}}" error="Tên tài khoản không hợp lệ.">
-                    <input is="core-input" id="txtUsername" spellcheck="false" type="text" pattern="^[a-zA-Z0-9_]{5,50}$">
-                </paper-input-decorator>
-            </template>
-            <core-icon-button icon="search" affirmative autofocus class="search-button" ng-click="searchAccounts()"></core-icon-button>
-        </paper-dialog>
     </article>
 
 </asp:Content>

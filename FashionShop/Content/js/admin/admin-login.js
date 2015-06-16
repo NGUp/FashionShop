@@ -100,6 +100,8 @@
         .controller('LoginCtrl',
             ['$scope', 'Security', 'Form', function (scope, security, form) {
 
+                scope.isError = false;
+
                 /**
                 * Login to admin page.
                 *

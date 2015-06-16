@@ -40,6 +40,7 @@
         <script src="/bower_components/angular/angular.min.js"></script>
         <script src="/Scripts/sha1.js"></script>
         <script src="/Scripts/md5.js"></script>
+        <script src="/Content/js/template/admin.js"></script>
         <script src="/Content/js/admin/admin-login.js"></script>
 
         <link rel="import" href="/bower_components/core-field/core-field.html">
