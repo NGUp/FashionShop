@@ -131,6 +131,7 @@
     <Content Include="Content\css\index\index-index.css" />
     <Content Include="Content\css\index\index-manufacturer.css" />
     <Content Include="Content\css\index\index-search.css" />
+    <Content Include="Content\css\index\index-success.css" />
     <Content Include="Content\css\manufacturer\manufacturer-add.css" />
     <Content Include="Content\css\manufacturer\manufacturer-index.css" />
     <Content Include="Content\css\manufacturer\manufacturer-update.css" />
@@ -178,6 +179,7 @@
     <Content Include="Content\js\index\index-manufacturers.js" />
     <Content Include="Content\js\index\index-search.js" />
     <Content Include="Content\js\index\index-sign-up.js" />
+    <Content Include="Content\js\index\index-success.js" />
     <Content Include="Content\js\manufacturer\manufacturer-add.js" />
     <Content Include="Content\js\manufacturer\manufacturer-index.js" />
     <Content Include="Content\js\manufacturer\manufacturer-update.js" />
@@ -209,6 +211,7 @@
     <Content Include="Views\Index\Category.aspx" />
     <Content Include="Views\Index\Details.aspx" />
     <Content Include="Views\Index\Login.aspx" />
+    <Content Include="Views\Index\LoginSuccess.aspx" />
     <Content Include="Views\Index\Manufacturer.aspx" />
     <Content Include="Views\Index\Manufacturers.aspx" />
     <Content Include="Views\Index\Search.aspx" />

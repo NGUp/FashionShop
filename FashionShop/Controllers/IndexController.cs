@@ -305,6 +305,12 @@ namespace FashionShop.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult loginSuccess()
+        {
+            return View();
+        }
+
         [HttpPost]
         public void LoginHandler()
         {
@@ -340,7 +346,7 @@ namespace FashionShop.Controllers
             Session.Add("USER_ACCOUNT", account.Username);
             Session.Add("PRODUCTS", new Hashtable());
 
-            Response.Redirect("/", false);
+            Response.Redirect("/index/loginsuccess", false);
         }
 
         [HttpPost]
